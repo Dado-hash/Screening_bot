@@ -56,7 +56,7 @@ print(df_24h_change)
 df_principale = pd.read_csv("df_principale")
 df_old = pd.read_csv("volatility")
 df_old.set_index('id', inplace = True)
-df_principale['volatility'] = (df_principale['high_24h'] - df_principale['low_24h'])/df_principale('low_24hw')
+df_principale['volatility'] = (df_principale['high_24h'] - df_principale['low_24h'])/df_principale['low_24h']
 list_columns = ['id', 'volatility']
 volatility = df_principale[list_columns]
 volatility.set_index('id', inplace = True)
