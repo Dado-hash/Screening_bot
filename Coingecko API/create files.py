@@ -35,7 +35,7 @@ print(df)
 df.to_csv("idcoins1")
 
 
-#creo il file con i dati aggiornati
+#creo i file con i dati aggiornati
 df = pd.read_csv("idcoins")
 coins_id_list = df["id"].tolist()
 complexPriceRequest = cg.get_coins_markets(vs_currency = 'btc', ids = coins_id_list)
