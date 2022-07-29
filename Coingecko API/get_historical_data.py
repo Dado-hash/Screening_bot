@@ -35,7 +35,6 @@ df.to_csv("idcoins1")
 df = pd.read_csv("idcoins")
 df1 = pd.read_csv("idcoins1")
 coins_id_list = df["id"].tolist() + df1["id"].tolist()
-print(coins_id_list)
 
 #creo il file mettendo i prezzi di bitcoin
 id_coin = 'bitcoin'
@@ -50,15 +49,23 @@ df_principale.set_index('day', inplace = True)
 df_principale.drop(df_principale.tail(1).index,inplace=True)
 print(df_principale)
 
-#aggiungo le alt (capire come allineare)
-id_coin = 'ethereum'
-hist_data = cg.get_coin_market_chart_by_id(id = id_coin, vs_currency = 'usd', days = 'max')
-df = pd.DataFrame(hist_data)
-df['day'] = df['prices'].str[0]
-df['day'] = pd.to_datetime(df['day']/1000, unit = 's').dt.date
-df[id_coin] = df['prices'].str[1]
-columns = ['day', id_coin]
-df = df[columns]
-df.set_index('day', inplace = True)
-df = pd.merge(df_principale, df, on="day", how = 'left')
-print(df)
+#aggiungo le alt
+count = 0
+for id_coin in coins_id_list:
+    if(id_coin != 'bitcoin'):
+        if(count == 30):
+            t.sleep(80)
+            count = 0
+        hist_data = cg.get_coin_market_chart_by_id(id = id_coin, vs_currency = 'usd', days = 'max', interval = 'daily')
+        df = pd.DataFrame(hist_data)
+        df['day'] = df['prices'].str[0]
+        df['day'] = pd.to_datetime(df['day']/1000, unit = 's').dt.date
+        df[id_coin] = df['prices'].str[1]
+        columns = ['day', id_coin]
+        df = df[columns]
+        df.set_index('day', inplace = True)
+        df.drop(df.tail(1).index,inplace=True)
+        df_principale = pd.merge(df_principale, df, on="day", how = 'left')
+        count += 1
+        print(df_principale)
+        df_principale.to_csv('storico')
