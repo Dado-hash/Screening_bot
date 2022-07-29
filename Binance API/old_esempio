@@ -1,0 +1,5 @@
+asset,positionId,productId,amount,purchaseTime,duration,accrualDays,rewardAsset,rewardAmt,nextInterestPay,payInterestPeriod,redeemAmountEarly,interestEndDate,deliverDate,redeemPeriod,canRedeemEarly,renewable,type,status,apy
+EGLD,82135149,Egld*60,"6,23821928",2022-06-21 08:37:54,60,32,EGLD,"0,06939004","0,00168519",1,"6,16882924",2022-08-21 00:00:00,2022-08-22 10:00:00,1,True,False,NORMAL,HOLDING,"0,0986"
+EGLD,82135149,Egld*60,"6,23821928",2022-06-21 08:37:54,60,32,EGLD,"0,06939004","0,00168519",1,"6,16882924",2022-08-21 00:00:00,2022-08-22 10:00:00,1,True,False,NORMAL,HOLDING,"0,0986"
+EGLD,82135149,Egld*60,"6,23821928",2022-06-21 08:37:54,60,32,EGLD,"0,06939004","0,00168519",1,"6,16882924",2022-08-21 00:00:00,2022-08-22 10:00:00,1,True,False,NORMAL,HOLDING,"0,0986"
+
