@@ -40,6 +40,7 @@ coins_id_list = df["id"].tolist() + df1["id"].tolist()
 id_coin = 'bitcoin'
 hist_data = cg.get_coin_market_chart_by_id(id = id_coin, vs_currency = 'usd', days = 'max', interval = 'daily')
 df = pd.DataFrame(hist_data)
+df.drop(df.tail(1).index,inplace=True)
 df['day'] = df['prices'].str[0]
 df['day'] = pd.to_datetime(df['day']/1000, unit = 's').dt.date
 df[id_coin] = df['prices'].str[1].astype(str)
@@ -48,7 +49,6 @@ print(df.dtypes)
 columns = ['day', id_coin]
 df_principale = df[columns]
 df_principale.set_index('day', inplace = True)
-df_principale.drop(df_principale.tail(1).index,inplace=True)
 print(df_principale)
 
 #aggiungo le alt
@@ -60,6 +60,7 @@ for id_coin in coins_id_list:
             count = 0
         hist_data = cg.get_coin_market_chart_by_id(id = id_coin, vs_currency = 'usd', days = 'max', interval = 'daily')
         df = pd.DataFrame(hist_data)
+        df.drop(df.tail(1).index,inplace=True)
         df['day'] = df['prices'].str[0]
         df['day'] = pd.to_datetime(df['day']/1000, unit = 's').dt.date
         df[id_coin] = df['prices'].str[1].astype(str)
@@ -67,10 +68,9 @@ for id_coin in coins_id_list:
         columns = ['day', id_coin]
         df = df[columns]
         df.set_index('day', inplace = True)
-        df.drop(df.tail(1).index,inplace=True)
         df_principale = pd.merge(df_principale, df, on="day", how = 'left')
         count += 1
         print(df_principale)
         
 #salvo lo storico
-df_principale.to_csv('storico')
+df_principale.to_csv('storico.csv')
