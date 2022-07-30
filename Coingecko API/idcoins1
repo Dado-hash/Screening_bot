@@ -1,501 +1,501 @@
 id,name,current_price,market_cap,high_24h,low_24h,price_change_percentage_24h
-ellipsis,Ellipsis [OLD],2.33e-06,1625.0,2.39e-06,1.56e-06,0.46373
-dia-data,DIA,2.002e-05,1613.0,2.128e-05,1.901e-05,3.82568
-kava-lend,Kava Lend,1.219e-05,1613.0,1.279e-05,1.211e-05,-0.48462
-bolide,Bolide,9.1511e-07,1603.0,9.45298e-07,9.08329e-07,-2.63282
-litentry,Litentry,4.318e-05,1602.0,4.386e-05,3.725e-05,15.18566
-hydra,Hydra,0.00012249,1596.0,0.00012543,0.0001213,-0.575
-linear,Linear,4.16627e-07,1592.0,4.28206e-07,4.06635e-07,0.36092
-elastos,Elastos,7.425e-05,1586.0,8.073e-05,7.423e-05,-3.56242
-wilder-world,Wilder World,1.825e-05,1576.0,1.869e-05,1.563e-05,12.68878
-qash,QASH,1.93e-06,1567.0,2.08e-06,1.93e-06,-7.43907
-toucan-protocol-base-carbon-tonne,Toucan Protocol: Base Carbon Tonne,8.076e-05,1561.0,8.447e-05,8.087e-05,-3.58908
-gxchain,GXChain,2.062e-05,1547.0,2.151e-05,2.012e-05,-1.07964
-richquack,Rich Quack,3.4518e-14,1535.0,3.7618e-14,2.7566e-14,23.90006
-adventure-gold,Adventure Gold,1.986e-05,1534.0,2.078e-05,1.96e-05,-1.11348
-alpha-quark-token,Alpha Quark,5.72e-05,1526.0,5.893e-05,5.702e-05,-1.31375
-clover-finance,Clover Finance,4.76e-06,1521.0,4.91e-06,4.46e-06,5.21431
-concierge-io,Travala.com,2.899e-05,1520.0,2.933e-05,2.816e-05,1.9871
-hathor,Hathor,6.48e-06,1519.0,6.69e-06,6.38e-06,-0.85795
-bluzelle,Bluzelle,4.54e-06,1509.0,4.7e-06,4.21e-06,4.27256
-hshare,HyperCash,5.19e-06,771.41,5.46e-06,5.14e-06,-3.65842
-bitmart-token,BitMart,8.55e-06,1507.0,8.96e-06,8.55e-06,-3.93952
-aeternity,Aeternity,3.73e-06,1505.0,3.99e-06,3.7e-06,-4.85664
-instadapp-eth,Instadapp ETH,0.07260723,1511.0,0.0746641,0.07260723,-1.34369
-cube-network,Cube Network,3.094e-05,1490.0,3.093e-05,2.488e-05,21.57342
-butterflydao,Redacted Cartel,0.00132975,1485.0,0.00145382,0.0012079,6.05834
-qanplatform,QANplatform,7.34709e-07,1484.0,7.73929e-07,7.22674e-07,0.28421
-ethlend,Aave [OLD],4.055e-05,1481.0,4.209e-05,4.042e-05,-1.72608
-shapeshift-fox-token,ShapeShift FOX Token,3.56e-06,1479.0,3.68e-06,3.55e-06,-2.99284
-beefy-finance,Beefy.Finance,0.01843276,1475.0,0.01918498,0.01825742,0.7496
-xcad-network,XCAD Network,6.125e-05,1472.0,6.386e-05,6.119e-05,-1.80036
-steem-dollars,Steem Dollars,0.00012812,1470.0,0.00013182,0.00012787,-2.45131
-platon-network,PlatON Network,5.20183e-07,1470.0,5.65337e-07,4.91627e-07,3.75665
-harvest-finance,Harvest Finance,0.00220843,1468.0,0.00227523,0.00202236,8.06012
-route,Router Protocol,0.00018803,1467.0,0.00019383,0.00017732,-2.35367
-snowbank,Snowbank,0.00930535,1486.0,0.00930535,0.00930535,0.0
-ethernity-chain,Ethernity Chain,9.337e-05,1461.0,9.926e-05,8.867e-05,4.98825
-lcx,LCX,2.6e-06,1461.0,2.66e-06,2.59e-06,-1.85555
-seth,sETH,0.07085798,1458.0,0.07375053,0.07068348,-1.56222
-tranchess,Tranchess,1.761e-05,1459.0,2.065e-05,1.755e-05,-3.02369
-swarm-bzz,Swarm,2.282e-05,1454.0,2.319e-05,2.18e-05,2.26243
-compound-0x,c0x,3.0969e-07,1448.0,3.31323e-07,2.83931e-07,7.66309
-presearch,Presearch,3.62e-06,1435.0,3.85e-06,3.61e-06,-5.99794
-genesysgo-shadow,GenesysGo Shadow,1.959e-05,1431.0,2.073e-05,1.938e-05,-3.66987
-mirror-protocol,Mirror Protocol,9.13e-06,1425.0,9.49e-06,9e-06,-0.70984
-umee,Umee,7.27539e-07,1424.0,7.88356e-07,7.19217e-07,-0.08175
-tomb,Tomb,4.6e-06,1423.0,4.59e-06,3.91e-06,17.4782
-bitshares,BitShares,5.22937e-07,1417.0,5.51198e-07,4.96501e-07,4.84185
-rmrk,RMRK,0.00014866,1412.0,0.0001519,0.00014566,-0.65201
-noia-network,Syntropy,2.91e-06,1398.0,3.03e-06,2.9e-06,-0.41534
-unibright,Unibright,9.32e-06,1397.0,9.81e-06,9.21e-06,0.27331
-iris-network,IRISnet,1.04e-06,1397.0,1.08e-06,1.01e-06,-0.71374
-fio-protocol,FIO Protocol,2.32e-06,1395.0,2.41e-06,2.24e-06,2.76138
-handshake,Handshake,2.71e-06,1390.0,2.87e-06,2.66e-06,0.21244
-bitrue-token,Bitrue Coin,3.42e-06,1382.0,3.51e-06,3.41e-06,-1.64621
+arpa-chain,ARPA Chain,1.66e-06,1630.0,1.68e-06,1.6e-06,2.13478
+bolide,Bolide,9.23545e-07,1618.0,9.45298e-07,9.08329e-07,-0.03632
+ellipsis,Ellipsis [OLD],2.31e-06,1618.0,2.39e-06,1.56e-06,-0.80661
+hydra,Hydra,0.00012285,1609.0,0.00012543,0.00012148,1.08509
+wilder-world,Wilder World,1.865e-05,1608.0,1.869e-05,1.563e-05,14.78453
+dia-data,DIA,1.927e-05,1605.0,2.128e-05,1.946e-05,-1.2418
+clover-finance,Clover Finance,5.1e-06,1601.0,5.13e-06,4.46e-06,12.40069
+kava-lend,Kava Lend,1.205e-05,1598.0,1.279e-05,1.206e-05,-0.97403
+elastos,Elastos,7.461e-05,1595.0,7.893e-05,7.423e-05,-3.69402
+richquack,Rich Quack,3.5751e-14,1588.0,3.7618e-14,2.7566e-14,28.26251
+linear,Linear,4.14388e-07,1583.0,4.28206e-07,4.06635e-07,0.37624
+toucan-protocol-base-carbon-tonne,Toucan Protocol: Base Carbon Tonne,8.168e-05,1575.0,8.447e-05,8.057e-05,-1.72644
+litentry,Litentry,4.245e-05,1571.0,4.386e-05,3.725e-05,13.57734
+qash,QASH,1.92e-06,1569.0,2.03e-06,1.91e-06,-4.41437
+cube-network,Cube Network,3.276e-05,1554.0,3.228e-05,2.515e-05,30.17434
+alpha-quark-token,Alpha Quark,5.777e-05,1539.0,5.893e-05,5.712e-05,1.14368
+aeternity,Aeternity,3.81e-06,1539.0,3.99e-06,3.7e-06,-2.73673
+platon-network,PlatON Network,5.34586e-07,1518.0,5.65337e-07,4.92819e-07,7.8324
+hathor,Hathor,6.45e-06,1515.0,6.66e-06,6.38e-06,-1.71244
+concierge-io,Travala.com,2.891e-05,1514.0,2.933e-05,2.816e-05,0.75486
+butterflydao,Redacted Cartel,0.00135161,1514.0,0.00145382,0.0012079,8.52528
+adventure-gold,Adventure Gold,1.972e-05,1513.0,2.078e-05,1.96e-05,-0.86815
+hshare,HyperCash,5.17e-06,771.41,5.46e-06,5.13e-06,-4.1956
+bitmart-token,BitMart,8.58e-06,1510.0,8.96e-06,8.55e-06,-3.12802
+gxchain,GXChain,2.011e-05,1507.0,2.151e-05,2.005e-05,-4.6625
+instadapp-eth,Instadapp ETH,0.07221009,1502.0,0.0746641,0.07238117,-1.88653
+beefy-finance,Beefy.Finance,0.01877524,1501.0,0.01918498,0.01825742,2.83624
+bluzelle,Bluzelle,4.51e-06,1499.0,4.7e-06,4.21e-06,3.10595
+qanplatform,QANplatform,7.3308e-07,1482.0,7.63619e-07,7.22674e-07,-2.46292
+shapeshift-fox-token,ShapeShift FOX Token,3.56e-06,1481.0,3.68e-06,3.55e-06,-1.87447
+xcad-network,XCAD Network,6.147e-05,1480.0,6.386e-05,6.119e-05,-2.68024
+ethlend,Aave [OLD],4.049e-05,1478.0,4.209e-05,4.033e-05,-1.68149
+steem-dollars,Steem Dollars,0.00012861,1475.0,0.00013182,0.00012783,-0.43086
+tranchess,Tranchess,1.788e-05,1475.0,2.065e-05,1.755e-05,1.8676
+tomb,Tomb,4.76e-06,1470.0,4.75e-06,3.91e-06,19.0613
+route,Router Protocol,0.00018805,1467.0,0.00019383,0.00017732,-1.83511
+snowbank,Snowbank,0.00930535,1486.0,,,
+ethernity-chain,Ethernity Chain,9.332e-05,1459.0,9.926e-05,8.95e-05,0.12717
+rook,Rook,0.00178274,1457.0,0.00178102,0.00122899,44.88712
+presearch,Presearch,3.66e-06,1454.0,3.85e-06,3.61e-06,-4.33008
+swarm-bzz,Swarm,2.285e-05,1453.0,2.319e-05,2.18e-05,3.91304
+lcx,LCX,2.57e-06,1448.0,2.65e-06,2.57e-06,-3.07667
+umee,Umee,7.30836e-07,1431.0,7.88356e-07,7.23174e-07,0.56432
+genesysgo-shadow,GenesysGo Shadow,1.952e-05,1426.0,2.058e-05,1.938e-05,-5.14706
+mirror-protocol,Mirror Protocol,9.15e-06,1425.0,9.49e-06,9e-06,-0.11016
+rmrk,RMRK,0.00015008,1420.0,0.0001519,0.00014566,1.37422
+compound-0x,c0x,3.03569e-07,1419.0,3.31323e-07,2.83931e-07,3.94503
+bitshares,BitShares,5.2064e-07,1415.0,5.51198e-07,4.96501e-07,3.75876
+bitcoin-diamond,Bitcoin Diamond,7.42e-06,1414.0,7.52e-06,7.23e-06,2.5042
+seth,sETH,0.07087436,1411.0,0.07375053,0.07055339,-1.96859
+iris-network,IRISnet,1.06e-06,1406.0,1.08e-06,1.01e-06,2.56787
+unibright,Unibright,9.34e-06,1400.0,9.81e-06,9.21e-06,-0.06087
+noia-network,Syntropy,2.93e-06,1398.0,3.03e-06,2.91e-06,-0.42201
+fio-protocol,FIO Protocol,2.31e-06,1392.0,2.41e-06,2.24e-06,2.86201
+bitrue-token,Bitrue Coin,3.44e-06,1387.0,3.51e-06,3.41e-06,-0.46566
 rootkit,Rootkit,0.06934564,730.377,0.07022902,0.06829902,1.53241
-bitcoin-diamond,Bitcoin Diamond,7.32e-06,1378.0,7.45e-06,7.22e-06,0.0862
-celo-euro,Celo Euro,4.14e-05,1377.0,4.279e-05,3.935e-05,-2.95331
-rook,Rook,0.00167184,1378.0,0.00168692,0.00122899,34.92071
-refinable,Refinable,1.09e-06,748.317,1.16e-06,1.1e-06,-1.84774
-zcoin,Firo,0.0001177,1333.0,0.0001277,0.0001176,-1.05221
-alpine-f1-team-fan-token,Alpine F1 Team Fan Token,0.00011694,1328.0,0.00012638,0.00011248,3.95934
-bnb48-club-token,BNB48 Club,0.00038527,1326.0,0.00039388,0.00037807,1.48488
-rizon,RIZON,7.3135e-07,1315.0,7.63735e-07,7.28842e-07,-3.65865
-paris-saint-germain-fan-token,Paris Saint-Germain Fan Token,0.00042184,1312.0,0.00044291,0.00038657,3.42962
-box-token,BOX Token,3.00321e-07,773.924,3.36608e-07,3.00248e-07,-6.86664
-klima-dao,Klima DAO,0.00018051,1299.0,0.00018818,0.00018,-3.3599
-victoria-vr,Victoria VR,1.01e-06,1299.0,1.04e-06,1e-06,-0.36393
-zipmex-token,Zipmex,1.453e-05,1290.0,1.61e-05,1.386e-05,-7.92625
-refereum,Refereum,2.63401e-07,1285.0,2.77047e-07,2.61635e-07,-0.64957
-e-money,e-Money,1.972e-05,1285.0,2.036e-05,1.966e-05,-2.54201
-cryptostone,Cryptostone,1.35474e-07,1283.0,1.39922e-07,1.35333e-07,-2.63848
-bonfida,Bonfida,2.119e-05,1279.0,2.279e-05,2.117e-05,-2.52103
-zigzag-2,ZigZag,0.00013633,1279.0,0.00014098,0.00013574,-3.23794
-firmachain,Firmachain,2.59e-06,1276.0,2.66e-06,2.59e-06,-1.11925
-tifi-token,TiFi,1.3803e-11,1275.0,1.3803e-11,1.2219e-11,11.68871
-rarible,Rarible,0.00013552,1270.0,0.0001462,0.00013316,0.67994
-genopets,Genopets,0.00031965,1255.0,0.00032705,0.00031607,-1.96787
-cortex,Cortex,6.26e-06,1244.0,6.5e-06,6.22e-06,-1.19894
-bzx-protocol,bZx Protocol,2.45e-06,1241.0,2.64e-06,2.24e-06,1.95781
-dopex-rebate-token,Dopex Rebate,0.00102704,1220.0,0.00105976,0.00098834,1.93344
-stargaze,Stargaze,1.22e-06,1214.0,1.27e-06,1.22e-06,-0.08966
-splinterlands,Splinterlands,2.47e-06,1209.0,2.56e-06,2.46e-06,-2.00362
-tokemak,Tokemak,7.391e-05,1206.0,7.764e-05,7.36e-05,-2.40837
-gyen,GYEN,3.03521e-07,1206.0,3.136e-07,3.03167e-07,-2.42771
-selfkey,SelfKey,2.00624e-07,1206.0,2.05841e-07,1.99557e-07,-1.68358
-nominex,Nominex,2.538e-05,1202.0,2.625e-05,2.523e-05,-3.04398
-spookyswap,Spookyswap,0.00012099,1200.0,0.00012533,0.00011852,1.34617
-polyswarm,PolySwarm,7.73016e-07,1195.0,7.98973e-07,7.67783e-07,-1.34539
-math,MATH,7.74e-06,1190.0,7.86e-06,7.42e-06,2.89971
-cere-network,Cere Network,2.91643e-07,1187.0,3.10668e-07,2.87586e-07,-0.15104
-kujira,Kujira,1.571e-05,1182.0,1.716e-05,1.544e-05,-3.06769
-groestlcoin,Groestlcoin,1.464e-05,1179.0,1.51e-05,1.459e-05,-1.58184
-vite,Vite,1.33e-06,1178.0,1.38e-06,1.28e-06,3.55188
-atletico-madrid,Atletico Madrid Fan Token,0.00019682,645.725,0.0002086,0.00018826,3.52006
-parsiq,PARSIQ,6.91e-06,1176.0,7.12e-06,6.82e-06,-1.14947
-coinweb,Coinweb,9.48699e-07,1169.0,9.62854e-07,7.92308e-07,10.29504
-token-pocket,TokenPocket Token,3.37121e-07,1169.0,3.5505e-07,3.35635e-07,-3.01871
-decentral-games-governance,Decentral Games Governance,3.58e-06,1168.0,3.71e-06,3.42e-06,3.45602
-cudos,Cudos,3.44033e-07,1159.0,3.55446e-07,3.40969e-07,-0.78618
-bitcicoin,Bitcicoin,1.47245e-07,1156.0,1.54454e-07,1.46672e-07,-4.54388
-mantra-dao,MANTRA DAO,2.34e-06,1155.0,2.4e-06,2.3e-06,-0.29689
-phantasma,Phantasma,1.082e-05,1152.0,1.106e-05,1.059e-05,-1.97645
-reserve,Reserve,4.063e-05,1147.0,4.215e-05,4.052e-05,-3.3336
-alethea-artificial-liquid-intelligence-token,Alethea Artificial Liquid Intelligence,7.36285e-07,1146.0,7.57347e-07,7.15527e-07,0.30806
-qredo,Qredo,1.207e-05,1134.0,1.26e-05,1.195e-05,-2.81727
-cargox,CargoX,6.78e-06,1133.0,7.12e-06,6.48e-06,-4.3914
-digitalbits,DigitalBits,1.47e-06,1117.0,1.7e-06,1.42e-06,-13.61585
-adex,Ambire AdEx,7.83e-06,1116.0,8.21e-06,7.61e-06,1.35181
-streamr-xdata,Streamr XDATA,1.59e-06,1110.0,1.64e-06,1.47e-06,8.19409
-nym,Nym,1.614e-05,1108.0,1.672e-05,1.533e-05,2.22095
-itheum,Itheum,5.33e-06,1101.0,5.43e-06,5.13e-06,1.53631
+refinable,Refinable,1.11e-06,748.317,1.16e-06,1.09e-06,-0.48162
+zcoin,Firo,0.00011847,1342.0,0.0001277,0.0001176,-1.31713
+rizon,RIZON,7.37645e-07,1338.0,7.63735e-07,7.28842e-07,-0.95484
+bnb48-club-token,BNB48 Club,0.00038601,1328.0,0.00039388,0.00037807,1.26774
+celo-euro,Celo Euro,4.173e-05,1320.0,4.279e-05,3.935e-05,-0.91255
+cortex,Cortex,6.69e-06,1315.0,6.64e-06,6.22e-06,6.39514
+alpine-f1-team-fan-token,Alpine F1 Team Fan Token,0.00011558,1312.0,0.00012638,0.00011355,-0.23858
+victoria-vr,Victoria VR,1.02e-06,1307.0,1.04e-06,1e-06,1.3018
+box-token,BOX Token,3.02199e-07,773.924,3.36608e-07,2.99688e-07,-5.29243
+dopex-rebate-token,Dopex Rebate,0.00110546,1304.0,0.00109896,0.00098889,8.99825
+handshake,Handshake,2.54e-06,1303.0,2.87e-06,2.52e-06,-5.05361
+cryptostone,Cryptostone,1.36665e-07,1296.0,1.39922e-07,1.35333e-07,-0.55391
+e-money,e-Money,1.986e-05,1291.0,2.036e-05,1.966e-05,-0.67287
+refereum,Refereum,2.64418e-07,1289.0,2.77047e-07,2.6301e-07,0.46691
+klima-dao,Klima DAO,0.00017922,1289.0,0.00018818,0.0001791,-3.05887
+firmachain,Firmachain,2.61e-06,1286.0,2.66e-06,2.59e-06,0.38649
+rarible,Rarible,0.00013626,1281.0,0.0001462,0.00013433,-0.89694
+bonfida,Bonfida,2.125e-05,1280.0,2.279e-05,2.117e-05,-1.31857
+tifi-token,TiFi,1.4003e-11,1279.0,1.538e-11,1.2219e-11,13.02656
+zigzag-2,ZigZag,0.00013627,1278.0,0.00013933,0.00013571,-0.23549
+paris-saint-germain-fan-token,Paris Saint-Germain Fan Token,0.00039826,1253.0,0.00044291,0.000392,1.55027
+zipmex-token,Zipmex,1.431e-05,1251.0,1.61e-05,1.376e-05,-7.98234
+genopets,Genopets,0.00032028,1248.0,0.00032705,0.00031588,-1.04987
+bzx-protocol,bZx Protocol,2.45e-06,1238.0,2.64e-06,2.24e-06,2.32539
+splinterlands,Splinterlands,2.5e-06,1228.0,2.56e-06,2.46e-06,0.42281
+stargaze,Stargaze,1.23e-06,1218.0,1.27e-06,1.22e-06,-0.06306
+selfkey,SelfKey,2.02164e-07,1213.0,2.05841e-07,1.99557e-07,-0.17156
+tokemak,Tokemak,7.435e-05,1212.0,7.764e-05,7.36e-05,-3.65328
+gyen,GYEN,3.04313e-07,1209.0,3.136e-07,3.03156e-07,-1.25268
+qredo,Qredo,1.277e-05,1205.0,1.285e-05,1.207e-05,5.32055
+nominex,Nominex,2.541e-05,1204.0,2.625e-05,2.523e-05,-1.44071
+kujira,Kujira,1.611e-05,1204.0,1.716e-05,1.544e-05,0.89346
+spookyswap,Spookyswap,0.00012056,1199.0,0.00012533,0.00011852,-0.03989
+math,MATH,7.79e-06,1197.0,7.86e-06,7.54e-06,3.06151
+polyswarm,PolySwarm,7.72579e-07,1194.0,7.98973e-07,7.68562e-07,-0.04716
+cere-network,Cere Network,2.94102e-07,1193.0,3.10668e-07,2.89356e-07,1.34854
+groestlcoin,Groestlcoin,1.47e-05,1187.0,1.51e-05,1.459e-05,0.31842
+vite,Vite,1.34e-06,1182.0,1.38e-06,1.28e-06,3.82564
+atletico-madrid,Atletico Madrid Fan Token,0.00019155,645.725,0.0002086,0.00018883,1.27305
+coinweb,Coinweb,9.51527e-07,1175.0,9.62854e-07,7.92308e-07,16.5646
+cudos,Cudos,3.48759e-07,1171.0,3.55446e-07,3.42043e-07,0.92806
+bitcicoin,Bitcicoin,1.47929e-07,1169.0,1.54454e-07,1.46672e-07,-3.30343
+parsiq,PARSIQ,6.86e-06,1167.0,7.12e-06,6.82e-06,-1.49876
+alethea-artificial-liquid-intelligence-token,Alethea Artificial Liquid Intelligence,7.51817e-07,1166.0,7.57347e-07,7.15527e-07,3.07881
+token-pocket,TokenPocket Token,3.35379e-07,1161.0,3.5505e-07,3.29589e-07,-3.73775
+decentral-games-governance,Decentral Games Governance,3.56e-06,1160.0,3.71e-06,3.43e-06,3.79961
+reserve,Reserve,4.09e-05,1156.0,4.215e-05,4.052e-05,-1.40725
+phantasma,Phantasma,1.091e-05,1153.0,1.105e-05,1.059e-05,-0.93931
+mantra-dao,MANTRA DAO,2.32e-06,1145.0,2.4e-06,2.3e-06,-0.86131
+digitalbits,DigitalBits,1.48e-06,1128.0,1.7e-06,1.42e-06,-10.83902
+cargox,CargoX,6.75e-06,1126.0,7.02e-06,6.71e-06,-2.63332
+adex,Ambire AdEx,7.94e-06,1123.0,8.21e-06,7.61e-06,3.02322
+nym,Nym,1.638e-05,1122.0,1.672e-05,1.533e-05,5.01592
+manifold-finance,Manifold Finance,0.00077767,1116.0,0.0008924,0.00074901,-8.57592
+streamr-xdata,Streamr XDATA,1.61e-06,1109.0,1.64e-06,1.54e-06,4.16798
+verus-coin,Verus Coin,1.594e-05,1106.0,1.667e-05,1.579e-05,-2.75829
+auto,Auto,0.01491589,1104.0,0.01589657,0.01472278,-4.6661
 ideachain,IdeaChain,2.155e-05,1161.0,0.00022872,2.142e-05,-90.57962
-sai,Sai,0.00036909,1131.0,0.00037297,0.00036521,0.50676
-verus-coin,Verus Coin,1.582e-05,1097.0,1.667e-05,1.556e-05,1.66928
-auto,Auto,0.01477913,1098.0,0.01589657,0.0148021,-3.86368
-pundi-x,Pundi X [OLD],4.586e-09,1083.0,5.689e-09,4.581e-09,-19.38362
-get-token,GET Protocol,6.809e-05,1083.0,7.158e-05,6.798e-05,-2.47004
-contentos,Contentos,3.1557e-07,1083.0,3.23342e-07,3.10472e-07,-1.31118
-manifold-finance,Manifold Finance,0.00075091,1078.0,0.0008924,0.00069993,7.28419
-shiba-predator,Shiba Predator,1.779e-12,1067.0,1.928e-12,1.75e-12,-7.74226
-marcopolo,MAP Protocol,4.75136e-07,1059.0,4.78176e-07,4.39835e-07,5.51807
-stafi,Stafi,1.87e-05,1053.0,1.945e-05,1.82e-05,2.73466
-thorswap,THORSwap,1.188e-05,1050.0,1.224e-05,1.153e-05,0.69257
-nuls,Nuls,1.057e-05,1042.0,1.088e-05,9.93e-06,5.74493
-saito,Saito,4.763e-07,1038.0,4.90757e-07,4.61347e-07,1.49303
-frontier-token,Frontier,1.182e-05,1034.0,1.254e-05,1.173e-05,-5.69291
-ichi-farm,ICHI,0.00020934,1028.0,0.00021601,0.00020894,-3.08463
-boson-protocol,Boson Protocol,1.137e-05,1026.0,1.183e-05,1.086e-05,-1.39628
-stake-dao,Stake DAO,2.667e-05,1023.0,2.79e-05,2.661e-05,-3.62702
-aura-finance,Aura Finance,0.00012282,1020.0,0.00013701,0.00012155,-5.9125
-velo,Velo,8.24559e-07,1014.0,8.66409e-07,8.18089e-07,-2.15171
-energi,Energi,1.845e-05,1013.0,1.964e-05,1.715e-05,6.40928
-allianceblock,AllianceBlock,2.18e-06,1003.0,2.43e-06,2.16e-06,-3.6766
-bitcoin-pro,Bitcoin Pro,0.00776101,1001.0,0.00794815,0.00743673,1.44689
-dxdao,DXdao,0.02058046,1001.0,0.02143443,0.02054787,-3.70954
-pinksale,PinkSale,0.00999228,999.228,0.01046382,0.00991378,-2.03584
-circuits-of-value,Circuits of Value,5.55259e-07,992.072,5.71158e-07,5.45211e-07,0.01293
-qi-dao,Qi Dao,1.179e-05,989.263,1.216e-05,1.16e-05,-1.49647
-woonkly-power,Woonkly Power,2.34e-06,986.175,2.33e-06,2.08e-06,12.71839
-tokocrypto,Tokocrypto,1.311e-05,980.184,1.325e-05,1.268e-05,3.06684
-alkimi,Alkimi,9.74e-06,981.333,1.086e-05,9.61e-06,-8.00108
-netvrk,Netvrk,2.33e-05,973.443,2.409e-05,2.293e-05,-1.90657
-x2y2,X2Y2,8.24e-06,973.039,8.26e-06,7.83e-06,1.76034
-manchester-city-fan-token,Manchester City Fan Token,0.00025463,972.357,0.00027533,0.0002324,4.62172
-sentinel-protocol,Sentinel Protocol,2.96e-06,971.049,3.06e-06,2.96e-06,-1.33139
-derivadao,DerivaDAO,3.714e-05,969.116,4.114e-05,3.489e-05,4.00825
-kin,Kin,5.05225e-10,963.062,5.23889e-10,4.94392e-10,-3.56256
-the-virtua-kolect,The Virtua Kolect,2.21e-06,961.25,2.3e-06,2.22e-06,-2.6176
-crypto-gladiator-shards,Crypto Gladiator Shards,9.9509e-07,949.569,1.14e-06,9.79917e-07,-11.58825
-ooki,Ooki,2.48735e-07,948.416,2.52114e-07,2.42337e-07,0.83872
-beam,BEAM,7.89e-06,943.093,8.8e-06,7.47e-06,2.13193
-somnium-space-cubes,Somnium Space CUBEs,6.327e-05,941.12,6.524e-05,6.284e-05,-2.51022
-goldfinch,Goldfinch,4.853e-05,934.625,5.763e-05,4.876e-05,-1.84273
-mixmarvel,MixMarvel,1.81175e-07,931.741,1.8574e-07,1.75258e-07,1.05602
-hopr,HOPR,4.22e-06,929.459,4.42e-06,4.21e-06,-4.12672
-lyra-finance,Lyra Finance,7.37e-06,921.806,7.88e-06,6.26e-06,13.34295
-fuse-network-token,Fuse,5.12e-06,919.408,5.3e-06,5.07e-06,0.3469
-dexe,DeXe,0.00016401,911.169,0.00016972,0.00016201,-3.09734
-luffy-inu,Luffy,1.3641e-14,910.541,1.3892e-14,1.2729e-14,-0.77539
-eth-2x-flexible-leverage-index,Index Coop - ETH 2x Flexible Leverage Index,0.00061266,909.858,0.00064142,0.00059872,-0.12326
-singularitydao,SingularityDAO,1.667e-05,905.594,1.678e-05,1.612e-05,3.08318
-apollox-2,ApolloX,2.21e-06,903.101,2.26e-06,2.01e-06,7.7448
-revolt-2-earn,Revolt 2 Earn,1.4843e-11,900.936,1.6107e-11,1.3278e-11,-3.06178
-magic,Magic,1.752e-05,896.137,1.771e-05,1.433e-05,20.51271
-ki,KI,3.77e-06,895.193,3.77e-06,3.64e-06,3.43463
-gari-network,Gari Network,3.85e-06,895.145,4.02e-06,3.76e-06,-4.00403
-morpheus-network,Morpheus Network,2.372e-05,890.237,2.586e-05,2.361e-05,-6.73566
-bytom,Bytom,5.03723e-07,887.951,5.16077e-07,4.99591e-07,-0.22954
-octus-bridge,Octus Bridge,0.00015133,880.293,0.00015895,0.00015098,-4.44978
-rai-finance,RAI Finance,3.44e-06,880.162,3.67e-06,3.23e-06,-2.85328
-klever,Klever,4.10203e-07,879.024,4.5003e-07,4.01238e-07,-8.39321
-axel,AXEL,8.05e-06,878.939,8.05e-06,8.05e-06,0.0
-ovr,Ovr,3.179e-05,877.997,3.346e-05,3.168e-05,-4.99406
-solve-care,SOLVE,1.78e-06,872.388,1.86e-06,1.78e-06,-1.51808
-z7dao,Z7DAO,1.022e-05,868.707,1.064e-05,1.01e-05,-3.96461
+sai,Sai,0.00036909,1131.0,0.00037105,0.00036521,-0.4323
+itheum,Itheum,5.28e-06,1090.0,5.43e-06,5.13e-06,0.58877
+get-token,GET Protocol,6.836e-05,1088.0,7.158e-05,6.798e-05,-2.15663
+pundi-x,Pundi X [OLD],4.582e-09,1085.0,5.689e-09,4.563e-09,-19.45351
+contentos,Contentos,3.1645e-07,1080.0,3.23342e-07,3.10472e-07,0.38291
+shiba-predator,Shiba Predator,1.79e-12,1075.0,1.922e-12,1.75e-12,-6.68785
+thorswap,THORSwap,1.184e-05,1048.0,1.224e-05,1.153e-05,0.66196
+stafi,Stafi,1.858e-05,1046.0,1.945e-05,1.823e-05,0.38876
+saito,Saito,4.79632e-07,1046.0,4.90757e-07,4.66322e-07,2.85424
+aura-finance,Aura Finance,0.00012592,1045.0,0.00013701,0.00012155,-3.21129
+marcopolo,MAP Protocol,4.66636e-07,1039.0,4.78176e-07,4.40019e-07,6.0491
+nuls,Nuls,1.047e-05,1034.0,1.088e-05,9.93e-06,4.51431
+boson-protocol,Boson Protocol,1.143e-05,1034.0,1.183e-05,1.086e-05,-2.32158
+ichi-farm,ICHI,0.0002106,1034.0,0.00021453,0.00020894,-1.36943
+frontier-token,Frontier,1.179e-05,1032.0,1.252e-05,1.173e-05,-2.41179
+stake-dao,Stake DAO,2.682e-05,1025.0,2.79e-05,2.661e-05,-2.80439
+velo,Velo,8.29857e-07,1024.0,8.66409e-07,8.18089e-07,-2.40054
+circuits-of-value,Circuits of Value,5.72124e-07,1019.0,5.7475e-07,5.50486e-07,3.93076
+bitcoin-pro,Bitcoin Pro,0.00780135,1009.0,0.00794815,0.00743673,3.84934
+allianceblock,AllianceBlock,2.18e-06,1004.0,2.43e-06,2.16e-06,-4.01779
+goldfinch,Goldfinch,5.216e-05,1002.0,5.763e-05,4.856e-05,6.06481
+pinksale,PinkSale,0.00999471,999.471,0.01046382,0.00991378,-1.90135
+alkimi,Alkimi,9.8e-06,985.969,1.086e-05,9.61e-06,-7.623
+dxdao,DXdao,0.02016326,985.129,0.02143443,0.02007361,-5.15854
+qi-dao,Qi Dao,1.177e-05,983.809,1.216e-05,1.16e-05,-2.30205
+tokocrypto,Tokocrypto,1.311e-05,981.349,1.325e-05,1.268e-05,1.77685
+netvrk,Netvrk,2.336e-05,978.404,2.408e-05,2.293e-05,-2.72182
+energi,Energi,1.795e-05,978.347,1.964e-05,1.745e-05,-7.29902
+sentinel-protocol,Sentinel Protocol,2.98e-06,977.104,3.06e-06,2.96e-06,-0.04291
+kin,Kin,4.86243e-10,971.191,5.20621e-10,4.86392e-10,-4.49555
+crypto-gladiator-shards,Crypto Gladiator Shards,1.01e-06,963.71,1.13e-06,9.79917e-07,-10.44751
+the-virtua-kolect,The Virtua Kolect,2.2e-06,958.528,2.26e-06,2.2e-06,-2.31516
+hopr,HOPR,4.26e-06,954.366,4.42e-06,4.21e-06,-2.09998
+derivadao,DerivaDAO,3.649e-05,952.272,4.114e-05,3.489e-05,2.03571
+somnium-space-cubes,Somnium Space CUBEs,6.296e-05,946.05,6.524e-05,6.282e-05,-2.04495
+woonkly-power,Woonkly Power,2.24e-06,944.824,2.36e-06,2.18e-06,2.75194
+beam,BEAM,8.04e-06,944.531,8.8e-06,7.47e-06,5.85184
+ooki,Ooki,2.46138e-07,938.428,2.52114e-07,2.42337e-07,0.3353
+manchester-city-fan-token,Manchester City Fan Token,0.00024471,936.616,0.00027533,0.00023567,3.78799
+mixmarvel,MixMarvel,1.82391e-07,927.916,1.8574e-07,1.75258e-07,3.26559
+fuse-network-token,Fuse,5.14e-06,922.433,5.3e-06,5.09e-06,0.55798
+lyra-finance,Lyra Finance,7.34e-06,918.842,7.88e-06,6.26e-06,12.55668
+singularitydao,SingularityDAO,1.681e-05,913.499,1.681e-05,1.617e-05,2.57249
+x2y2,X2Y2,7.77e-06,912.145,8.27e-06,7.71e-06,-3.55366
+magic,Magic,1.776e-05,909.685,1.777e-05,1.433e-05,18.82965
+luffy-inu,Luffy,1.3817e-14,907.389,1.3892e-14,1.2729e-14,3.15772
+apollox-2,ApolloX,2.22e-06,906.577,2.26e-06,2.02e-06,9.65114
+bytom,Bytom,5.15925e-07,903.08,5.16077e-07,5.00178e-07,2.82704
+revolt-2-earn,Revolt 2 Earn,1.4845e-11,901.828,1.6107e-11,1.3278e-11,-6.13488
+rai-finance,RAI Finance,3.3e-06,900.5,3.67e-06,3.23e-06,0.54183
+dexe,DeXe,0.00016235,899.882,0.00016876,0.00016171,-3.28036
+eth-2x-flexible-leverage-index,Index Coop - ETH 2x Flexible Leverage Index,0.00060732,898.325,0.00064142,0.00059872,-2.48886
+ki,KI,3.78e-06,896.298,3.78e-06,3.64e-06,3.89491
+klever,Klever,4.17038e-07,892.32,4.44736e-07,4.01238e-07,-6.18584
+gari-network,Gari Network,3.82e-06,890.056,4.02e-06,3.76e-06,-2.87358
+octus-bridge,Octus Bridge,0.00015295,884.603,0.00015809,0.00015098,-3.10074
+morpheus-network,Morpheus Network,2.375e-05,884.305,2.586e-05,2.359e-05,-6.6407
+ovr,Ovr,3.199e-05,883.011,3.325e-05,3.168e-05,-2.36664
+axel,AXEL,8.05e-06,878.95,8.05e-06,8.05e-06,0.0
+z7dao,Z7DAO,1.033e-05,873.977,1.059e-05,1.01e-05,0.13834
+solve-care,SOLVE,1.78e-06,872.334,1.86e-06,1.78e-06,-1.91456
+aurory,Aurory,9.159e-05,870.143,9.394e-05,9.06e-05,-0.80477
+aion,Aion,1.72e-06,868.19,1.77e-06,1.55e-06,9.46066
 sport-and-leisure,Sport and Leisure,3.59e-06,878.685,3.6e-06,3.59e-06,-0.22726
-aurory,Aurory,9.083e-05,862.859,9.394e-05,9.06e-05,-3.0958
-measurable-data-token,Measurable Data,1.42e-06,859.361,1.44e-06,1.39e-06,-0.11255
-aion,Aion,1.68e-06,856.387,1.77e-06,1.55e-06,6.77723
-guildfi,GuildFi,1.023e-05,853.952,1.065e-05,9.94e-06,-1.33178
-feg-token-bsc,FEG BSC,2.0664e-14,854.446,2.122e-14,1.9975e-14,1.51049
-rupiah-token,Rupiah,2.748e-09,850.893,2.838e-09,2.733e-09,-3.18899
-lockchain,LockTrip,5.138e-05,848.342,5.429e-05,5.124e-05,-4.25851
-sipher,Sipher,8.74e-06,845.036,9.42e-06,8.77e-06,-6.70977
-catecoin,CateCoin,2.4287e-11,834.958,2.449e-11,2.1848e-11,11.16281
-orca,Orca,4.011e-05,826.232,4.141e-05,3.937e-05,-3.13039
-koinos,Koinos,8.21e-06,817.954,8.3e-06,7.59e-06,2.52724
-vai,Vai,3.846e-05,816.985,4.015e-05,3.84e-05,-4.20847
-mmfinance,MMFinance,2.24e-06,813.951,2.26e-06,2.21e-06,0.70349
-quantstamp,Quantstamp,1.13e-06,809.356,1.13e-06,1.1e-06,2.05086
-uxd-stablecoin,UXD Stablecoin,4.074e-05,807.298,4.222e-05,4.073e-05,-3.28525
-time-new-bank,Time New Bank,2.34151e-07,804.42,2.42104e-07,2.33493e-07,-2.33416
-dvision-network,Dvision Network,3.26e-06,804.29,3.36e-06,3.24e-06,-1.18479
-dforce-token,dForce,1.89e-06,803.653,1.95e-06,1.82e-06,2.35009
-jade-protocol,Jade Protocol,0.00085826,803.467,0.0008902,0.00085679,-3.5877
-kleros,Kleros,1.53e-06,800.729,1.62e-06,1.51e-06,-2.22659
-3x-long-ethereum-token,3X Long Ethereum Token,0.00055203,798.121,0.0005924,0.00051284,1.79318
-green-satoshi-token,STEPN Green Satoshi Token on Solana,2.4e-06,790.948,2.59e-06,2.33e-06,0.96954
-tomb-shares,Tomb Shares,0.02013119,786.506,0.02066542,0.01254522,60.14839
-snowblossom,SnowBlossom,7.334e-05,793.476,7.334e-05,7.334e-05,0.0
-vitadao,VitaDAO,4.762e-05,783.184,4.893e-05,4.682e-05,-0.128
-feg-token,FEG,1.9169e-14,779.529,1.9863e-14,1.8994e-14,-2.08611
-defi-kingdoms,DeFi Kingdoms,7.56e-06,778.8,7.71e-06,7.26e-06,2.26591
-lattice-token,Lattice,2.43e-05,779.967,2.528e-05,2.421e-05,-0.95849
-redfox-labs-2,RFOX,4.82032e-07,771.327,5.05737e-07,4.77991e-07,-3.5274
-six-network,SIX Network,2.81e-06,768.978,2.91e-06,2.81e-06,-3.11235
-shiden,Shiden Network,1.412e-05,767.28,1.467e-05,1.325e-05,2.36864
-dash-diamond,Dash Diamond,3.85e-06,766.827,3.93e-06,3.29e-06,0.46921
-dextools,DexTools,7.21e-06,762.907,7.38e-06,7.14e-06,-0.08229
-law-blocks,Law Blocks,1.02e-05,762.424,1.072e-05,9.94e-06,2.52959
-inverse-finance,Inverse Finance,0.00512048,761.425,0.00526599,0.00499443,-1.64116
-mithril,Mithril,1.22e-06,757.687,1.29e-06,1.22e-06,-1.62458
-kryll,KRYLL,1.971e-05,756.435,2.124e-05,1.965e-05,-2.83286
-bilira,BiLira,2.28e-06,755.375,2.35e-06,2.28e-06,-2.71129
-lazio-fan-token,Lazio Fan Token,0.00012252,749.828,0.00014218,0.00012188,-13.82264
-peony-coin,Peony Coin,2.44e-06,748.123,2.45e-06,2.35e-06,1.88629
-instadapp,Instadapp,4.162e-05,746.959,4.463e-05,3.939e-05,-6.15023
-radioshack,RadioShack,3.39902e-07,745.886,3.51365e-07,3.36791e-07,-0.93089
-nimiq-2,Nimiq,7.7527e-08,745.44,8.3461e-08,7.7012e-08,-7.11002
-ion,Ion,0.03499109,745.087,0.03651331,0.03488766,-1.62113
-tokenlon,Tokenlon,2.925e-05,741.2,2.989e-05,2.891e-05,0.33867
-vectorspace,Vectorspace AI,1.935e-05,734.497,2.077e-05,1.913e-05,-3.57757
-reflexer-ungovernance-token,Reflexer Ungovernance,0.00140172,734.302,0.0014593,0.00139306,-0.57583
-tectonic,Tectonic,7.942e-12,728.576,8.365e-12,7.919e-12,-5.05277
-marketpeak,PEAKDEFI,5.37122e-07,727.581,6.08906e-07,5.34481e-07,-8.0292
-star-atlas,Star Atlas,3.35835e-07,725.404,3.41013e-07,3.33751e-07,-0.96359
-trustswap,Trustswap,9.23e-06,724.851,9.59e-06,9.23e-06,-2.78581
-te-food,TE-FOOD,1.26e-06,725.128,1.37e-06,1.26e-06,-6.35923
-atlas-usv,Atlas USV,0.0070531,722.997,0.00729532,0.00696379,-1.56143
-hi-dollar,hi Dollar,2.37e-06,719.856,2.5e-06,2.35e-06,-4.91693
-pstake-finance,pSTAKE Finance,5.51e-06,718.729,5.72e-06,5.47e-06,-0.14486
-gifto,Gifto,1.08e-06,714.407,1.1e-06,1.04e-06,2.7321
-pnetwork,pNetwork,1.388e-05,712.812,1.476e-05,1.367e-05,1.31994
-zenon,Zenon,8.519e-05,712.583,9.163e-05,8.419e-05,0.0574
-new-bitshares,New BitShares,2.28069e-07,708.202,2.36741e-07,2.13043e-07,6.12283
-jet,JET,4.47e-06,698.296,4.63e-06,4.46e-06,-3.14445
-sbtc,sBTC,1.003962,693.885,1.012942,0.99630594,0.03513
-tor,TOR,4.064e-05,693.348,4.232e-05,4.062e-05,-3.44702
-santos-fc-fan-token,Santos FC Fan Token,0.00018295,692.932,0.0001946,0.00018242,-1.26876
-assetmantle,AssetMantle,4.03e-06,692.942,4.18e-06,4.03e-06,-1.02035
-nftx,NFTX,0.00164809,692.199,0.00168721,0.00160002,1.65164
-moviebloc,MovieBloc,1.95516e-07,689.841,2.02149e-07,1.95528e-07,-2.48644
-juventus-fan-token,Juventus Fan Token,0.00025257,689.373,0.00027886,0.00022646,7.23226
-fsn,FUSION,9.54e-06,688.638,9.9e-06,9.46e-06,-2.53329
-flex-coin,FLEX Coin,6.97e-06,687.457,1.859e-05,6.81e-06,-62.52557
-defigram,Defigram,6.871e-05,687.102,7.664e-05,5.976e-05,-1.88568
-taboo-token,Taboo,7.0089e-08,685.659,7.8e-08,7.0019e-08,-7.7185
-xels,XELS,0.0001037,679.003,0.00010558,9.862e-05,-0.80473
-sx-network,SX Network,8.47e-06,675.238,8.66e-06,8.13e-06,-0.88775
-hoge-finance,Hoge Finance,1.62e-09,672.628,1.713e-09,1.605e-09,-2.49556
-whale,WHALE,7.697e-05,671.33,7.841e-05,7.569e-05,-1.55358
-ultiledger,Ultiledger,3.49591e-07,671.071,3.89008e-07,3.37659e-07,-6.17832
-civilization,Civilization,2.24e-06,669.841,2.4e-06,2.23e-06,-5.25475
-bigshortbets,BigShortBets,7.034e-05,667.033,7.235e-05,6.952e-05,-2.51751
-rich,Rich,1.6e-06,666.981,1.79e-06,1.59e-06,-10.74757
-universe-xyz,Universe.XYZ,1.15e-06,667.37,1.22e-06,8.85874e-07,27.12141
-wirex,Wirex,2.88793e-07,664.348,2.97606e-07,2.78774e-07,1.9612
-siaprime-coin,ScPrime,1.318e-05,662.476,1.352e-05,1.302e-05,1.27635
-jpeg-d,JPEG'd,3.1761e-08,661.462,3.2244e-08,3.0652e-08,2.14422
-bosagora,BOSAGORA,2.11e-06,661.57,2.19e-06,2.1e-06,-3.72982
-solend,Solend,3.105e-05,659.55,3.23e-05,3.033e-05,0.96776
-advertise-coin,Advertise Coin,1.462e-05,657.858,1.516e-05,1.458e-05,-3.23051
-swftcoin,SWFTCOIN,1.00481e-07,658.822,1.01868e-07,9.3332e-08,2.95748
-v-id-blockchain,VIDT Datalink,1.417e-05,655.971,1.502e-05,1.383e-05,-0.66087
-sylo,Sylo,1.6536e-07,654.621,1.73399e-07,1.64837e-07,-4.63636
-revolution-populi,Revolution Populi,5.4544e-07,654.43,5.87528e-07,5.37847e-07,-4.01451
-fc-barcelona-fan-token,FC Barcelona Fan Token,0.00022093,651.881,0.0002369,0.00020644,3.58708
-pluton,Pluton,0.00031715,650.123,0.00033699,0.0003171,-1.2382
-krypton-dao,Krypton DAO,1.489e-05,631.452,1.554e-05,7.98e-06,15.97789
+feg-token-bsc,FEG BSC,2.0763e-14,864.905,2.122e-14,1.9975e-14,1.84545
+lockchain,LockTrip,5.171e-05,854.898,5.429e-05,5.124e-05,-3.62414
+guildfi,GuildFi,1.023e-05,852.294,1.065e-05,9.94e-06,0.11713
+rupiah-token,Rupiah,2.744e-09,849.479,2.836e-09,2.733e-09,-1.50096
+measurable-data-token,Measurable Data,1.4e-06,848.881,1.44e-06,1.39e-06,-0.88875
+catecoin,CateCoin,2.4586e-11,845.099,2.4621e-11,2.2485e-11,9.34121
+sipher,Sipher,8.96e-06,841.537,9.42e-06,8.71e-06,-4.31723
+orca,Orca,4.012e-05,829.073,4.102e-05,3.937e-05,-1.17273
+vai,Vai,3.843e-05,819.854,3.989e-05,3.84e-05,-1.78328
+uxd-stablecoin,UXD Stablecoin,4.099e-05,813.535,4.222e-05,4.07e-05,-1.67931
+mmfinance,MMFinance,2.24e-06,812.419,2.26e-06,2.22e-06,0.49942
+dvision-network,Dvision Network,3.29e-06,810.956,3.36e-06,3.24e-06,1.18613
+quantstamp,Quantstamp,1.13e-06,810.314,1.18e-06,1.1e-06,2.48499
+kleros,Kleros,1.54e-06,808.806,1.62e-06,1.51e-06,-0.93511
+koinos,Koinos,8.11e-06,807.829,8.3e-06,7.59e-06,1.4976
+time-new-bank,Time New Bank,2.34142e-07,806.532,2.42104e-07,2.33493e-07,-1.41886
+jade-protocol,Jade Protocol,0.00085852,803.746,0.00088198,0.000854,-1.29313
+dforce-token,dForce,1.88e-06,798.358,1.95e-06,1.86e-06,1.42392
+nft-maker,NMKR,2.54002e-07,797.966,4.37256e-07,2.26368e-07,1.84136
+inverse-finance,Inverse Finance,0.00521651,797.224,0.00533023,0.00499443,-0.92506
+green-satoshi-token,STEPN Green Satoshi Token on Solana,2.42e-06,796.714,2.59e-06,2.33e-06,0.43036
+vitadao,VitaDAO,4.857e-05,796.407,4.893e-05,4.682e-05,1.84139
+snowblossom,SnowBlossom,7.334e-05,793.484,7.334e-05,7.334e-05,0.0
+nimiq-2,Nimiq,8.1229e-08,782.148,8.2672e-08,7.7012e-08,-1.74536
+lattice-token,Lattice,2.43e-05,780.346,2.528e-05,2.421e-05,-1.09828
+redfox-labs-2,RFOX,4.8752e-07,780.302,5.05737e-07,4.77991e-07,-1.18284
+3x-long-ethereum-token,3X Long Ethereum Token,0.00054341,780.26,0.0005924,0.00051284,-1.80626
+shiden,Shiden Network,1.432e-05,779.059,1.467e-05,1.325e-05,1.93941
+feg-token,FEG,1.9252e-14,777.316,1.9863e-14,1.8853e-14,-1.36567
+kryll,KRYLL,2.029e-05,776.648,2.054e-05,1.965e-05,-0.48382
+six-network,SIX Network,2.85e-06,774.829,2.91e-06,2.81e-06,-0.50097
+defi-kingdoms,DeFi Kingdoms,7.53e-06,768.388,7.71e-06,7.26e-06,0.65133
+law-blocks,Law Blocks,1.022e-05,768.25,1.072e-05,1.006e-05,-3.02759
+dextools,DexTools,7.21e-06,767.607,7.38e-06,7.14e-06,-0.27259
+dash-diamond,Dash Diamond,3.84e-06,764.973,3.93e-06,3.29e-06,16.65326
+tomb-shares,Tomb Shares,0.01937593,758.608,0.02066542,0.01278678,49.32249
+bilira,BiLira,2.29e-06,756.955,2.35e-06,2.28e-06,-1.41845
+mithril,Mithril,1.22e-06,756.392,1.29e-06,1.22e-06,-1.34189
+instadapp,Instadapp,4.166e-05,749.108,4.463e-05,3.939e-05,-5.0765
+radioshack,RadioShack,3.42349e-07,748.398,3.51365e-07,3.36791e-07,0.89439
+ion,Ion,0.03513715,748.21,0.03651331,0.03488766,-2.02872
+lazio-fan-token,Lazio Fan Token,0.00012186,747.807,0.00013797,0.00012162,-4.59388
+peony-coin,Peony Coin,2.43e-06,745.433,2.45e-06,2.35e-06,1.87876
+vectorspace,Vectorspace AI,1.945e-05,745.423,2.077e-05,1.913e-05,-1.72815
+tokenlon,Tokenlon,2.928e-05,740.122,2.989e-05,2.903e-05,0.40604
+reflexer-ungovernance-token,Reflexer Ungovernance,0.00140166,731.864,0.0014593,0.00139306,-0.53792
+trustswap,Trustswap,9.3e-06,730.843,9.59e-06,9.19e-06,-1.5619
+atlas-usv,Atlas USV,0.00710447,726.955,0.00729532,0.00698503,1.59083
+star-atlas,Star Atlas,3.37476e-07,726.483,3.40593e-07,3.33751e-07,0.29984
+te-food,TE-FOOD,1.27e-06,726.418,1.37e-06,1.26e-06,-5.3594
+tectonic,Tectonic,7.935e-12,726.277,8.282e-12,7.904e-12,-4.15649
+hi-dollar,hi Dollar,2.38e-06,722.507,2.5e-06,2.34e-06,-2.85426
+pstake-finance,pSTAKE Finance,5.52e-06,721.147,5.72e-06,5.47e-06,0.26907
+gifto,Gifto,1.08e-06,715.456,1.1e-06,1.04e-06,1.74738
+taboo-token,Taboo,7.1745e-08,714.337,7.8e-08,7.0019e-08,-5.08055
+zenon,Zenon,8.534e-05,713.804,9.163e-05,8.419e-05,0.03816
+pnetwork,pNetwork,1.392e-05,712.752,1.476e-05,1.368e-05,0.17244
+marketpeak,PEAKDEFI,5.23922e-07,709.29,6.08906e-07,5.2145e-07,-10.04036
+jet,JET,4.5e-06,701.107,4.63e-06,4.46e-06,-1.50556
+tor,TOR,4.083e-05,698.096,4.232e-05,4.057e-05,-1.83147
+fsn,FUSION,9.66e-06,696.33,9.9e-06,9.46e-06,-0.26646
+assetmantle,AssetMantle,4.05e-06,695.711,4.18e-06,4.03e-06,-0.62026
+new-bitshares,New BitShares,2.2384e-07,695.326,2.36741e-07,2.13667e-07,4.5243
+sbtc,sBTC,1.004197,694.083,1.012942,0.99803528,0.21492
+nftx,NFTX,0.00165505,692.802,0.00168721,0.00160002,1.2456
+moviebloc,MovieBloc,1.96e-07,691.07,2.02149e-07,1.95349e-07,-1.16833
+flex-coin,FLEX Coin,6.99e-06,689.697,1.859e-05,6.81e-06,-62.37757
+xels,XELS,0.00010476,683.42,0.00010558,9.862e-05,0.03677
+santos-fc-fan-token,Santos FC Fan Token,0.00018005,682.4,0.0001946,0.00018021,-5.12906
+sx-network,SX Network,8.54e-06,681.963,8.66e-06,8.12e-06,2.90217
+whale,WHALE,7.712e-05,672.385,7.841e-05,7.569e-05,-0.24534
+bosagora,BOSAGORA,2.14e-06,671.539,2.17e-06,2.1e-06,-1.01022
+hoge-finance,Hoge Finance,1.618e-09,671.335,1.713e-09,1.605e-09,-4.264
+solend,Solend,3.182e-05,669.765,3.23e-05,3.049e-05,4.38407
+wirex,Wirex,2.90701e-07,668.739,2.97606e-07,2.79433e-07,4.03274
+bigshortbets,BigShortBets,7.031e-05,666.812,7.225e-05,6.952e-05,-1.54573
+civilization,Civilization,2.23e-06,665.934,2.4e-06,2.23e-06,-6.05246
+universe-xyz,Universe.XYZ,1.15e-06,663.337,1.22e-06,8.93613e-07,28.72513
+advertise-coin,Advertise Coin,1.471e-05,662.234,1.516e-05,1.458e-05,-1.41468
+siaprime-coin,ScPrime,1.315e-05,660.957,1.352e-05,1.307e-05,0.5418
+jpeg-d,JPEG'd,3.1737e-08,660.502,3.2244e-08,3.0652e-08,1.83565
+sylo,Sylo,1.66306e-07,659.24,1.73176e-07,1.64837e-07,-1.98723
+rich,Rich,1.55e-06,656.36,1.77e-06,1.55e-06,-10.69778
+pluton,Pluton,0.00032037,655.232,0.00033699,0.00031673,-0.36039
+revolution-populi,Revolution Populi,5.43871e-07,652.549,5.87528e-07,5.37847e-07,-4.69694
+v-id-blockchain,VIDT Datalink,1.405e-05,651.85,1.502e-05,1.383e-05,0.04506
+crypterium,Crypterium,7.78e-06,648.463,8.48e-06,6.24e-06,24.56958
+ultiledger,Ultiledger,3.45812e-07,648.435,3.89008e-07,3.35835e-07,-4.8242
+juventus-fan-token,Juventus Fan Token,0.00023775,644.645,0.00027886,0.00022926,3.13277
+swftcoin,SWFTCOIN,9.8157e-08,638.981,1.01868e-07,9.3332e-08,3.13687
+vires-finance,Vires Finance,0.00114114,636.464,0.00139566,0.00109832,-15.94087
+fc-barcelona-fan-token,FC Barcelona Fan Token,0.00021627,636.314,0.0002369,0.00020807,3.3228
+airswap,AirSwap,3.67e-06,634.149,3.81e-06,3.64e-06,0.32596
+krypton-dao,Krypton DAO,1.524e-05,632.746,1.554e-05,7.98e-06,18.27719
 interest-bearing-bitcoin,Badger Interest Bearing Bitcoin,1.001461,653.493,,,
-omax-token,Omax,6.5138e-08,628.396,6.8829e-08,6.492e-08,-2.45
-hotbit-token,Hotbit,8.13683e-07,628.309,9.45338e-07,7.83023e-07,2.46626
-airswap,AirSwap,3.64e-06,627.123,3.81e-06,3.64e-06,-1.01886
-crypterium,Crypterium,7.35e-06,626.952,8.48e-06,6.22e-06,16.24692
-altura,Altura,1e-06,626.016,1.05e-06,9.68173e-07,-0.22232
-popcorn,Popcorn,2.995e-05,624.739,3.132e-05,2.991e-05,-4.1072
-vires-finance,Vires Finance,0.00111521,623.667,0.00139566,0.00109832,-19.40518
-undead-blocks,Undead Blocks,4.146e-05,621.93,4.384e-05,3.957e-05,-5.27785
-cryptex-finance,Cryptex Finance,0.0001856,621.93,0.00020043,0.00017875,-1.33476
-bostrom,Bostrom,1.685e-12,620.476,1.759e-12,1.67e-12,0.01573
-sifchain,Sifchain,3.38971e-07,618.315,3.56591e-07,3.35127e-07,-0.08523
-voxies,Voxies,1.697e-05,612.828,1.809e-05,1.686e-05,-6.20525
-gods-unchained,Gods Unchained,1.816e-05,612.527,1.887e-05,1.785e-05,-1.83564
-apeswap-finance,ApeSwap,4.41e-06,609.509,4.55e-06,4.38e-06,-2.26692
-cow-protocol,CoW Protocol,5.79e-06,609.182,6.03e-06,5.78e-06,-3.70238
-unlend-finance,UniLend Finance,9.7e-06,604.377,1.008e-05,9.63e-06,-2.02419
-rhinofi,Rhino.fi,4.98e-05,601.925,5.105e-05,4.839e-05,0.9015
-adappter-token,Adappter,6.54744e-07,601.665,6.7528e-07,6.50724e-07,-1.64464
-yield-app,YIELD App,3.31e-06,600.872,3.44e-06,3.29e-06,-2.37452
-maps,MAPS,8.01e-06,600.799,8.27e-06,8.01e-06,-2.76628
-silent-notary,Silent Notary,3.763e-09,600.755,3.894e-09,3.718e-09,-1.2007
-cream-2,Cream,0.00078463,601.171,0.00087219,0.00073207,5.23072
-naga,NAGA,7.66e-06,597.18,7.93e-06,7.55e-06,-2.40583
-force-protocol,ForTube,1.06e-06,597.046,1.08e-06,1.02e-06,3.93674
-vecrv-dao-yvault,veCRV-DAO yVault,3.949e-05,593.573,4.107e-05,3.936e-05,-3.12358
-jupiter,Jupiter,5.86968e-07,586.243,6.1936e-07,5.86261e-07,-4.57544
-waykichain,WaykiChain,2.79e-06,585.62,2.88e-06,2.72e-06,-1.44532
-panther,Panther Protocol,3.17e-06,585.146,3.24e-06,2.97e-06,4.79873
-index-cooperative,Index Cooperative,0.00012946,584.492,0.00013385,0.00012635,-1.92863
-zkspace,ZKSpace,2.59e-06,579.192,2.62e-06,2.56e-06,-0.9853
-grid,GridPlus [OLD],1.466e-05,574.736,1.801e-05,1.306e-05,-14.08079
-byteball,Obyte,0.00070367,574.706,0.00071472,0.00069214,0.77152
-thorchain-erc20,THORChain (ERC20),0.00011608,574.54,0.000116,0.00010863,2.50856
-dollars,Dollars,0.00011875,572.991,0.00012246,0.00011334,3.38486
-stakewise,StakeWise,4.85e-06,572.829,4.96e-06,4.8e-06,0.09283
-coin-capsule,Ternoa,7.57447e-07,573.436,8.01453e-07,7.54009e-07,-3.42519
-avalaunch,Avalaunch,2.172e-05,569.736,2.233e-05,2.139e-05,0.3258
-metronome,Metronome,4.535e-05,566.815,4.732e-05,4.532e-05,-1.98382
-loki-network,Oxen,9.54e-06,565.41,9.81e-06,9.54e-06,-1.09972
-aventus,Aventus,6.394e-05,563.234,6.646e-05,6.364e-05,-1.55197
-sovryn,Sovryn,2.501e-05,561.322,2.717e-05,2.501e-05,-7.58839
-epic-cash,Epic Cash,3.797e-05,557.148,3.998e-05,3.624e-05,-4.86549
-pivx,PIVX,7.94e-06,554.016,7.97e-06,7.34e-06,6.29299
-rss3,RSS3,5.97e-06,552.492,6.32e-06,5.93e-06,-1.52391
-bscpad,BSCPAD,6.98e-06,550.443,7.28e-06,6.91e-06,0.00989
-dego-finance,Dego Finance,0.00010126,549.077,0.00011823,9.616e-05,0.69918
-rai,Rai Reflex Index,0.00011861,548.095,0.00012334,0.00011831,-3.71557
-wonderland,Wonderland,0.00060829,545.255,0.00064455,0.00060502,-5.54437
-rainicorn,Rainicorn,1.12e-06,544.345,1.19e-06,1.11e-06,-3.1712
-mysterium,Mysterium,1.672e-05,542.727,1.743e-05,1.663e-05,-1.21044
-concentrated-voting-power,PowerPool Concentrated Voting Power,1.79e-05,541.27,1.927e-05,1.758e-05,-2.25904
-opendao,OpenDAO,1.3447e-11,536.194,1.3881e-11,1.3321e-11,-0.76645
-yuan-chain-coin,Yuan Chain Coin,1.06539e-07,528.595,1.12782e-07,1.01474e-07,1.1386
-lossless,Lossless,9.03e-06,519.86,9.18e-06,8.8e-06,-1.57377
-interest-compounding-eth-index,Interest Compounding ETH Index,0.06623622,513.251,0.06852735,0.06601002,-1.45159
-battle-world,Battle World,1.169e-05,513.106,1.295e-05,1.158e-05,-8.30097
-phonon-dao,Phonon DAO,8.2697e-08,504.452,1.13509e-07,8.2383e-08,-9.2751
-unisocks,Unisocks,1.665003,500.417,1.724903,1.628615,0.58047
-gamium,Gamium,6.2425e-08,495.688,6.4705e-08,6.173e-08,-3.40287
-quantum-resistant-ledger,Quantum Resistant Ledger,6.48e-06,495.404,6.78e-06,6.48e-06,-1.36986
+omax-token,Omax,6.529e-08,629.93,6.8829e-08,6.492e-08,-2.13939
+hotbit-token,Hotbit,8.12646e-07,628.845,9.45338e-07,7.9256e-07,2.53434
+popcorn,Popcorn,3.012e-05,628.642,3.132e-05,2.99e-05,-2.55924
+undead-blocks,Undead Blocks,4.172e-05,625.99,4.384e-05,3.957e-05,-3.6583
+altura,Altura,9.9835e-07,624.911,1.05e-06,9.68173e-07,-3.11484
+bostrom,Bostrom,1.695e-12,624.187,1.759e-12,1.67e-12,0.13325
+gods-unchained,Gods Unchained,1.848e-05,619.86,1.872e-05,1.785e-05,-0.49186
+sifchain,Sifchain,3.39829e-07,619.502,3.56591e-07,3.35127e-07,0.46221
+cow-protocol,CoW Protocol,5.89e-06,619.157,6.02e-06,5.77e-06,-2.06798
+cryptex-finance,Cryptex Finance,0.00018418,616.36,0.00019782,0.00017875,-3.39514
+voxies,Voxies,1.704e-05,615.57,1.78e-05,1.686e-05,-2.35241
+silent-notary,Silent Notary,3.753e-09,610.753,3.894e-09,3.718e-09,-2.18732
+apeswap-finance,ApeSwap,4.41e-06,609.312,4.55e-06,4.38e-06,-1.80672
+adappter-token,Adappter,6.61695e-07,608.891,6.7528e-07,6.52124e-07,0.0547
+yield-app,YIELD App,3.33e-06,607.043,3.44e-06,3.29e-06,-0.3267
+rhinofi,Rhino.fi,5.005e-05,606.119,5.105e-05,4.847e-05,2.74416
+maps,MAPS,8.08e-06,606.078,8.27e-06,8.01e-06,-0.79733
+unlend-finance,UniLend Finance,9.73e-06,603.847,1.008e-05,9.63e-06,0.7891
+naga,NAGA,7.7e-06,599.349,7.93e-06,7.55e-06,0.63019
+force-protocol,ForTube,1.05e-06,594.749,1.08e-06,1.02e-06,1.99804
+waykichain,WaykiChain,2.82e-06,593.005,2.88e-06,2.72e-06,1.2677
+vecrv-dao-yvault,veCRV-DAO yVault,3.943e-05,592.48,4.107e-05,3.93e-05,-3.30121
+cream-2,Cream,0.0007837,591.279,0.00087219,0.00073207,4.89908
+panther,Panther Protocol,3.2e-06,589.704,3.24e-06,2.98e-06,7.13913
+jupiter,Jupiter,5.85883e-07,586.378,6.1936e-07,5.84769e-07,-2.15421
+coin-capsule,Ternoa,7.74687e-07,585.508,8.01453e-07,7.54009e-07,-0.33064
+index-cooperative,Index Cooperative,0.00012997,583.734,0.00013385,0.00012635,-1.17099
+zkspace,ZKSpace,2.6e-06,581.463,2.62e-06,2.56e-06,0.60827
+grid,GridPlus [OLD],1.468e-05,575.58,1.801e-05,1.306e-05,-13.96114
+byteball,Obyte,0.00071298,574.245,0.00071472,0.00069214,2.37772
+avalaunch,Avalaunch,2.161e-05,572.457,2.233e-05,2.139e-05,-1.97041
+dollars,Dollars,0.00011866,572.223,0.00012246,0.00011392,4.16277
+metronome,Metronome,4.565e-05,571.826,4.732e-05,4.516e-05,-0.73188
+stakewise,StakeWise,4.85e-06,571.65,4.96e-06,4.8e-06,-0.66853
+loki-network,Oxen,9.54e-06,566.634,9.81e-06,9.52e-06,-0.77157
+aventus,Aventus,6.43e-05,566.326,6.646e-05,6.347e-05,-1.46918
+sovryn,Sovryn,2.512e-05,560.825,2.702e-05,2.474e-05,-4.5984
+rss3,RSS3,6.05e-06,558.778,6.32e-06,5.93e-06,0.37999
+epic-cash,Epic Cash,3.795e-05,557.023,3.998e-05,3.624e-05,-4.74457
+rai,Rai Reflex Index,0.0001194,554.203,0.00012334,0.00011831,-1.79835
+bscpad,BSCPAD,7e-06,553.333,7.28e-06,6.91e-06,-1.22243
+rainicorn,Rainicorn,1.14e-06,552.167,1.19e-06,1.11e-06,-2.42148
+pivx,PIVX,7.89e-06,550.101,7.98e-06,7.34e-06,5.22408
+wonderland,Wonderland,0.00060705,549.688,0.00064145,0.00059479,-3.08736
+concentrated-voting-power,PowerPool Concentrated Voting Power,1.801e-05,544.399,1.927e-05,1.758e-05,-0.79794
+thorchain-erc20,THORChain (ERC20),0.00011085,543.267,0.00011605,0.00010863,-2.30441
+lossless,Lossless,9.43e-06,543.053,9.83e-06,8.8e-06,3.96361
+defigram,Defigram,5.427e-05,542.655,7.664e-05,4.947e-05,-15.40522
+mysterium,Mysterium,1.679e-05,542.158,1.743e-05,1.663e-05,-2.57048
+opendao,OpenDAO,1.357e-11,541.896,1.3881e-11,1.3321e-11,1.08094
+dego-finance,Dego Finance,9.878e-05,535.915,0.00011823,9.616e-05,-0.14373
+yuan-chain-coin,Yuan Chain Coin,1.06559e-07,527.12,1.12782e-07,1.01474e-07,2.5803
+battle-world,Battle World,1.166e-05,515.435,1.295e-05,1.155e-05,-7.18905
+interest-compounding-eth-index,Interest Compounding ETH Index,0.06619036,511.502,0.06852735,0.06579294,-1.88814
+phonon-dao,Phonon DAO,8.2663e-08,504.497,1.13509e-07,8.2053e-08,-9.31215
+unisocks,Unisocks,1.663657,499.635,1.724903,1.628615,0.45885
 swapxi-token,SwapXI,2.431e-05,510.596,2.482e-05,2.402e-05,0.7224
-suku,SUKU,4.15e-06,494.645,4.33e-06,3.98e-06,2.41952
-muse-2,Muse DAO,0.00050218,491.352,0.00056918,0.00050079,-2.22647
-lbry-credits,LBRY Credits,7.41543e-07,485.15,7.49758e-07,7.29981e-07,-0.37
-derace,DeRace,1.332e-05,484.775,1.389e-05,1.32e-05,-3.73083
-xana,Xana,3.28e-06,483.634,3.49e-06,3.28e-06,-4.11947
-banano,Banano,3.52564e-07,483.604,3.66024e-07,3.51427e-07,-2.99955
-bepro-network,BEPRO Network,5.358e-08,483.782,5.4879e-08,5.2741e-08,-1.76101
-oxygen,Oxygen,2.38e-06,482.063,2.46e-06,2.38e-06,-2.81472
-star-atlas-dao,Star Atlas DAO,2.256e-05,482.594,2.288e-05,2.192e-05,-1.05589
-veraone,VeraOne,0.0022918,478.996,0.00245705,0.00226395,-6.27724
-chain-games,Chain Games,1.69e-06,477.844,1.76e-06,1.67e-06,1.07239
-defi-land,DeFi Land,2.24213e-07,477.837,2.33164e-07,2.23018e-07,-3.83887
-neos-credits,Neos Credits,1.169e-05,476.674,1.214e-05,1.103e-05,-1.91448
-storx,StorX,1.52e-06,475.139,1.58e-06,1.52e-06,-3.56309
-idia,Impossible Finance Launchpad,7.96e-06,471.43,8.5e-06,7.8e-06,-6.29413
-trustpad,TrustPad,5.28e-06,470.421,5.53e-06,5.17e-06,-1.68925
-counterparty,Counterparty,0.00018013,468.557,0.00022006,0.00017456,3.07088
-tokpie,TOKPIE,5.9e-06,465.547,6.07e-06,5.89e-06,-1.35947
-polkadex,Polkadex,6.24e-05,465.533,6.437e-05,5.553e-05,10.87544
-ariva,Ariva,6.411e-09,465.257,6.665e-09,6.387e-09,-2.97686
-sandclock,Sandclock,0.00016034,464.989,0.00016285,0.00013967,13.22808
-xdefi,XDEFI,6.94e-06,463.236,7.17e-06,6.93e-06,-2.03606
-gochain,GoChain,3.89525e-07,461.787,3.99766e-07,3.85315e-07,-0.95871
-delta-exchange-token,Delta Exchange,5.27e-06,460.319,5.69e-06,5.25e-06,-6.70331
-rainbow-token-2,Crypto Unicorns Rainbow,6.31e-06,459.323,6.68e-06,6.15e-06,-3.16579
-veed,VEED,8.248e-08,459.112,8.6339e-08,8.248e-08,-3.9641
-eden,EDEN,4.17e-06,459.014,4.18e-06,3.81e-06,7.74311
-cosplay-token-2,Cosplay Token,1.27e-06,455.391,1.34e-06,1.27e-06,-4.64905
-foam-protocol,FOAM,1.28e-06,454.08,1.31e-06,1.15e-06,10.00208
-permission-coin,Permission Coin,2.788e-08,450.735,2.9631e-08,2.7823e-08,-5.9088
-nft-maker,NMKR,2.38629e-07,450.178,3.97092e-07,2.26368e-07,-5.05698
-treeb,Retreeb,9.87501e-07,446.976,1.01e-06,9.40586e-07,3.75071
-waltonchain,Waltonchain,1.531e-05,446.751,2.301e-05,1.043e-05,44.44235
-hiblocks,Hiblocks,4.2022e-08,446.117,4.8244e-08,3.9686e-08,2.75146
-revv,REVV,7.94361e-07,444.734,8.21147e-07,7.92088e-07,-2.37531
-mimo-parallel-governance-token,Mimo Governance,8.6068e-07,444.591,8.68391e-07,8.07923e-07,2.82715
-openocean,OpenOcean,1.51e-06,441.436,1.56e-06,1.5e-06,-0.47288
-breederdao,BreederDAO,5.3e-06,437.063,5.46e-06,5.27e-06,0.10214
-comdex,Comdex,1.175e-05,435.8,1.233e-05,1.172e-05,-1.0911
-step-finance,Step Finance,1.78e-06,434.866,1.82e-06,1.78e-06,-0.7808
-unicrypt-2,UniCrypt,0.01201912,434.665,0.01249166,0.0119417,-1.97044
-flatqube,FlatQube,0.00039679,433.282,0.00042361,0.0003968,-5.95741
-reddcoin,Reddcoin,1.4273e-08,430.976,1.522e-08,1.368e-08,2.53705
-videocoin,Vivid Labs,2.61e-06,430.939,2.79e-06,2.55e-06,0.55494
-monavale,Monavale,0.04060717,430.772,0.04266172,0.0406075,-4.27713
-edgeware,Edgeware,6.1758e-08,430.294,6.5079e-08,5.9033e-08,-3.07898
-mcdex,MCDEX,0.00011292,429.438,0.00011551,0.00011276,-1.51415
-the-doge-nft,The Doge NFT,4.9866e-08,430.131,5.165e-08,4.9654e-08,-2.47528
-crust-network,Crust Network,3.505e-05,428.338,3.649e-05,3.358e-05,0.14363
-boringdao,BoringDAO,4.2824e-07,428.144,4.41758e-07,4.19778e-07,1.01721
-gamezone,GameZone,1.04e-06,426.647,1.11e-06,1.04e-06,-2.91742
-e-money-eur,e-Money EUR,3.934e-05,425.169,4.092e-05,3.921e-05,-2.85335
-starcoin,Starcoin,1.49e-06,424.18,1.58e-06,1.48e-06,-1.36919
-paraswap,ParaSwap,1.03e-06,424.838,1.11e-06,1.03e-06,-5.07596
-pandacoin,Pandacoin,1.2205e-08,423.827,1.2658e-08,6.46805e-10,-3.27072
-occamfi,OccamFi,1.731e-05,422.629,1.765e-05,1.682e-05,-1.29692
-pocketcoin,Pocketcoin,3.698e-05,422.468,3.979e-05,3.64e-05,-5.83422
-antimatter,AntiMatter,1.274e-05,421.882,1.314e-05,1.273e-05,-1.92902
+quantum-resistant-ledger,Quantum Resistant Ledger,6.43e-06,494.64,6.78e-06,6.27e-06,-1.53139
+suku,SUKU,4.14e-06,493.749,4.33e-06,4.02e-06,3.04785
+muse-2,Muse DAO,0.00050641,492.801,0.00056918,0.00049923,-0.4757
+gamium,Gamium,6.1837e-08,489.893,6.4705e-08,6.1466e-08,-1.67199
+sandclock,Sandclock,0.0001692,488.633,0.00016919,0.0001461,15.22113
+derace,DeRace,1.342e-05,487.417,1.389e-05,1.32e-05,-1.67799
+xana,Xana,3.3e-06,487.394,3.49e-06,3.28e-06,-1.76607
+oxygen,Oxygen,2.39e-06,485.478,2.46e-06,2.38e-06,-0.8984
+counterparty,Counterparty,0.00017918,485.083,0.00022006,0.00017846,0.23634
+bepro-network,BEPRO Network,5.368e-08,483.392,5.4879e-08,5.2741e-08,-1.39419
+lbry-credits,LBRY Credits,7.36672e-07,482.065,7.49758e-07,7.29981e-07,-1.08592
+defi-land,DeFi Land,2.24868e-07,480.008,2.31686e-07,2.22681e-07,-1.97892
+star-atlas-dao,Star Atlas DAO,2.23e-05,478.833,2.288e-05,2.192e-05,-1.41324
+storx,StorX,1.54e-06,478.308,1.58e-06,1.51e-06,-1.67076
+neos-credits,Neos Credits,1.175e-05,477.853,1.214e-05,1.103e-05,0.24473
+banano,Banano,3.48396e-07,476.731,3.66024e-07,3.46592e-07,-4.36432
+chain-games,Chain Games,1.68e-06,476.679,1.76e-06,1.67e-06,0.47196
+idia,Impossible Finance Launchpad,8.02e-06,474.725,8.37e-06,7.8e-06,-1.27071
+trustpad,TrustPad,5.32e-06,474.606,5.53e-06,5.17e-06,-2.21897
+veraone,VeraOne,0.00225748,471.761,0.00245705,0.00225558,-7.73186
+veed,VEED,8.4546e-08,471.267,8.6339e-08,8.248e-08,-0.8665
+delta-exchange-token,Delta Exchange,5.35e-06,468.138,5.69e-06,5.25e-06,-1.16689
+polkadex,Polkadex,6.272e-05,468.541,6.437e-05,5.6e-05,11.9917
+treeb,Retreeb,1.03e-06,467.81,1.04e-06,9.40586e-07,6.4303
+tokpie,TOKPIE,5.9e-06,465.1,6.07e-06,5.87e-06,-0.98143
+xdefi,XDEFI,6.98e-06,464.933,7.17e-06,6.89e-06,-1.75304
+ariva,Ariva,6.403e-09,464.891,6.665e-09,6.379e-09,-2.79497
+eden,EDEN,4.21e-06,464.538,4.22e-06,3.81e-06,9.32139
+rainbow-token-2,Crypto Unicorns Rainbow,6.33e-06,459.395,6.68e-06,6.15e-06,-3.46056
+cosplay-token-2,Cosplay Token,1.28e-06,456.988,1.34e-06,1.26e-06,-3.03117
+permission-coin,Permission Coin,2.7966e-08,453.078,2.934e-08,2.7711e-08,-3.28876
+gochain,GoChain,3.83596e-07,452.941,3.99766e-07,3.81836e-07,-1.64406
+foam-protocol,FOAM,1.28e-06,452.87,1.31e-06,1.15e-06,9.57895
+revv,REVV,8.00384e-07,449.112,8.21147e-07,7.92088e-07,-1.2992
+reddcoin,Reddcoin,1.436e-08,447.095,1.522e-08,1.3735e-08,1.49839
+hiblocks,Hiblocks,4.5234e-08,446.916,4.8244e-08,3.997e-08,11.78952
+mimo-parallel-governance-token,Mimo Governance,8.57614e-07,443.008,8.68391e-07,8.07923e-07,0.37605
+openocean,OpenOcean,1.51e-06,442.116,1.56e-06,1.5e-06,0.3501
+paraswap,ParaSwap,1.08e-06,442.048,1.11e-06,1.03e-06,-0.11501
+edgeware,Edgeware,6.3098e-08,439.733,6.5079e-08,5.9033e-08,-0.4848
+crust-network,Crust Network,3.545e-05,439.05,3.649e-05,3.358e-05,3.44427
+breederdao,BreederDAO,5.31e-06,438.372,5.46e-06,5.26e-06,-0.74821
+flatqube,FlatQube,0.00040072,437.402,0.00042361,0.00039679,-4.81994
+comdex,Comdex,1.177e-05,436.787,1.233e-05,1.172e-05,-1.23681
+unicrypt-2,UniCrypt,0.01204702,436.029,0.01249166,0.0119417,-1.68221
+step-finance,Step Finance,1.79e-06,435.62,1.82e-06,1.77e-06,-0.053
+videocoin,Vivid Labs,2.62e-06,433.988,2.79e-06,2.56e-06,1.99125
+monavale,Monavale,0.04077642,432.742,0.04266172,0.04056292,-2.9489
+the-doge-nft,The Doge NFT,5.0044e-08,432.425,5.165e-08,4.9654e-08,-1.37096
+boringdao,BoringDAO,4.30975e-07,430.962,4.41758e-07,4.24699e-07,-0.1196
+mcdex,MCDEX,0.00011324,430.402,0.00011551,0.00011255,-0.76599
+town-star,Town Star,1.13e-06,429.565,1.63e-06,7.47855e-07,50.64036
+e-money-eur,e-Money EUR,3.961e-05,428.058,4.092e-05,3.921e-05,-1.491
+pocketcoin,Pocketcoin,3.709e-05,427.954,3.979e-05,3.64e-05,-4.51414
+gamezone,GameZone,1.06e-06,427.778,1.11e-06,1.04e-06,-1.06924
+pandacoin,Pandacoin,1.2279e-08,426.031,1.2658e-08,6.46805e-10,-1.3189
+starcoin,Starcoin,1.5e-06,425.346,1.58e-06,1.48e-06,0.03878
+antimatter,AntiMatter,1.28e-05,425.039,1.314e-05,1.272e-05,-0.60259
+socean-staked-sol,Socean Staked Sol,0.00191742,424.014,0.00194403,0.00182497,1.93608
 bridge,Bridge$,6.89e-06,485.844,,,
-sentinel,Sentinel,4.0227e-08,419.275,4.1961e-08,4.0062e-08,-0.77874
-invictus,Invictus,0.00160124,418.898,0.00166312,0.00141245,-2.96503
-inter-milan-fan-token,Inter Milan Fan Token,0.00013856,417.367,0.00014586,0.0001307,3.71672
-socean-staked-sol,Socean Staked Sol,0.00190714,415.592,0.00192045,0.00182497,2.32818
-mad-bucks,MAD Bucks,4.894e-05,415.224,5.143e-05,4.609e-05,-4.74835
-thales,Thales,1.849e-05,415.034,1.938e-05,1.822e-05,-1.28043
-euphoria-2,Euphoria,0.00031843,414.702,0.00035276,0.00020235,41.19113
-peercoin,Peercoin,1.493e-05,413.306,1.505e-05,1.492e-05,-0.11514
-town-star,Town Star,1.12e-06,412.832,1.63e-06,7.47855e-07,49.4208
-pointpay,PointPay,9.13889e-07,411.248,9.60153e-07,9.10577e-07,-4.43993
-altair,Altair,1.06e-06,409.417,1.14e-06,1.06e-06,-2.68408
-santiment-network-token,Santiment Network,6.39e-06,409.39,6.72e-06,6.38e-06,-1.4827
-vertcoin,Vertcoin,6.32e-06,408.834,6.45e-06,6.26e-06,0.01119
+waltonchain,Waltonchain,1.439e-05,420.473,2.301e-05,1.043e-05,36.83544
+occamfi,OccamFi,1.725e-05,419.762,1.765e-05,1.682e-05,0.22564
+sentinel,Sentinel,4.0101e-08,418.371,4.1961e-08,3.9798e-08,-0.66415
+mad-bucks,MAD Bucks,4.922e-05,415.905,5.137e-05,4.609e-05,-0.51312
+pointpay,PointPay,9.22333e-07,415.232,9.60153e-07,9.10577e-07,-2.72484
+invictus,Invictus,0.00159074,415.149,0.00166312,0.00141245,-2.91089
+thales,Thales,1.852e-05,414.826,1.938e-05,1.822e-05,0.61945
+peercoin,Peercoin,1.492e-05,412.922,1.505e-05,1.492e-05,-0.28782
+vertcoin,Vertcoin,6.36e-06,411.705,6.45e-06,6.26e-06,-0.68095
+altair,Altair,1.07e-06,411.484,1.14e-06,1.06e-06,-0.96818
+euphoria-2,Euphoria,0.00031851,410.598,0.00035276,0.00020235,54.76031
+switcheo,Carbon Protocol,2.39106e-07,410.368,2.41798e-07,2.18889e-07,-1.11317
+inter-milan-fan-token,Inter Milan Fan Token,0.00013555,410.352,0.00014586,0.00013208,1.45499
+solanium,Solanium,4.19e-06,409.395,4.23e-06,4.09e-06,-0.08476
 lith-token,Lith [OLD],7.7168e-08,418.081,1.26693e-07,7.7168e-08,-36.90844
-compound-chainlink-token,cLINK,6.56e-06,409.53,6.78e-06,6.54e-06,0.3074
-tracer-dao,Tracer DAO,1.55e-06,405.067,1.59e-06,1.48e-06,3.35397
-market-making-pro,Market Making Pro,4.4e-06,404.22,4.85e-06,4.4e-06,-9.3413
-solanium,Solanium,4.14e-06,403.713,4.22e-06,4.09e-06,-1.5007
-refi,Reimagined Finance,4.04626e-07,403.283,4.20943e-07,4.03167e-07,-0.07428
-paragonsdao,ParagonsDAO,3.23e-06,401.403,3.48e-06,3.18e-06,-7.11441
-urus-token,Aurox,0.00088451,400.659,0.0009187,0.00087868,-1.00459
-elysia,ELYSIA,1.24948e-07,400.119,1.30601e-07,1.20777e-07,-2.67731
-cirus,Cirus,6.5e-06,399.798,6.74e-06,6.39e-06,0.06006
-88mph,88mph,0.00031846,399.016,0.00032975,0.00020379,42.64041
-switcheo,Carbon Protocol,2.31834e-07,398.909,2.68259e-07,2.18889e-07,-4.8969
-dora-factory,Dora Factory,0.0001107,397.181,0.00011709,0.00010824,0.59339
-era-swap-token,Era Swap,2.69365e-07,397.144,2.79325e-07,2.68183e-07,-3.41645
-0chain,0chain,8.18e-06,396.122,8.48e-06,7.89e-06,-0.14926
-carbon-credit,Carbon Credit,2.131e-05,395.221,2.204e-05,2.125e-05,-2.63297
-nav-coin,Navcoin,5.34e-06,395.042,5.47e-06,4.92e-06,8.40747
-dexlab,Dexlab,5.3e-06,394.856,5.39e-06,4.97e-06,3.53181
-hackenai,Hacken HAI,8.00392e-07,394.382,8.23952e-07,7.9759e-07,-1.13041
-chainge-finance,Chainge Finance,1.86e-06,392.502,2e-06,1.85e-06,-5.21417
-radium,Validity,8.473e-05,392.495,8.997e-05,8.45e-05,-2.41499
+market-making-pro,Market Making Pro,4.46e-06,408.891,4.84e-06,4.4e-06,-6.29048
+santiment-network-token,Santiment Network,6.39e-06,408.439,6.72e-06,6.36e-06,-0.75022
+cypherium,Cypherium,7.15196e-07,407.554,7.61933e-07,7.00458e-07,0.50551
+compound-chainlink-token,cLINK,6.51e-06,405.939,6.78e-06,6.51e-06,-1.96752
+tracer-dao,Tracer DAO,1.55e-06,405.486,1.59e-06,1.48e-06,3.00242
+refi,Reimagined Finance,4.0522e-07,405.062,4.20943e-07,4.0287e-07,-2.48063
+urus-token,Aurox,0.00089189,403.942,0.0009187,0.00087868,-0.31275
+scallop,Scallop,1.011e-05,403.477,1.025e-05,9.58e-06,0.01161
+cirus,Cirus,6.52e-06,401.499,6.74e-06,6.47e-06,0.75369
+chainge-finance,Chainge Finance,1.91e-06,400.132,2e-06,1.85e-06,-1.73744
+paragonsdao,ParagonsDAO,3.27e-06,399.848,3.41e-06,3.18e-06,-0.7464
+elysia,ELYSIA,1.2848e-07,399.227,1.30601e-07,1.20777e-07,2.67229
+0chain,0chain,8.22e-06,398.468,8.48e-06,7.89e-06,0.42379
+era-swap-token,Era Swap,2.69993e-07,397.743,2.79325e-07,2.6647e-07,-2.46834
+carbon-credit,Carbon Credit,2.14e-05,397.006,2.204e-05,2.125e-05,-1.11569
+dora-factory,Dora Factory,0.00011075,396.99,0.00011709,0.00010907,0.74367
+hackenai,Hacken HAI,8.05952e-07,396.702,8.23952e-07,7.9759e-07,0.55763
+nav-coin,Navcoin,5.28e-06,395.193,5.47e-06,4.96e-06,5.40325
+88mph,88mph,0.00031015,393.768,0.00032975,0.00020379,43.59334
+arcblock,Arcblock,3.98e-06,393.442,4.05e-06,3.91e-06,-0.71428
 btu-protocol,BTU Protocol,4.9e-06,392.0,4.9e-06,3e-06,63.33333
-arcblock,Arcblock,3.92e-06,385.948,4.05e-06,3.91e-06,-2.01955
-scallop,Scallop,9.71e-06,385.538,1.025e-05,9.58e-06,-2.88794
-cypherium,Cypherium,7.08798e-07,383.232,7.61933e-07,7.00458e-07,-6.31117
-arianee,Arianee,1.436e-05,382.82,1.468e-05,1.4e-05,-1.08582
-lunr-token,Lunr,5.84e-06,381.713,6.3e-06,5.64e-06,-7.19538
-enreachdao,EnreachDAO,0.00017137,379.18,0.00017137,0.00015053,11.40492
-insights-network,INSTAR,1.8e-06,378.75,2.34e-06,3.27276e-07,433.23949
-nft-worlds,NFT Worlds,6.87304e-07,377.284,7.7959e-07,6.21992e-07,-0.14191
-newscrypto-coin,Newscrypto Coin,2.54e-06,375.49,2.72e-06,2.51e-06,-5.35507
-birake,Birake,3.38e-06,371.357,3.48e-06,3.3e-06,2.29176
-blockport,BUX,5.71e-06,370.626,5.85e-06,5.67e-06,0.10675
-shyft-network-2,Shyft Network,9.362e-07,370.367,1.08e-06,9.36904e-07,-2.62293
-premia,Premia,3.486e-05,369.458,3.627e-05,3.452e-05,-1.00458
-xdai-stake,STAKE,0.00019804,367.037,0.00021195,0.00019805,-4.03969
-velaspad,VelasPad,8.36426e-07,365.026,8.79173e-07,8.34717e-07,-3.12155
-earthcoin,Earthcoin,2.8386e-08,364.556,2.9522e-08,2.7918e-08,-1.72111
-opulous,Opulous,3.45e-06,363.067,3.61e-06,3.44e-06,-2.38288
-neon-exchange,Nash,1.24e-05,361.732,1.29e-05,1.236e-05,-3.13765
-monkeyball,MonkeyLeague,4.12e-06,361.178,4.25e-06,4.12e-06,-2.90592
-dappradar,DappRadar,6.25766e-07,360.561,6.66619e-07,6.25258e-07,-5.38385
-spiceusd,SpiceUSD,4.036e-05,358.811,4.172e-05,3.971e-05,-0.6738
-aladdin-dao,Aladdin DAO,2.72e-06,357.012,2.83e-06,2.7e-06,-1.93853
-metaverse-index,Metaverse Index,0.00187903,355.817,0.00194138,0.00186252,-0.26214
-tokenclub,TokenClub,6.14613e-07,355.748,6.2449e-07,5.65838e-07,8.41748
-stratos,Stratos,1.317e-05,355.707,1.425e-05,1.312e-05,-3.33377
-bao-finance,Bao Finance,4.835e-09,354.775,5.002e-09,4.818e-09,-3.22521
-quadrant-protocol,Quadrant Protocol,6.51111e-07,353.723,6.79756e-07,5.7427e-07,-3.6934
-mcontent,MContent,9.4977e-14,349.82,1.02017e-13,9.3731e-14,-6.90143
-cellframe,Cellframe,1.212e-05,348.845,1.272e-05,1.204e-05,-4.59041
-media-licensing-token,Media Licensing,3.73e-06,347.032,3.95e-06,3.64e-06,-1.89744
-galatasaray-fan-token,Galatasaray Fan Token,9.758e-05,346.836,0.00010025,9.384e-05,2.03151
-troy,Troy,1.82294e-07,346.359,1.9114e-07,1.76513e-07,1.45895
-as-roma-fan-token,AS Roma Fan Token,0.00015997,346.189,0.00018622,0.00014926,7.17158
-saddle-finance,Saddle Finance,1.04e-06,344.942,1.11e-06,9.51784e-07,9.25412
-dragonchain,Dragonchain,9.33068e-07,343.874,9.93088e-07,9.18456e-07,1.59097
-diamond,Diamond,9.287e-05,343.603,9.497e-05,9.241e-05,-1.95653
-oath,Oath,3.59e-06,343.017,3.7e-06,3.57e-06,-0.61426
-blockchain-brawlers,Blockchain Brawlers,3.44354e-07,341.484,3.85838e-07,3.12141e-07,8.93761
-global-coin-research,Global Coin Research,3.409e-05,340.963,6.575e-05,3.174e-05,4.86734
-gamercoin,GamerCoin,8.10796e-07,340.544,8.40546e-07,8.01021e-07,-2.12341
-numbers-protocol,Numbers Protocol,2e-06,340.148,2.18e-06,1.98e-06,-5.68971
-polypad,PolyPad,3.08799e-07,339.511,3.2961e-07,3.08436e-07,-4.68001
-wasder,Wasder,9.79747e-07,339.301,1.04e-06,7.64074e-07,27.02551
-arsenal-fan-token,Arsenal Fan Token,7.445e-05,339.125,7.772e-05,7.012e-05,5.39655
-apollo,Apollo,2.3093e-08,339.123,2.41e-08,2.3116e-08,-3.11728
-smart-valor,Smart Valor,1.264e-05,338.57,1.314e-05,1.258e-05,-2.55115
-bitcoin-2,Bitcoin 2,1.885e-05,338.424,2.072e-05,1.871e-05,-0.39468
-proximax,ProximaX,5.2069e-08,337.491,5.409e-08,5.0757e-08,2.22984
-polkafoundry,PolkaFoundry,8.03e-06,335.864,8.49e-06,7.97e-06,0.80727
-blockchainspace,BlockchainSpace,3.11e-06,334.874,3.25e-06,3.09e-06,-3.27857
-rubic,Rubic,3.03e-06,334.587,3.16e-06,2.96e-06,2.30588
-tbtc,tBTC,1.001992,334.519,1.045198,0.99791555,-1.46746
-haven,Haven,2.245e-05,334.221,2.379e-05,2.1e-05,4.38051
-position-token,Position,5.4e-06,327.599,5.6e-06,5.36e-06,-2.27999
-compound-wrapped-btc,cWBTC,0.02006793,142.801,0.02006793,0.02006786,0.00037
-bondly,Forj,4.91674e-07,327.15,5.12074e-07,4.89477e-07,-3.77838
-dfx-finance,DFX Finance,1.859e-05,326.139,1.933e-05,1.805e-05,0.22853
-seur,sEUR,4.187e-05,325.951,4.326e-05,4.184e-05,-2.12373
-callisto,Callisto Network,1.01346e-07,324.096,1.07083e-07,1.01346e-07,-4.07151
-gelato,Gelato,1.875e-05,323.822,1.984e-05,1.819e-05,-3.10571
-kripto,Kripto,5.4051e-08,322.26,5.9724e-08,5.4101e-08,-7.19451
-pallapay,Pallapay,4.23995e-07,322.278,4.39993e-07,4.24011e-07,-3.52953
-grin,Grin,2.94e-06,322.153,2.99e-06,2.88e-06,-0.04458
-friends-with-benefits-pro,Friends With Benefits Pro,0.00053781,321.325,0.00057145,0.0005274,-0.78359
-label-foundation,LABEL Foundation,4.46729e-07,320.393,4.63748e-07,4.45848e-07,-2.26817
-straitsx-indonesia-rupiah,XIDR,2.887e-09,328.796,2.935e-09,2.752e-09,1.36364
-ac-milan-fan-token,AC Milan Fan Token,0.00015894,317.999,0.00016935,0.00015146,3.78599
-pkt,PKT,8.944e-08,317.737,1.01096e-07,8.1848e-08,7.21568
-rae-token,Receive Access Ecosystem,4.402e-05,316.106,4.588e-05,4.389e-05,-2.24787
-qmall,Qmall,1.229e-05,315.846,1.314e-05,1.216e-05,-1.56859
-etherisc,Etherisc DIP,9.45172e-07,316.327,9.76061e-07,9.15461e-07,-1.78575
-dotmoovs,dotmoovs,3.70839e-07,315.217,3.91565e-07,3.67497e-07,-4.29905
-governance-zil,governance ZIL,0.00056269,315.088,0.00059994,0.00051959,-0.67242
-dei-token,DEI,7.86e-06,313.842,8.6e-06,7.53e-06,1.86738
-steam-exchange,Steam Exchange,3.134e-09,313.414,3.259e-09,3.088e-09,1.48823
+radium,Validity,8.461e-05,391.946,8.997e-05,8.461e-05,-1.149
+dexlab,Dexlab,5.19e-06,386.357,5.39e-06,4.97e-06,2.37738
+arianee,Arianee,1.452e-05,385.744,1.468e-05,1.4e-05,0.15851
+lunr-token,Lunr,5.87e-06,385.193,6.3e-06,5.64e-06,-5.78147
+newscrypto-coin,Newscrypto Coin,2.63e-06,382.451,2.72e-06,2.51e-06,-0.31807
+shyft-network-2,Shyft Network,9.59407e-07,380.389,1.08e-06,9.36904e-07,0.7732
+enreachdao,EnreachDAO,0.0001717,379.901,0.00017241,0.00015053,12.08611
+insights-network,INSTAR,1.8e-06,378.67,2.34e-06,3.27276e-07,434.37824
+xdai-stake,STAKE,0.00020275,374.633,0.00021195,0.00019783,-1.20662
+premia,Premia,3.519e-05,373.413,3.627e-05,3.452e-05,-1.26304
+birake,Birake,3.38e-06,371.293,3.48e-06,3.33e-06,1.2455
+blockport,BUX,5.71e-06,370.869,5.85e-06,5.67e-06,-0.34953
+velaspad,VelasPad,8.47834e-07,370.022,8.79173e-07,8.34717e-07,-1.67762
+tokenclub,TokenClub,6.34131e-07,367.949,6.37684e-07,5.66612e-07,11.72547
+opulous,Opulous,3.5e-06,367.75,3.61e-06,3.44e-06,-0.86398
+dappradar,DappRadar,6.29999e-07,365.701,6.65762e-07,6.25258e-07,-4.30071
+neon-exchange,Nash,1.25e-05,364.657,1.29e-05,1.236e-05,-0.86695
+monkeyball,MonkeyLeague,4.14e-06,363.198,4.25e-06,4.11e-06,-1.35039
+nft-worlds,NFT Worlds,6.79288e-07,362.337,7.75996e-07,6.21992e-07,-12.46244
+earthcoin,Earthcoin,2.8273e-08,360.869,2.9522e-08,2.7833e-08,-0.54133
+spiceusd,SpiceUSD,4.067e-05,360.347,4.172e-05,3.971e-05,0.99463
+mcontent,MContent,9.7664e-14,359.636,1.00676e-13,9.3731e-14,-0.77275
+stratos,Stratos,1.321e-05,358.914,1.425e-05,1.311e-05,-2.38397
+aladdin-dao,Aladdin DAO,2.73e-06,358.52,2.83e-06,2.7e-06,-1.5962
+metaverse-index,Metaverse Index,0.00188583,356.879,0.00194138,0.00186252,-0.17677
+bao-finance,Bao Finance,4.862e-09,356.824,5.002e-09,4.818e-09,-1.93386
+cellframe,Cellframe,1.232e-05,353.791,1.272e-05,1.204e-05,-1.53216
+quadrant-protocol,Quadrant Protocol,6.50281e-07,352.771,6.7627e-07,5.7427e-07,-3.80275
+media-licensing-token,Media Licensing,3.78e-06,352.135,3.95e-06,3.64e-06,-0.47928
+apollo,Apollo,2.3801e-08,350.928,2.41e-08,2.2876e-08,0.91034
+polypad,PolyPad,3.18211e-07,349.909,3.2961e-07,3.08436e-07,-0.81517
+rubic,Rubic,3.16e-06,349.547,3.17e-06,3.01e-06,4.75982
+numbers-protocol,Numbers Protocol,2.03e-06,348.329,2.18e-06,1.98e-06,-3.9185
+oath,Oath,3.62e-06,346.297,3.7e-06,3.57e-06,0.83639
+gamercoin,GamerCoin,8.21368e-07,345.003,8.40546e-07,8.01021e-07,-0.97318
+dragonchain,Dragonchain,9.37254e-07,344.763,9.93088e-07,9.2339e-07,1.14252
+diamond,Diamond,9.31e-05,344.421,9.497e-05,9.241e-05,-1.55041
+galatasaray-fan-token,Galatasaray Fan Token,9.692e-05,344.603,0.00010025,9.529e-05,1.32075
+saddle-finance,Saddle Finance,1.04e-06,344.551,1.11e-06,9.51784e-07,9.26208
+troy,Troy,1.81192e-07,343.434,1.9114e-07,1.76513e-07,1.25816
+global-coin-research,Global Coin Research,3.445e-05,342.231,6.575e-05,3.19e-05,7.98352
+wasder,Wasder,9.87238e-07,341.881,1.04e-06,7.64074e-07,27.59522
+smart-valor,Smart Valor,1.224e-05,339.696,1.314e-05,1.255e-05,-3.71482
+as-roma-fan-token,AS Roma Fan Token,0.00015647,339.594,0.00018622,0.0001505,0.53843
+blockchain-brawlers,Blockchain Brawlers,3.40777e-07,338.967,3.85838e-07,3.1707e-07,7.47677
+bitcoin-2,Bitcoin 2,1.885e-05,338.438,2.072e-05,1.871e-05,0.34769
+haven,Haven,2.273e-05,338.399,2.379e-05,2.1e-05,4.96552
+proximax,ProximaX,5.2174e-08,338.17,5.409e-08,5.103e-08,2.24169
+blockchainspace,BlockchainSpace,3.13e-06,336.658,3.25e-06,3.09e-06,-1.62182
+tbtc,tBTC,1.000088,333.833,1.045198,0.99909933,-4.31598
+polkafoundry,PolkaFoundry,8.1e-06,333.643,8.49e-06,7.91e-06,-0.61349
+arsenal-fan-token,Arsenal Fan Token,7.277e-05,331.324,7.772e-05,7.139e-05,0.76469
+bondly,Forj,4.93526e-07,328.74,5.12074e-07,4.89477e-07,-3.22687
+gelato,Gelato,1.9e-05,328.157,1.984e-05,1.819e-05,-0.35064
+compound-wrapped-btc,cWBTC,0.02006794,142.801,0.02006793,0.02006786,0.00038
+grin,Grin,2.93e-06,327.676,2.99e-06,2.88e-06,-1.02696
+callisto,Callisto Network,1.018e-07,326.547,1.07083e-07,1.01346e-07,-2.1674
+position-token,Position,5.41e-06,325.731,5.6e-06,5.31e-06,-0.958
+seur,sEUR,4.174e-05,324.9,4.326e-05,4.165e-05,-1.51745
+pallapay,Pallapay,4.27198e-07,323.718,4.39366e-07,4.23804e-07,-1.43611
+dfx-finance,DFX Finance,1.845e-05,323.568,1.933e-05,1.805e-05,1.11911
+label-foundation,LABEL Foundation,4.48147e-07,321.846,4.63748e-07,4.45179e-07,-0.81115
+qmall,Qmall,1.241e-05,321.185,1.314e-05,1.216e-05,1.84559
+friends-with-benefits-pro,Friends With Benefits Pro,0.00053737,320.43,0.00057145,0.0005274,-2.03055
+straitsx-indonesia-rupiah,XIDR,2.887e-09,328.796,2.935e-09,2.752e-09,2.87925
+pkt,PKT,9.0155e-08,320.059,1.01096e-07,8.1912e-08,9.42523
+cap,Cap,0.00319892,319.713,0.00426599,0.00304378,-11.47193
+etherisc,Etherisc DIP,9.52217e-07,319.262,9.76061e-07,9.15461e-07,-0.96216
+kripto,Kripto,5.3434e-08,318.579,5.9724e-08,5.2604e-08,-6.348
+dotmoovs,dotmoovs,3.73096e-07,318.109,3.91565e-07,3.67497e-07,-2.8305
+ac-milan-fan-token,AC Milan Fan Token,0.00015789,316.271,0.00016935,0.0001523,2.47275
+steam-exchange,Steam Exchange,3.156e-09,315.576,3.259e-09,3.11e-09,1.15335
+meta,mStable Governance: Meta,6.33e-06,314.844,6.48e-06,6.16e-06,-0.07003
+aquarius,Aquarius,4.398e-08,313.611,4.4128e-08,4.2632e-08,3.02051
