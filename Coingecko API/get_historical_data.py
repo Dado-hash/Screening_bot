@@ -38,11 +38,13 @@ coins_id_list = df["id"].tolist() + df1["id"].tolist()
 
 #creo il file mettendo i prezzi di bitcoin
 id_coin = 'bitcoin'
-hist_data = cg.get_coin_market_chart_by_id(id = id_coin, vs_currency = 'usd', days = 'max')
+hist_data = cg.get_coin_market_chart_by_id(id = id_coin, vs_currency = 'usd', days = 'max', interval = 'daily')
 df = pd.DataFrame(hist_data)
 df['day'] = df['prices'].str[0]
 df['day'] = pd.to_datetime(df['day']/1000, unit = 's').dt.date
-df[id_coin] = df['prices'].str[1]
+df[id_coin] = df['prices'].str[1].astype(str)
+df[id_coin] = df[id_coin].str.replace(r'.', ',')
+print(df.dtypes)
 columns = ['day', id_coin]
 df_principale = df[columns]
 df_principale.set_index('day', inplace = True)
@@ -60,7 +62,8 @@ for id_coin in coins_id_list:
         df = pd.DataFrame(hist_data)
         df['day'] = df['prices'].str[0]
         df['day'] = pd.to_datetime(df['day']/1000, unit = 's').dt.date
-        df[id_coin] = df['prices'].str[1]
+        df[id_coin] = df['prices'].str[1].astype(str)
+        df[id_coin] = df[id_coin].str.replace(r'.', ',')
         columns = ['day', id_coin]
         df = df[columns]
         df.set_index('day', inplace = True)
@@ -68,4 +71,6 @@ for id_coin in coins_id_list:
         df_principale = pd.merge(df_principale, df, on="day", how = 'left')
         count += 1
         print(df_principale)
-        df_principale.to_csv('storico')
+        
+#salvo lo storico
+df_principale.to_csv('storico')
