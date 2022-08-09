@@ -11,7 +11,7 @@ cg.ping()
 
 #prendo l'id delle prime 1000 coin per market cap
 list_df = []
-for num in range(6):
+for num in range(2):
     if(num!=0):
         complexPriceRequest = cg.get_coins_markets(vs_currency = 'btc', order = 'market_cap_desc', per_page = 100, page = num, price_change_percentage = '24h')
         list_df.append(pd.DataFrame(complexPriceRequest))
@@ -22,7 +22,7 @@ df.set_index("id", inplace = True)
 df.to_csv("idcoins")
 
 list_df = []
-for num in range(11):
+for num in range(7):
     if(num>5):
         complexPriceRequest = cg.get_coins_markets(vs_currency = 'btc', order = 'market_cap_desc', per_page = 100, page = num, price_change_percentage = '24h')
         list_df.append(pd.DataFrame(complexPriceRequest))
@@ -99,3 +99,7 @@ for id_coin in coins_id_list:
 #salvo i due file con 24h_change e volatility
 df_principale_24h.to_cvs('24h_change.csv')
 df_principale_volatility.to_csv('volatility.csv')
+
+#creo il file con la classifica a 3 giorni
+df_3d = df_principale_24h.tail(3)
+print(df_3d)
