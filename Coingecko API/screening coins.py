@@ -71,7 +71,7 @@ for id_coin in coins_id_list:
         if(count == 30):
             t.sleep(70)
             count = 0
-        hist_data = cg.get_coin_ohlc_by_id(id = id_coin, vs_currency = 'bitcoin', days = '30', interval = 'daily')
+        hist_data = cg.get_coin_ohlc_by_id(id = id_coin, vs_currency = 'btc', days = '30', interval = 'daily')
         df = pd.DataFrame(hist_data)
         df['day'] = df[[0]]
         df['day'] = pd.to_datetime(df['day']/1000, unit = 's').dt.date
@@ -81,6 +81,7 @@ for id_coin in coins_id_list:
         df['high'] = df[[2]]
         df['low'] = df[[3]]
         df['24h_volatility'] = (df['high'] - df['low']) / df['low']
+        df['correlation'] = df['24h_change'] / df_principale_24h['bitcoin']
         columns = ['day', '24h_change', '24h_volatility']
         df = df[columns]
         df = df.groupby('day').sum()
@@ -92,19 +93,25 @@ for id_coin in coins_id_list:
         df_volatility = df[columns].astype(str)
         df_volatility.columns = [id_coin]
         df_volatility[id_coin] = df_volatility[id_coin].str.replace(r'.', ',')
-        columns= ['volume']
+        columns = ['volume']
         df_volume = df[columns].astype(str)
         df_volume.columns = [id_coin]
         df_volume[id_coin] = df_volume[id_coin].str.replace(r'.', ',')
+        columns = ['correlation']
+        df_correlation = df[columns].astype(str)
+        df_correlation.columns = [id_coin]
+        df_correlation[id_coin] = df_correlation[id_coin].str.replace(r'.', ',')
         df_principale_24h = pd.merge(df_principale_24h, df_24h, on = "day", how = 'left')
         df_principale_volatility = pd.merge(df_principale_volatility, df_volatility, on = "day", how = 'left')
         df_principale_volume = pd.merge(df_principale_volume, df_volume, on = 'day', how = 'left')
+        df_principale_correlation = pd.merge(df_principale_correlation, df_correlation, on = 'day', how = 'left')
         count += 1
 
 #salvo i due file con 24h_change e volatility
 df_principale_24h.to_cvs('24h_change.csv')
 df_principale_volatility.to_csv('volatility.csv')
 df_principale_volume.to_csv('volume.csv')
+df_principale_correlation.to_csv('correlation.csv')
 
 #creo i dataframe con le classifica a 3 giorni
 df_principale_24h = df_principale_24h.drop('day')
@@ -123,11 +130,18 @@ for id in df_3d_volume_check:
 df_3d_volume_check = df_3d_volume_check.sum()                                      #3
 
 df_30d_volatility_mean = df_principale_volatility.describe().loc('mean')
-df_3d_volatility_check = df_3d_change
+df_3d_volatility_check = df_principale_24h.tail(3)
 for id in df_3d_volatility_check:
     mean = df_30d_volatility_mean[id]
     df_3d_volatility_check[id] = df_3d_volatility_check[id].apply(lambda x: 1 if x < mean else 0)
-df_3d_volatility_check = df_3d_volatility_check.sum()                            #4
+df_3d_volatility_check = df_3d_volatility_check.sum()                              #4
+
+df_30d_correlation_mean = df_principale_correlation.describe().loc('mean')
+df_3d_correlation_check = df_principale_correlation.tail(3)
+for id in df_3d_correlation_check:
+    mean = df_30d_correlation_mean[id]
+    df_3d_correlation_check[id] = df_3d_correlation_check[id].apply(lambda x: 1 if x > mean else 0)
+df_3d_correlation_check = df_3d_correlation_check.sum()                            #5
 
 #creo il dataframe con la classifica a 7 giorni
 df_7d_change = df_principale_24h.tail(7).sum()
