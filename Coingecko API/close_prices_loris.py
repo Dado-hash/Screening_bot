@@ -10,16 +10,46 @@ cg = CoinGeckoAPI()
 
 cg.ping()
 
+#prendo il file excel e spezzo a metà gli indici e le coin per lavorarci in modo separato
 df_close_prices = pd.read_excel(open('Master_Download_Prices.xlsx', 'rb'), sheet_name='Close_Usd') 
 print(df_close_prices)
 first_part_df = df_close_prices[['Data', 'EurUsd Curncy', 'MSDEWIN Index', 'MSDEEEMN Index', 'LGCPTREU Index', 'LGAGTREU Index', 'XAU Curncy', 'BGCI Index', 'SPCBDM Index', 'XAU Curncy', 'BGCI Index', 'SPCBDM Index']]
 print(first_part_df)
+second_part_df = df_close_prices.drop(['Data', 'EurUsd Curncy', 'MSDEWIN Index', 'MSDEEEMN Index', 'LGCPTREU Index', 'LGAGTREU Index', 'XAU Curncy', 'BGCI Index', 'SPCBDM Index', 'XAU Curncy', 'BGCI Index', 'SPCBDM Index'])
 
-begin = date(2021, 12, 31)
+#prendo il numero di giorni che sono passati dall'inizio dell'anno
+begin = date(2021, 12, 30)
 today = date.today()
-days_from_begin = today - begin  #capire come aggiungere 1
+days_from_begin = today - begin
 print(days_from_begin)
 
+#scarico per ogni coin lo storico dei prezzi, attacco le prime tre righe di default e le salvo in una lista per concatenarle dopo
+id_coins = second_part_df.columns.sort()
+list_prices = []
+index = 13
+for id_c in id_coins:
+    df = pd.DataFrame(cg.get_coin_market_chart_by_id(id = id_c, vs_currency = 'usd', days = days_from_begin, interval = 'daily'))
+    df.drop(df.tail(1).index,inplace=True)
+    df['Data'] = df['prices'].str[0]
+    df['Data'] = pd.to_datetime(df['Data']/1000, unit = 's').dt.date
+    df[id_c] = df['prices'].str[1].astype(str)
+    df[id_c] = df[id_c].str.replace(r'.', ',')
+    columns = ['Data', id_c]
+    df = df[columns]
+    df.set_index('Data', inplace = True)
+    list_prices_coin = df[id_c].to_list()
+    list_prices_coin.insert(0, index)
+    list_prices_coin.insert(0, id_c)
+    list_prices_coin.insert(0, index)
+    new_column = pd.DataFrame(list_prices_coin)
+    list_prices.insert(new_column)
+    index += 1
+
+#concateno i prezzi delle coin
+second_part_df = pd.concat(list_prices, axis = 1)
+
+#creo la prima colonna con le date
+list_indexes = []
 df = pd.DataFrame(cg.get_coin_market_chart_by_id(id = 'bitcoin', vs_currency = 'usd', days = days_from_begin, interval = 'daily'))
 df.drop(df.tail(1).index,inplace=True)
 df['Data'] = df['prices'].str[0]
@@ -29,10 +59,38 @@ df['bitcoin'] = df['bitcoin'].str.replace(r'.', ',')
 columns = ['Data', 'bitcoin']
 df = df[columns]
 df.set_index('Data', inplace = True)
+list_data = df['Data'].to_list()
+list_data.insert(0, 1)
+list_data.insert(0, 'Data')
+list_data.insert(0, 1)
+new_column = pd.DataFrame(list_data)
+list_indexes.insert(new_column)
 
-list = df['bitcoin'].to_list()
-list.insert(0, 'n_columns+1')
-list.insert(0, 'id_coin')
-list.insert(0, 'id_coin')
-new_column = pd.DataFrame(list)
-print(new_column)
+#scarico i prezzi degli indici
+first_part_df = first_part_df.drop('Data')
+id_indexes = first_part_df.columns()
+extended_id_indexes = first_part_df.iloc(2).to_list()
+index = 2
+for index in id_indexes:
+    #manca trovare come scaricare i dati degli indici
+    list_prices.insert(0, 1)
+    list_prices.insert(0, extended_id_indexes[index - 2])
+    list_prices.insert(0, 1)
+    new_column = pd.DataFrame(list_data)
+    list_indexes.insert(new_column)
+    index += 1
+
+#concateno gli indici(sarà uguale alle coin fin qui)
+first_part_df = pd.concat(list_indexes, axis = 1)
+
+#concateno i due dataframe
+df_principale = pd.concat([first_part_df, second_part_df], axis = 1)
+
+#creo il dataframe per il secondo foglio
+df_principale = df_principale.drop('Data')
+df_coins_list = df_principale.iloc([0, 1])
+df_coins_list = df_coins_list.T
+num_list = df_coins_list[[0]]
+num_list.insert(0, 1)  #manca cancellare l'ultimo numero
+new_column = pd.DataFrame(num_list)
+df_coins_list = pd.concat([new_column, df_coins_list], axis = 1)  #manca rinominare le colonne e riordinarle
