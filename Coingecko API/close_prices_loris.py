@@ -21,7 +21,7 @@ today = date.today()
 days_from_begin = today - begin
 
 #scarico per ogni coin lo storico dei prezzi, attacco le prime tre righe di default e le salvo in una lista per concatenarle dopo
-second_part_df = second_part_df.sort_index(axis = 1)
+'''second_part_df = second_part_df.sort_index(axis = 1)
 id_coins = second_part_df.columns
 list_prices = []
 index = 13
@@ -57,7 +57,7 @@ for id_c in id_coins:
 #concateno i prezzi delle coin
 second_part_df = pd.concat(list_prices, axis = 1)
 second_part_df.columns = id_coins
-print(second_part_df)
+print(second_part_df)'''
 
 #creo la prima colonna con le date
 list_indexes = []
@@ -69,18 +69,20 @@ df['bitcoin'] = df['prices'].str[1].astype(str)
 df['bitcoin'] = df['bitcoin'].str.replace(r'.', ',')
 columns = ['Data', 'bitcoin']
 df = df[columns]
-df.set_index('Data', inplace = True)
 list_data = df['Data'].to_list()
 list_data.insert(0, 1)
 list_data.insert(0, 'Data')
 list_data.insert(0, 1)
 new_column = pd.DataFrame(list_data)
-list_indexes.insert(new_column)
+list_indexes.append(new_column)
 
 #scarico i prezzi degli indici
-first_part_df = first_part_df.drop('Data')
-id_indexes = first_part_df.columns()
-extended_id_indexes = first_part_df.iloc(2).to_list()
+list_prices = []
+first_part_df = first_part_df.drop('Data', axis = 1, inplace = False)
+print(first_part_df)
+id_indexes = first_part_df.columns
+extended_id_indexes = first_part_df.values.tolist()[1]
+print(extended_id_indexes)
 index = 2
 for index in id_indexes:
     #manca trovare come scaricare i dati degli indici
