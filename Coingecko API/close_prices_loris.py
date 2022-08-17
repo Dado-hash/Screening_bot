@@ -21,7 +21,7 @@ today = date.today()
 days_from_begin = today - begin
 
 #scarico per ogni coin lo storico dei prezzi, attacco le prime tre righe di default e le salvo in una lista per concatenarle dopo
-'''second_part_df = second_part_df.sort_index(axis = 1)
+second_part_df = second_part_df.sort_index(axis = 1)
 id_coins = second_part_df.columns
 list_prices = []
 index = 13
@@ -57,7 +57,7 @@ for id_c in id_coins:
 #concateno i prezzi delle coin
 second_part_df = pd.concat(list_prices, axis = 1)
 second_part_df.columns = id_coins
-print(second_part_df)'''
+print(second_part_df)
 
 #creo la prima colonna con le date
 list_indexes = []
@@ -77,30 +77,33 @@ new_column = pd.DataFrame(list_data)
 list_indexes.append(new_column)
 
 #scarico i prezzi degli indici
-list_prices = []
 first_part_df = first_part_df.drop('Data', axis = 1, inplace = False)
-print(first_part_df)
 id_indexes = first_part_df.columns
 extended_id_indexes = first_part_df.values.tolist()[1]
-print(extended_id_indexes)
-index = 2
+num_index = 2
 for index in id_indexes:
+    list_prices = []
     #manca trovare come scaricare i dati degli indici
     list_prices.insert(0, 1)
-    list_prices.insert(0, extended_id_indexes[index - 2])
+    list_prices.insert(0, extended_id_indexes[num_index - 2])
     list_prices.insert(0, 1)
-    new_column = pd.DataFrame(list_data)
-    list_indexes.insert(new_column)
-    index += 1
+    new_column = pd.DataFrame(list_prices)
+    list_indexes.append(new_column)
+    num_index += 1
 
 #concateno gli indici(sarà uguale alle coin fin qui)
 first_part_df = pd.concat(list_indexes, axis = 1)
+first_part_df.columns = ['Data','EurUsd Curncy', 'MSDEWIN Index', 'MSDEEEMN Index', 'LGCPTREU Index',
+       'LGAGTREU Index', 'XAU Curncy Usd', 'BGCI Index Usd',
+       'SPCBDM Index Usd', 'XAU Curncy Eur', 'BGCI Index Eur',
+       'SPCBDM Index Eur']
 
 #concateno i due dataframe
 df_principale = pd.concat([first_part_df, second_part_df], axis = 1)
+print(df_principale)
 
 #creo il dataframe per il secondo foglio
-df_principale = df_principale.drop('Data')
+df_principale = df_principale.drop('Data', axis = 1)
 df_coins_list = df_principale.iloc([0, 1])
 df_coins_list = df_coins_list.T
 num_list = df_coins_list[[0]]
