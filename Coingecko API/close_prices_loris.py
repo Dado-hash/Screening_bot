@@ -12,22 +12,25 @@ cg.ping()
 
 #prendo il file excel e spezzo a metà gli indici e le coin per lavorarci in modo separato
 df_close_prices = pd.read_excel(open('Master_Download_Prices.xlsx', 'rb'), sheet_name='Close_Usd') 
-print(df_close_prices)
-first_part_df = df_close_prices[['Data', 'EurUsd Curncy', 'MSDEWIN Index', 'MSDEEEMN Index', 'LGCPTREU Index', 'LGAGTREU Index', 'XAU Curncy', 'BGCI Index', 'SPCBDM Index', 'XAU Curncy', 'BGCI Index', 'SPCBDM Index']]
-print(first_part_df)
-second_part_df = df_close_prices.drop(['Data', 'EurUsd Curncy', 'MSDEWIN Index', 'MSDEEEMN Index', 'LGCPTREU Index', 'LGAGTREU Index', 'XAU Curncy', 'BGCI Index', 'SPCBDM Index', 'XAU Curncy', 'BGCI Index', 'SPCBDM Index'])
+first_part_df = df_close_prices[['Data', 'EurUsd Curncy', 'MSDEWIN Index', 'MSDEEEMN Index', 'LGCPTREU Index', 'LGAGTREU Index', 'XAU Curncy Usd', 'BGCI Index Usd', 'SPCBDM Index Usd', 'XAU Curncy Eur', 'BGCI Index Eur', 'SPCBDM Index Eur']]
+second_part_df = df_close_prices.drop(['Data', 'EurUsd Curncy', 'MSDEWIN Index', 'MSDEEEMN Index', 'LGCPTREU Index', 'LGAGTREU Index', 'XAU Curncy Usd', 'BGCI Index Usd', 'SPCBDM Index Usd', 'XAU Curncy Eur', 'BGCI Index Eur', 'SPCBDM Index Eur'], axis = 1, inplace = False)
 
 #prendo il numero di giorni che sono passati dall'inizio dell'anno
 begin = date(2021, 12, 30)
 today = date.today()
 days_from_begin = today - begin
-print(days_from_begin)
 
 #scarico per ogni coin lo storico dei prezzi, attacco le prime tre righe di default e le salvo in una lista per concatenarle dopo
-id_coins = second_part_df.columns.sort()
+second_part_df = second_part_df.sort_index(axis = 1)
+id_coins = second_part_df.columns
 list_prices = []
 index = 13
+count = 0
 for id_c in id_coins:
+    if(count == 19):
+            t.sleep(90)
+            count = 0
+    print(id_c)
     df = pd.DataFrame(cg.get_coin_market_chart_by_id(id = id_c, vs_currency = 'usd', days = days_from_begin, interval = 'daily'))
     df.drop(df.tail(1).index,inplace=True)
     df['Data'] = df['prices'].str[0]
@@ -36,17 +39,25 @@ for id_c in id_coins:
     df[id_c] = df[id_c].str.replace(r'.', ',')
     columns = ['Data', id_c]
     df = df[columns]
+    rows = df.shape[0]
     df.set_index('Data', inplace = True)
     list_prices_coin = df[id_c].to_list()
+    if(rows < days_from_begin.days):
+        missing = days_from_begin.days - rows
+        for num in range(missing):
+            list_prices_coin.insert(0, 0)
     list_prices_coin.insert(0, index)
     list_prices_coin.insert(0, id_c)
     list_prices_coin.insert(0, index)
     new_column = pd.DataFrame(list_prices_coin)
-    list_prices.insert(new_column)
+    list_prices.append(new_column)
     index += 1
+    count += 1
 
 #concateno i prezzi delle coin
 second_part_df = pd.concat(list_prices, axis = 1)
+second_part_df.columns = id_coins
+print(second_part_df)
 
 #creo la prima colonna con le date
 list_indexes = []
