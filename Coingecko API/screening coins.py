@@ -53,19 +53,21 @@ df['low'] = df[[3]]
 df_giornaliero['max_high'] = df.groupby(['day'], sort=False)['high'].max()
 df_giornaliero['min_high'] = df.groupby(['day'], sort=False)['low'].min()
 df_giornaliero['24h_volatility'] = (df_giornaliero['max_high'] - df_giornaliero['min_high']) / df_giornaliero['min_high']
+df_giornaliero['correlation'] = df_giornaliero['24h_change'] / df_giornaliero['24h_change']
 df_principale = df_giornaliero.drop(['close', 'open', 'max_high', 'min_high'], axis = 1, inplace = False)
 df_principale = df_principale.drop([0, 1, 2, 3, 4], axis = 1, inplace = False)
-print(df_principale)
 columns = ['24h_change']
 df_principale_24h = df_principale[columns].astype(str)
 columns = ['24h_volatility']
 df_principale_volatility = df_principale[columns].astype(str)
+columns = ['correlation']
+df_principale_correlation = df_principale[columns].astype(str)
 df_principale_24h.columns = [id_coin]
 df_principale_volatility.columns = [id_coin]
+df_principale_correlation.columns = [id_coin]
 df_principale_24h[id_coin] = df_principale_24h[id_coin].str.replace(r'.', ',')
 df_principale_volatility[id_coin] = df_principale_volatility[id_coin].str.replace(r'.', ',')
-print(df_principale_24h)
-print(df_principale_volatility)
+df_principale_correlation[id_coin] = df_principale_correlation[id_coin].str.replace(r'.', ',')
 
 #aggiungo le alt
 count = 0
@@ -80,76 +82,43 @@ for id_coin in coins_id_list:
         df['day'] = pd.to_datetime(df['day']/1000, unit = 's').dt.date
         df['close'] = df[[4]]
         df['open'] = df[[1]]
-        df_with_first_row_per_day = df.groupby('day').apply(lambda x: x.loc[0]).reset_index(drop=True)
-        df_with_last_row_per_day = df.groupby('day').apply(lambda x: x.loc[-1]).reset_index(drop=True)
-        df['24h_change'] = (df_with_last_row_per_day['close'] - df_with_first_row_per_day['open']) / df_with_first_row_per_day['open']
+        df_with_first_row_per_day = df.groupby('day').first()
+        df_with_last_row_per_day = df.groupby('day').last()
+        df_giornaliero = df_with_last_row_per_day
+        df_giornaliero['24h_change'] = (df_with_last_row_per_day['close'] - df_with_first_row_per_day['open']) / df_with_first_row_per_day['open']
         df['high'] = df[[2]]
         df['low'] = df[[3]]
-        df_with_max_per_day = df.groupby(['day'], sort=False)['high'].max()
-        df_with_min_per_day = df.groupby(['day'], sort=False)['low'].min()
-        df['24h_volatility'] = (df_with_max_per_day['high'] - df_with_min_per_day['low']) / df_with_min_per_day['low']
-        df['correlation'] = df['24h_change'] / df_principale_24h['bitcoin']
-        columns = ['day', '24h_change', '24h_volatility']
-        df = df[columns]
+        df_giornaliero['max_high'] = df.groupby(['day'], sort=False)['high'].max()
+        df_giornaliero['min_high'] = df.groupby(['day'], sort=False)['low'].min()
+        df_giornaliero['24h_volatility'] = (df_giornaliero['max_high'] - df_giornaliero['min_high']) / df_giornaliero['min_high']
+        df_giornaliero['correlation'] = df_giornaliero['24h_change'] / df_principale_24h['bitcoin']
+        df_principale = df_giornaliero.drop(['close', 'open', 'max_high', 'min_high'], axis = 1, inplace = False)
+        df_principale = df_principale.drop([0, 1, 2, 3, 4], axis = 1, inplace = False)
         columns = ['24h_change']
-        df_24h = df[columns].astype(str)
+        df_24h = df_principale[columns].astype(str)
         df_24h.columns = [id_coin]
         df_24h[id_coin] = df_24h[id_coin].str.replace(r'.', ',')
         columns = ['24h_volatility']
-        df_volatility = df[columns].astype(str)
+        df_volatility = df_principale[columns].astype(str)
         df_volatility.columns = [id_coin]
         df_volatility[id_coin] = df_volatility[id_coin].str.replace(r'.', ',')
         columns = ['correlation']
-        df_correlation = df[columns].astype(str)
+        df_correlation = df_principale[columns].astype(str)
         df_correlation.columns = [id_coin]
         df_correlation[id_coin] = df_correlation[id_coin].str.replace(r'.', ',')
+        #sostituire con pd.concat
         df_principale_24h = pd.merge(df_principale_24h, df_24h, on = "day", how = 'left')
         df_principale_volatility = pd.merge(df_principale_volatility, df_volatility, on = "day", how = 'left')
         df_principale_correlation = pd.merge(df_principale_correlation, df_correlation, on = 'day', how = 'left')
         count += 1
 
-print(df_principale)
-print(df_principale_24h)
-print(df_principale_correlation)
-print(df_principale_volatility)
-
-#salvo i due file con 24h_change e volatility
+#salvo i tre file con 24h_change, volatility e correlation
 df_principale_24h.to_cvs('24h_change.csv')
 df_principale_volatility.to_csv('volatility.csv')
 df_principale_correlation.to_csv('correlation.csv')
 
-#creo i dataframe con le classifica a 3 giorni
-df_principale_24h = df_principale_24h.drop('day')
-df_3d_change = df_principale_24h.tail(3).sum()                                     #1
-
-df_3d_positive = df_principale_24h.tail(3)
-for id in df_3d_positive.columns:
-    df_3d_positive[id] = df_3d_positive[id].apply(lambda x: 1 if x > 0 else 0)
-df_3d_positive = df_3d_positive.sum()                                              #2
-
-df_30d_volatility_mean = df_principale_volatility.describe().loc('mean')
-df_3d_volatility_check = df_principale_24h.tail(3)
-for id in df_3d_volatility_check:
-    mean = df_30d_volatility_mean[id]
-    df_3d_volatility_check[id] = df_3d_volatility_check[id].apply(lambda x: 1 if x < mean else 0)
-df_3d_volatility_check = df_3d_volatility_check.sum()                              #3
-
-df_30d_correlation_mean = df_principale_correlation.describe().loc('mean')
-df_3d_correlation_check = df_principale_correlation.tail(3)
-for id in df_3d_correlation_check:
-    mean = df_30d_correlation_mean[id]
-    df_3d_correlation_check[id] = df_3d_correlation_check[id].apply(lambda x: 1 if x > mean else 0)
-df_3d_correlation_check = df_3d_correlation_check.sum()                            #4
-
-#creo il dataframe con la classifica a 7 giorni
-df_7d_change = df_principale_24h.tail(7).sum()
-df_7d_pos = df_principale_24h.tail(7)
-for id in df_7d_pos.columns:
-    df_7d_pos[id] = df_7d_pos[id].apply(lambda x: 1 if x > 0 else 0)
-df_7d_pos = df_7d_pos.sum()   
-
-#creo il dataframe con la classifica a 14 giorni
-df_14d_change = df_principale_24h.tail(14).sum()
-
-#creo il dataframe con la classifica a 30 giorni
-df_30d_change = df_principale_24h.tail(14).sum()
+#creo i dataframe con le classifiche incrementali
+for num in range(1, df_principale_24h.shape[0] + 1):
+    df_24h_sum = df_principale_24h.loc[-1 : -num].sum(axis = 1)
+    df_24h_sum = df_24h_sum[df_24h_sum.loc[0].sort_values().index]
+    df_24h_sum.to_csv('24h_leaderboard_' + num + 'd.csv')
