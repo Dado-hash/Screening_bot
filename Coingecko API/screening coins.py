@@ -57,23 +57,20 @@ df_giornaliero['correlation'] = df_giornaliero['24h_change'] / df_giornaliero['2
 df_principale = df_giornaliero.drop(['close', 'open', 'max_high', 'min_high'], axis = 1, inplace = False)
 df_principale = df_principale.drop([0, 1, 2, 3, 4], axis = 1, inplace = False)
 columns = ['24h_change']
-df_principale_24h = df_principale[columns].astype(str)
+df_principale_24h = df_principale[columns]
 columns = ['24h_volatility']
-df_principale_volatility = df_principale[columns].astype(str)
+df_principale_volatility = df_principale[columns]
 columns = ['correlation']
-df_principale_correlation = df_principale[columns].astype(str)
+df_principale_correlation = df_principale[columns]
 df_principale_24h.columns = [id_coin]
 df_principale_volatility.columns = [id_coin]
 df_principale_correlation.columns = [id_coin]
-df_principale_24h[id_coin] = df_principale_24h[id_coin].str.replace(r'.', ',')
-df_principale_volatility[id_coin] = df_principale_volatility[id_coin].str.replace(r'.', ',')
-df_principale_correlation[id_coin] = df_principale_correlation[id_coin].str.replace(r'.', ',')
 
 #aggiungo le alt
 count = 0
 for id_coin in coins_id_list:
     if(id_coin != 'bitcoin'):
-        if(count == 30):
+        if(count == 18):
             t.sleep(70)
             count = 0
         hist_data = cg.get_coin_ohlc_by_id(id = id_coin, vs_currency = 'btc', days = '30', interval = 'daily')
@@ -95,18 +92,15 @@ for id_coin in coins_id_list:
         df_principale = df_giornaliero.drop(['close', 'open', 'max_high', 'min_high'], axis = 1, inplace = False)
         df_principale = df_principale.drop([0, 1, 2, 3, 4], axis = 1, inplace = False)
         columns = ['24h_change']
-        df_24h = df_principale[columns].astype(str)
+        df_24h = df_principale[columns]
         df_24h.columns = [id_coin]
-        df_24h[id_coin] = df_24h[id_coin].str.replace(r'.', ',')
         columns = ['24h_volatility']
-        df_volatility = df_principale[columns].astype(str)
+        df_volatility = df_principale[columns]
         df_volatility.columns = [id_coin]
-        df_volatility[id_coin] = df_volatility[id_coin].str.replace(r'.', ',')
         columns = ['correlation']
-        df_correlation = df_principale[columns].astype(str)
+        df_correlation = df_principale[columns]
         df_correlation.columns = [id_coin]
-        df_correlation[id_coin] = df_correlation[id_coin].str.replace(r'.', ',')
-        #sostituire con pd.concat
+        #sostituire con pd.concat e togliere il drop dell'ultima riga
         df_principale_24h = pd.merge(df_principale_24h, df_24h, on = "day", how = 'left')
         df_principale_volatility = pd.merge(df_principale_volatility, df_volatility, on = "day", how = 'left')
         df_principale_correlation = pd.merge(df_principale_correlation, df_correlation, on = 'day', how = 'left')
