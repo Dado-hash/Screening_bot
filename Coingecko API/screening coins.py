@@ -71,7 +71,7 @@ count = 0
 for id_coin in coins_id_list:
     if(id_coin != 'bitcoin'):
         if(count == 18):
-            t.sleep(70)
+            t.sleep(80)
             count = 0
         hist_data = cg.get_coin_ohlc_by_id(id = id_coin, vs_currency = 'btc', days = '30', interval = 'daily')
         df = pd.DataFrame(hist_data)
@@ -112,7 +112,13 @@ df_principale_volatility.to_csv('volatility.csv')
 df_principale_correlation.to_csv('correlation.csv')
 
 #creo i dataframe con le classifiche incrementali
+leaderboar = []
 for num in range(1, df_principale_24h.shape[0] + 1):
     df_24h_sum = df_principale_24h.loc[-1 : -num].sum(axis = 1)
     df_24h_sum = df_24h_sum[df_24h_sum.loc[0].sort_values().index]
-    df_24h_sum.to_csv('24h_leaderboard_' + num + 'd.csv')
+    leaderboar.append(df_24h_sum)
+with pd.ExcelWriter('leaderboards.xlsx') as writer:  
+    counter = 1
+    for df in leaderboar:
+        df.to_excel(writer, sheet_name= str(counter) + 'd')
+        counter += 1
