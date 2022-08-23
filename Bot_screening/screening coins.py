@@ -13,7 +13,7 @@ cg.ping()
 list_df = []
 for num in range(2):
     if(num!=0):
-        complexPriceRequest = cg.get_coins_markets(vs_currency = 'btc', order = 'market_cap_desc', per_page = 100, page = num, price_change_percentage = '24h')
+        complexPriceRequest = cg.get_coins_markets(vs_currency = 'btc', order = 'market_cap_desc', per_page = 8, page = num, price_change_percentage = '24h')
         list_df.append(pd.DataFrame(complexPriceRequest))
 df = pd.concat(list_df)
 list_columns = ['id', 'name', 'current_price', 'market_cap', 'high_24h', 'low_24h', 'price_change_percentage_24h']
@@ -24,7 +24,7 @@ df.to_csv("idcoins")
 list_df = []
 for num in range(3):
     if(num>1):
-        complexPriceRequest = cg.get_coins_markets(vs_currency = 'btc', order = 'market_cap_desc', per_page = 100, page = num, price_change_percentage = '24h')
+        complexPriceRequest = cg.get_coins_markets(vs_currency = 'btc', order = 'market_cap_desc', per_page = 8, page = num, price_change_percentage = '24h')
         list_df.append(pd.DataFrame(complexPriceRequest))
 df = pd.concat(list_df)
 list_columns = ['id', 'name', 'current_price', 'market_cap', 'high_24h', 'low_24h', 'price_change_percentage_24h']
@@ -68,10 +68,11 @@ df_principale_correlation.columns = [id_coin]
 
 #aggiungo le alt
 count = 0
+i = 0
 for id_coin in coins_id_list:
     if(id_coin != 'bitcoin'):
-        if(count == 18):
-            t.sleep(80)
+        if(count == 16):
+            t.sleep(90)
             count = 0
         hist_data = cg.get_coin_ohlc_by_id(id = id_coin, vs_currency = 'btc', days = '30', interval = 'daily')
         df = pd.DataFrame(hist_data)
@@ -101,21 +102,25 @@ for id_coin in coins_id_list:
         df_correlation = df_principale[columns]
         df_correlation.columns = [id_coin]
         #sostituire con pd.concat e togliere il drop dell'ultima riga
-        df_principale_24h = pd.merge(df_principale_24h, df_24h, on = "day", how = 'left')
-        df_principale_volatility = pd.merge(df_principale_volatility, df_volatility, on = "day", how = 'left')
-        df_principale_correlation = pd.merge(df_principale_correlation, df_correlation, on = 'day', how = 'left')
+        df_principale_24h = pd.concat([df_principale_24h, df_24h], axis = 1)
+        df_principale_volatility = pd.concat([df_principale_volatility, df_volatility], axis = 1)
+        df_principale_correlation = pd.concat([df_principale_correlation, df_correlation], axis = 1)
         count += 1
+        i += 1
+        print(i)
 
 #salvo i tre file con 24h_change, volatility e correlation
-df_principale_24h.to_cvs('24h_change.csv')
+df_principale_24h.to_csv('24h_change.csv')
 df_principale_volatility.to_csv('volatility.csv')
 df_principale_correlation.to_csv('correlation.csv')
 
 #creo i dataframe con le classifiche incrementali
 leaderboar = []
-for num in range(1, df_principale_24h.shape[0] + 1):
-    df_24h_sum = df_principale_24h.loc[-1 : -num].sum(axis = 1)
-    df_24h_sum = df_24h_sum[df_24h_sum.loc[0].sort_values().index]
+for num in range(2, df_principale_24h.shape[0] + 1):
+    df_24h_sum = df_principale_24h.iloc[(31-num) : 31].sum()
+    print(df_24h_sum)
+    df_24h_sum = df_24h_sum.sort_values(ascending=False)
+    print(df_24h_sum)
     leaderboar.append(df_24h_sum)
 with pd.ExcelWriter('leaderboards.xlsx') as writer:  
     counter = 1

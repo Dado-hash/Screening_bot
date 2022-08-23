@@ -1,0 +1,9 @@
+id,name,current_price,market_cap,high_24h,low_24h,price_change_percentage_24h
+bitcoin,Bitcoin,1.0,19129750,1.0,1.0,0.0
+ethereum,Ethereum,0.07629498,9186810,0.07645197,0.07391763,2.88872
+tether,Tether,4.665e-05,3146218,4.774e-05,4.621e-05,-0.3528
+usd-coin,USD Coin,4.665e-05,2436398,4.77e-05,4.625e-05,-0.26508
+binancecoin,BNB,0.01389654,2269719,0.01418755,0.01385,-0.42474
+binance-usd,Binance USD,4.661e-05,885401,4.763e-05,4.63e-05,-0.26532
+ripple,XRP,1.602e-05,792856,1.618e-05,1.578e-05,1.38662
+cardano,Cardano,2.145e-05,726260,2.168e-05,2.115e-05,1.13072
