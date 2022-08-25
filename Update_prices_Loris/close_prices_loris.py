@@ -22,10 +22,7 @@ days_from_begin = today - begin
 
 #scarico per ogni coin lo storico dei prezzi, attacco le prime tre righe di default e le salvo in una lista per concatenarle dopo
 second_part_df = second_part_df[second_part_df.loc[1].sort_values().index]
-print(second_part_df)
 coins_tickets = second_part_df.values.tolist()[1]
-print(coins_tickets)
-#second_part_df = second_part_df.sort_index(axis = 1)
 id_coins = second_part_df.columns
 list_prices = []
 list_index = []
@@ -41,7 +38,7 @@ for id_c in id_coins:
     df['Data'] = df['prices'].str[0]
     df['Data'] = pd.to_datetime(df['Data']/1000, unit = 's').dt.date
     df[id_c] = df['prices'].str[1].astype(str)
-    df[id_c] = df[id_c].str.replace(r'.', ',')
+    df[id_c] = df[id_c].str.replace(r'.', ',', regex = True)
     columns = ['Data', id_c]
     df = df[columns]
     rows = df.shape[0]
@@ -53,8 +50,8 @@ for id_c in id_coins:
             list_prices_coin.insert(0, 0)
     list_prices_coin.insert(0, index)
     list_prices_coin.insert(0, coins_tickets[index - 13])
-    list_prices_coin.insert(0, id_c)
-    list_index.append(index)
+    list_prices_coin.insert(0, index)
+    #list_index.append(index)
     new_column = pd.DataFrame(list_prices_coin)
     list_prices.append(new_column)
     index += 1
@@ -62,7 +59,8 @@ for id_c in id_coins:
 
 #concateno i prezzi delle coin
 second_part_df = pd.concat(list_prices, axis = 1)
-second_part_df.columns = list_index
+second_part_df.columns = id_coins
+#second_part_df.columns = list_index
 print(second_part_df)
 
 #creo la prima colonna con le date
@@ -73,14 +71,14 @@ df.drop(df.tail(1).index,inplace=True)
 df['Data'] = df['prices'].str[0]
 df['Data'] = pd.to_datetime(df['Data']/1000, unit = 's').dt.date
 df['bitcoin'] = df['prices'].str[1].astype(str)
-df['bitcoin'] = df['bitcoin'].str.replace(r'.', ',')
+df['bitcoin'] = df['bitcoin'].str.replace(r'.', ',', regex = True)
 columns = ['Data', 'bitcoin']
 df = df[columns]
 list_data = df['Data'].to_list()
-list_data.insert(0, 'Data')
+list_data.insert(0, 1)
 list_data.insert(0, 'Data')
 list_data.insert(0, 1)
-list_index.append(1)
+#list_index.append(1)
 new_column = pd.DataFrame(list_data)
 list_indexes.append(new_column)
 
@@ -94,29 +92,44 @@ for index in id_indexes:
     #manca trovare come scaricare i dati degli indici
     list_prices.insert(0, num_index)
     list_prices.insert(0, extended_id_indexes[num_index - 2])
-    list_prices.insert(0, index)
-    list_index.append(num_index)
+    list_prices.insert(0, num_index)
+    #list_index.append(num_index)
     new_column = pd.DataFrame(list_prices)
     list_indexes.append(new_column)
     num_index += 1
 
 #concateno gli indici(sarà uguale alle coin fin qui)
 first_part_df = pd.concat(list_indexes, axis = 1)
-first_part_df.columns = list_index
-'''first_part_df.columns = ['Data','EurUsd Curncy', 'MSDEWIN Index', 'MSDEEEMN Index', 'LGCPTREU Index',
+#first_part_df.columns = list_index
+first_part_df.columns = ['Data','EurUsd Curncy', 'MSDEWIN Index', 'MSDEEEMN Index', 'LGCPTREU Index',
        'LGAGTREU Index', 'XAU Curncy Usd', 'BGCI Index Usd',
        'SPCBDM Index Usd', 'XAU Curncy Eur', 'BGCI Index Eur',
-       'SPCBDM Index Eur']'''
+       'SPCBDM Index Eur']
 
 #concateno i due dataframe
 df_principale = pd.concat([first_part_df, second_part_df], axis = 1)
+df_principale.set_index('Data', inplace = True)
 print(df_principale)
 
 #creo il dataframe per il secondo foglio
-df_principale = df_principale.drop('Data', axis = 1)
-df_coins_list = df_principale.iloc([0, 1])
-df_coins_list = df_coins_list.T
-num_list = df_coins_list[[0]]
-num_list.insert(0, 1)  #manca cancellare l'ultimo numero
-new_column = pd.DataFrame(num_list)
-df_coins_list = pd.concat([new_column, df_coins_list], axis = 1)  #manca rinominare le colonne e riordinarle
+#df_principale = df_principale.drop('Data', axis = 1)
+list = []
+columns = ['#', 'Name', '#Column']
+list_numbers = df_principale.values.astype(str).tolist()[2]
+list_numbers.insert(0, 1)
+new_column = pd.DataFrame(list_numbers)
+list.append(new_column)
+list_coins = df_principale.values.tolist()[1]
+new_column = pd.DataFrame(list_coins)
+list.append(new_column)
+list_numbers = df_principale.values.astype(str).tolist()[2]
+new_column = pd.DataFrame(list_numbers)
+list.append(new_column)
+second_sheet = pd.concat(list, axis = 1, ignore_index = True)
+second_sheet.columns = columns
+second_sheet.set_index('#', inplace = True)
+print(second_sheet)
+
+with pd.ExcelWriter('Master_Download_Prices.xlsx') as writer:  
+    df_principale.to_excel(writer, sheet_name = 'Close_Usd')
+    second_sheet.to_excel(writer, sheet_name = 'Coins_List')
