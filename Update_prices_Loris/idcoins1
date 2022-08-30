@@ -1,0 +1,9 @@
+id,name,current_price,market_cap,high_24h,low_24h,price_change_percentage_24h
+solana,Solana,0.00161396,563379,0.00161348,0.00154485,4.38353
+dogecoin,Dogecoin,3.14e-06,416164,3.17e-06,3.11e-06,0.65582
+polkadot,Polkadot,0.00035786,409991,0.0003595,0.00035012,1.98955
+shiba-inu,Shiba Inu,6.19905e-10,365557,6.21842e-10,6.02403e-10,2.66705
+staked-ether,Lido Staked Ether,0.07588516,325498,0.07594386,0.0704617,6.8094
+dai,Dai,4.896e-05,318041,5.055e-05,4.869e-05,-2.79648
+matic-network,Polygon,4.084e-05,303398,4.084e-05,3.936e-05,3.47301
+tron,TRON,3.1e-06,286279,3.14e-06,3.09e-06,-0.48221

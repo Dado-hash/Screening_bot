@@ -118,9 +118,7 @@ df_principale_correlation.to_csv('correlation.csv')
 leaderboar = []
 for num in range(2, df_principale_24h.shape[0] + 1):
     df_24h_sum = df_principale_24h.iloc[(31-num) : 31].sum()
-    print(df_24h_sum)
     df_24h_sum = df_24h_sum.sort_values(ascending=False)
-    print(df_24h_sum)
     leaderboar.append(df_24h_sum)
 with pd.ExcelWriter('leaderboards.xlsx') as writer:  
     counter = 1
