@@ -111,9 +111,11 @@ for id_coin in coins_id_list:
         print(i)
 
 #salvo i tre file con 24h_change, volatility e correlation
-df_principale_24h.to_csv('24h_change.xlsx')
-df_principale_volatility.to_csv('volatility.xlsx')
-df_principale_correlation.to_csv('correlation.xlsx')
+df_principale_24h.to_excel('24h_change.xlsx')
+df_principale_volatility.to_excel('volatility.xlsx')
+df_principale_correlation.to_excel('correlation.xlsx')
+
+print(df_principale_24h.dtypes)
 
 #creo i dataframe con le classifiche incrementali
 leaderboar = []
