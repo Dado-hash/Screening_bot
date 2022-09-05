@@ -4,10 +4,11 @@ import time as t
 import plotly.graph_objects as go
 from plotly.offline import plot
 from pycoingecko import CoinGeckoAPI
+import decimal
 
 cg = CoinGeckoAPI()
-
 cg.ping()
+pd.set_option("display.precision", 8)
 
 #prendo l'id delle prime 1000 coin per market cap
 list_df = []
@@ -74,7 +75,7 @@ for id_coin in coins_id_list:
         if(count == 16):
             t.sleep(90)
             count = 0
-        hist_data = cg.get_coin_ohlc_by_id(id = id_coin, vs_currency = 'btc', days = '30', interval = 'daily')
+        hist_data = cg.get_coin_ohlc_by_id(id = id_coin, vs_currency = 'usd', days = '30', interval = 'daily')
         df = pd.DataFrame(hist_data)
         df['day'] = df[[0]]
         df['day'] = pd.to_datetime(df['day']/1000, unit = 's').dt.date
@@ -83,12 +84,12 @@ for id_coin in coins_id_list:
         df_with_first_row_per_day = df.groupby('day').first()
         df_with_last_row_per_day = df.groupby('day').last()
         df_giornaliero = df_with_last_row_per_day
-        df_giornaliero['24h_change'] = (df_with_last_row_per_day['close'] - df_with_first_row_per_day['open']) / df_with_first_row_per_day['open']
+        df_giornaliero['24h_change'] = (df_with_last_row_per_day['close'] - df_with_first_row_per_day['open']) / df_with_first_row_per_day['open'] - df_principale_24h['bitcoin']
         df['high'] = df[[2]]
         df['low'] = df[[3]]
         df_giornaliero['max_high'] = df.groupby(['day'], sort=False)['high'].max()
         df_giornaliero['min_high'] = df.groupby(['day'], sort=False)['low'].min()
-        df_giornaliero['24h_volatility'] = (df_giornaliero['max_high'] - df_giornaliero['min_high']) / df_giornaliero['min_high']
+        df_giornaliero['24h_volatility'] = (df_giornaliero['max_high'] - df_giornaliero['min_high']) / df_giornaliero['min_high'] - df_principale_volatility['bitcoin']
         df_giornaliero['correlation'] = df_giornaliero['24h_change'] / df_principale_24h['bitcoin']
         df_principale = df_giornaliero.drop(['close', 'open', 'max_high', 'min_high'], axis = 1, inplace = False)
         df_principale = df_principale.drop([0, 1, 2, 3, 4], axis = 1, inplace = False)
