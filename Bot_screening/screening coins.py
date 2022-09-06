@@ -14,7 +14,7 @@ pd.set_option("display.precision", 8)
 list_df = []
 for num in range(2):
     if(num!=0):
-        complexPriceRequest = cg.get_coins_markets(vs_currency = 'btc', order = 'market_cap_desc', per_page = 50, page = num, price_change_percentage = '24h')
+        complexPriceRequest = cg.get_coins_markets(vs_currency = 'btc', order = 'market_cap_desc', per_page = 5, page = num, price_change_percentage = '24h')
         list_df.append(pd.DataFrame(complexPriceRequest))
 df = pd.concat(list_df)
 list_columns = ['id', 'name', 'current_price', 'market_cap', 'high_24h', 'low_24h', 'price_change_percentage_24h']
@@ -25,7 +25,7 @@ df.to_csv("idcoins")
 list_df = []
 for num in range(3):
     if(num>1):
-        complexPriceRequest = cg.get_coins_markets(vs_currency = 'btc', order = 'market_cap_desc', per_page = 50, page = num, price_change_percentage = '24h')
+        complexPriceRequest = cg.get_coins_markets(vs_currency = 'btc', order = 'market_cap_desc', per_page = 5, page = num, price_change_percentage = '24h')
         list_df.append(pd.DataFrame(complexPriceRequest))
 df = pd.concat(list_df)
 list_columns = ['id', 'name', 'current_price', 'market_cap', 'high_24h', 'low_24h', 'price_change_percentage_24h']
@@ -111,20 +111,29 @@ for id_coin in coins_id_list:
         print(i)
 
 #salvo i tre file con 24h_change, volatility e correlation
-df_principale_24h.to_excel('24h_change.xlsx')
+df_24h = df_principale_24h
+df_principale_24h = df_principale_24h.T
+df_principale_24h['sum'] = df_principale_24h.sum(axis = 1)
+print(df_principale_24h)
+df_principale_24h = df_principale_24h.sort_values('sum', ascending = False)
+print(df_principale_24h)
 df_principale_volatility.to_excel('volatility.xlsx')
 df_principale_correlation.to_excel('correlation.xlsx')
 
-print(df_principale_24h.dtypes)
+#cambiare formato numeri per avere la virgola
 
 #creo i dataframe con le classifiche incrementali
-leaderboar = []
-for num in range(2, df_principale_24h.shape[0] + 1):
-    df_24h_sum = df_principale_24h.iloc[(31-num) : 31].sum()
-    df_24h_sum = df_24h_sum.sort_values(ascending=False)
-    leaderboar.append(df_24h_sum)
+leaderboard = []
+for num in range(2, df_24h.shape[0] + 1):
+    df_24h_sum = df_24h.iloc[(31-num) : 31].sum()
+    df_24h_sum = df_24h_sum.sort_values(ascending = False)
+    leaderboard.append(df_24h_sum)
 with pd.ExcelWriter('leaderboards.xlsx') as writer:  
+    df_principale_24h.to_excel(writer, sheet_name = '24h_change')
     counter = 1
-    for df in leaderboar:
-        df.to_excel(writer, sheet_name= str(counter) + 'd')
+    for df in leaderboard:
+        df.to_excel(writer, sheet_name = str(counter) + 'd')
         counter += 1
+
+#mettere sulla stessa tabella -> non si può fare, perdo la colonna con il nome
+#tenere traccia del cambiamento delle posizioni
