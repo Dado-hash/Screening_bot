@@ -61,7 +61,7 @@ for num in range(len(cumulatives)-1):
 with pd.ExcelWriter('leaderboards.xlsx') as writer:
     counter = 0
     for df in leaderboard:
-        if(counter == 1):
+        if(counter == 0):
             first.to_excel(writer, sheet_name = str(cumulatives[counter]) + 'd')
             counter += 1
         else:

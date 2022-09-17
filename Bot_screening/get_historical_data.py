@@ -73,7 +73,7 @@ for id_coin in coins_id_list:
         if(count == 16):
             t.sleep(80)
             count = 0
-        hist_data = cg.get_coin_market_chart_by_id(id = id_coin, vs_currency = 'usd', days = 'max', interval = 'daily')
+        hist_data = cg.get_coin_market_chart_by_id(id = id_coin, vs_currency = 'btc', days = 'max', interval = 'daily')
         df = pd.DataFrame(hist_data)
         df.drop(df.tail(1).index,inplace=True)
         df['day'] = df['prices'].str[0]
