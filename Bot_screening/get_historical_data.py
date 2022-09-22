@@ -21,8 +21,6 @@ number_coins = int(input("Inserisci il numero di coin -> "))
 if(number_coins > 100):
     range1 = (int(number_coins)//200) + 1
     range2 = (int(number_coins)//100) + 1
-    tot = range1 + range2
-    range2_bar = range2 - 1
 
 if(number_coins > 100):
     list_df = []
