@@ -1,4 +1,12 @@
 import pandas as pd
+import colorama
+
+def progress_bar(progress, total, color = colorama.Fore.YELLOW):
+    percent = 100 * (progress / float(total))
+    bar = '*' * int(percent) + '-' * (100 - int(percent))
+    print(color + f"\r|{bar}| {percent:.2f}%", end="\r")
+    if (progress == total):
+        print(colorama.Fore.GREEN + f"\r|{bar}| {percent:.2f}%", end="\r")   #aggiungere alla fine comando per resettare colore
 
 direction = input("In che direzione voui calcolare i cumulativi?\n"
                     "0 -> Da oggi andando indietro\n"
@@ -12,6 +20,7 @@ if(direction):
 all = input("Seleziona che tipo di cumulativi ti servono:\n"
             "0 -> Solo alcuni\n"
             "1 -> Tutti\n")
+all = int(all)
 
 if(all):
     cumulatives = list(range(start + 1))
@@ -21,6 +30,9 @@ else:
     cumulatives = cumulatives.split()
     for i in range(len(cumulatives)):
         cumulatives[i] = int(cumulatives[i])
+
+totale = (len(cumulatives) * 5) - 3
+progresso = 0
 
 df_principale = pd.read_excel('storico.xlsx')
 df_principale.set_index('day', inplace = True)
@@ -43,6 +55,8 @@ if(not direction):
         df_24h_sum = df_24h_sum.merge(ranking, on = 'Cumulative')
         df_24h_sum.index = df.index
         leaderboard.append(df_24h_sum)
+        progresso += 1
+        progress_bar(progresso, totale)
 else:
     for num in cumulatives:
         pd.set_option('display.float_format', lambda x: '%.5f' % x)
@@ -59,24 +73,32 @@ else:
         df_24h_sum = df_24h_sum.merge(ranking, on = 'Cumulative')
         df_24h_sum.index = df.index
         leaderboard.append(df_24h_sum)
+        progresso += 1
+        progress_bar(progresso, totale)
 
 with pd.ExcelWriter('leaderboards.xlsx') as writer:  
     counter = 0
     for df in leaderboard:
         df.to_excel(writer, sheet_name = str(cumulatives[counter]) + 'd')
         counter += 1
+        progresso += 1
+        progress_bar(progresso, totale)
 
 df_totale = pd.read_excel('leaderboards.xlsx', sheet_name = str(cumulatives[0]) + 'd')
-df_totale.columns = ['Coin', 'Cumulative', 'Rank']
+titolo = str(cumulatives[0]) + 'd'
+df_totale.columns = ['Coin', titolo, 'Rank']  #cambiare cumulative in str(cumulatives[num])
 df_totale.drop('Rank', inplace = True, axis = 1)
 df_totale.set_index('Coin', inplace = True)
 for num in range(len(cumulatives)):
     if(cumulatives[num] != cumulatives[0]):
         second_df = pd.read_excel('leaderboards.xlsx', sheet_name = str(cumulatives[num]) + 'd')
-        second_df.columns = ['Coin', 'Cumulative', 'Rank']
+        titolo = str(cumulatives[num]) + 'd'
+        second_df.columns = ['Coin', titolo, 'Rank']  #cambiare cumulative in str(cumulatives[num])
         second_df.drop('Rank', inplace = True, axis = 1)
         second_df.set_index('Coin', inplace = True)
         df_totale = df_totale.merge(second_df, on = 'Coin')
+        progresso += 1
+        progress_bar(progresso, totale)
 
 first = pd.read_excel('leaderboards.xlsx', sheet_name = str(cumulatives[0]) + 'd')
 first.columns = ['Coin', 'Cumulative', 'Rank']
@@ -95,6 +117,8 @@ for num in range(len(cumulatives)-1):
     df.drop(['Rank1', 'Rank2'], inplace = True, axis = 1)
     df.set_index('Coin', inplace = True)
     leaderboard.append(df)
+    progresso += 1
+    progress_bar(progresso, totale)
 
 with pd.ExcelWriter('leaderboards.xlsx') as writer:
     df_totale.to_excel(writer, sheet_name = 'Aggregate')
@@ -103,3 +127,7 @@ with pd.ExcelWriter('leaderboards.xlsx') as writer:
     for df in leaderboard:
         df.to_excel(writer, sheet_name = str(cumulatives[counter]) + 'd')
         counter += 1
+        progresso += 1
+        progress_bar(progresso, totale)
+
+print(colorama.Fore.RESET)
