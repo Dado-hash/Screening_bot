@@ -30,8 +30,6 @@ class BinanceException(Exception):
         # super(BinanceException, self).__init__(message)
         super().__init__(message)
 
-old_df = pd.read_csv('old_esempio')
-old_df.set_index('asset', inplace = True)
 PATH = '/sapi/v1/staking/position'
 timestamp = int(time.time() * 1000)
 params = {
@@ -58,9 +56,7 @@ for c in numeric_columns:
 df.set_index('asset', inplace = True) 
 #print(df)
 #df.to_csv('esempio')
-old_df = pd.concat([old_df, df])
-print(old_df)
-old_df.to_csv('old_esempio')
+df.to_excel('staking.xlsx')
 
 '''PATH_SUB = '/sapi/v3/sub-account/assets'
 timestamp = int(time.time() * 1000)
