@@ -28,7 +28,6 @@ if(number_coins > 100):
         if(num!=0):
             complexPriceRequest = cg.get_coins_markets(vs_currency = 'btc', order = 'market_cap_desc', per_page = 100, page = num, price_change_percentage = '24h')
             list_df.append(pd.DataFrame(complexPriceRequest))
-            #progress_bar(num, range2)
     df = pd.concat(list_df)
     list_columns = ['id', 'name', 'current_price', 'market_cap', 'high_24h', 'low_24h', 'price_change_percentage_24h']
     df = df[list_columns]   
@@ -40,7 +39,6 @@ if(number_coins > 100):
         if(num>range2//2):
             complexPriceRequest = cg.get_coins_markets(vs_currency = 'btc', order = 'market_cap_desc', per_page = 100, page = num, price_change_percentage = '24h')
             list_df.append(pd.DataFrame(complexPriceRequest))
-            #progress_bar(num, range2)
     df = pd.concat(list_df)
     list_columns = ['id', 'name', 'current_price', 'market_cap', 'high_24h', 'low_24h', 'price_change_percentage_24h']
     df = df[list_columns]   
@@ -74,7 +72,6 @@ df[id_coin] = df[id_coin]
 columns = ['day', id_coin]
 df_principale = df[columns]
 df_principale.set_index('day', inplace = True)
-#progress_bar(1, number_coins)
 
 #aggiungo le alt
 count = 0
@@ -95,9 +92,10 @@ for id_coin in coins_id_list:
         df = df[columns]
         df.set_index('day', inplace = True)
         df_principale = pd.merge(df_principale, df, on="day", how = 'left')
+        df_principale = df_principale.copy()
         count += 1
         count_bar += 1
-        #progress_bar(count_bar, number_coins-1)
+        progress_bar(count_bar, number_coins-1)
         
 #salvo lo storico
 df_principale.to_excel('storico.xlsx')
