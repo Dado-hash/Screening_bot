@@ -6,7 +6,8 @@ def progress_bar(progress, total, color = colorama.Fore.YELLOW):
     bar = '*' * int(percent) + '-' * (100 - int(percent))
     print(color + f"\r|{bar}| {percent:.2f}%", end="\r")
     if (progress == total):
-        print(colorama.Fore.GREEN + f"\r|{bar}| {percent:.2f}%", end="\r")   #aggiungere alla fine comando per resettare colore
+        print(colorama.Fore.GREEN + f"\r|{bar}| {percent:.2f}%", end="\r") 
+        print(colorama.Fore.RESET)
 
 direction = input("In che direzione voui calcolare i cumulativi?\n"
                     "0 -> Da oggi andando indietro\n"
@@ -76,6 +77,7 @@ else:
         progresso += 1
         progress_bar(progresso, totale)
 
+cycles = leaderboard
 with pd.ExcelWriter('leaderboards.xlsx') as writer:  
     counter = 0
     for df in leaderboard:
@@ -130,4 +132,32 @@ with pd.ExcelWriter('leaderboards.xlsx') as writer:
         progresso += 1
         progress_bar(progresso, totale)
 
-print(colorama.Fore.RESET)
+constraints = input("Ti interessa sapere se delle coin si sono vincolate al rialzo?\n"
+                    "0 -> No\n"
+                    "1 -> Sì\n")
+coins = df_principale.columns
+if(int(constraints)):
+    list = []
+    list_test = []
+    lenght_min = input("Qual è la durata minima del ciclo che stai cercando?\n")
+    lenght_min = int(lenght_min)
+    start_cycle = lenght_min//4
+    for coin in coins:
+        count_tot = 0
+        count_rel = 0
+        flag = 0
+        for df in cycles:
+            if(flag == 0 and count_tot < lenght_min):
+                if(df['Cumulative'][coin] < 0):
+                    count_rel += 1
+                elif(df['Cumulative'][coin] > 0 and count_rel >= start_cycle):
+                    print(df['Cumulative'][coin])
+                    list_test.append(coin)
+                    list.append((coin, count_tot, df['Cumulative'][coin]))
+                    flag = 1
+                else:
+                    count_rel = 0
+                count_tot += 1
+    df = df_totale.loc[df_totale.index.isin(list_test)]
+    df.to_excel('constraints.xlsx')
+    print(list)
