@@ -16,6 +16,7 @@ def progress_bar(progress, total, color = colorama.Fore.YELLOW):
     print(color + f"\r|{bar}| {percent:.2f}%", end="\r")
     if (progress == total):
         print(colorama.Fore.GREEN + f"\r|{bar}| {percent:.2f}%", end="\r")
+        print(colorama.Fore.RESET)
 
 number_coins = int(input("Inserisci il numero di coin -> "))
 if(number_coins > 100):
