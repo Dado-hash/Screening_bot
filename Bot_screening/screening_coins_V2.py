@@ -115,7 +115,7 @@ for num in range(len(cumulatives)-1):
     second_df.columns = ['Coin', 'Cumulative', 'Rank2']
     first_df.drop('Cumulative', inplace = True, axis = 1)
     df = second_df.merge(first_df, on = 'Coin')
-    df['Change'] = df['Rank2'] - df['Rank1']
+    df['Change'] = df['Rank1'] - df['Rank2']
     df.drop(['Rank1', 'Rank2'], inplace = True, axis = 1)
     df.set_index('Coin', inplace = True)
     leaderboard.append(df)
@@ -161,3 +161,12 @@ if(int(constraints)):
     df = df_totale.loc[df_totale.index.isin(list_test)]
     df.to_excel('constraints.xlsx')
     print(list)
+
+    list_cum = []
+    for cum in cumulatives:
+        df_sheet = pd.read_excel('leaderboards.xlsx', sheet_name= str(cum) + 'd')
+        df_sheet = df_sheet.rename(columns={'Change': 'Change ' + str(cum) + 'd'})
+        list_cum.append(df_sheet)
+    df_cums = pd.concat(list_cum, axis = 1)
+    print(df_cums)
+    df_cums.to_excel('cumulatives_changes.xlsx')
