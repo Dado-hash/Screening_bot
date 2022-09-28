@@ -35,7 +35,7 @@ else:
 totale = (len(cumulatives) * 5) - 3
 progresso = 0
 
-df_principale = pd.read_excel('storico.xlsx')
+df_principale = pd.read_excel('high.xlsx')
 df_principale.set_index('day', inplace = True)
 
 #creo i dataframe con le classifiche incrementali
@@ -53,7 +53,9 @@ if(not direction):
         ranking = pd.DataFrame(range(1, 1 + len(df_24h_sum)))
         ranking.columns = ['Rank']
         ranking['Cumulative'] = df_24h_sum['Cumulative']
-        df_24h_sum = df_24h_sum.merge(ranking, on = 'Cumulative')
+        df_24h_sum = pd.concat([df_24h_sum, ranking], axis = 1)
+        df_24h_sum.columns = ['Cumulative', 'Rank', 'Trash']
+        df_24h_sum.drop('Trash', axis = 1, inplace = True)
         df_24h_sum.index = df.index
         leaderboard.append(df_24h_sum)
         progresso += 1
@@ -71,7 +73,9 @@ else:
         ranking = pd.DataFrame(range(1, 1 + len(df_24h_sum)))
         ranking.columns = ['Rank']
         ranking['Cumulative'] = df_24h_sum['Cumulative']
-        df_24h_sum = df_24h_sum.merge(ranking, on = 'Cumulative')
+        df_24h_sum = pd.concat([df_24h_sum, ranking], axis = 1)
+        df_24h_sum.columns = ['Cumulative', 'Rank', 'Trash']
+        df_24h_sum.drop('Trash', axis = 1, inplace = True)
         df_24h_sum.index = df.index
         leaderboard.append(df_24h_sum)
         progresso += 1
@@ -88,14 +92,14 @@ with pd.ExcelWriter('leaderboards.xlsx') as writer:
 
 df_totale = pd.read_excel('leaderboards.xlsx', sheet_name = str(cumulatives[0]) + 'd')
 titolo = str(cumulatives[0]) + 'd'
-df_totale.columns = ['Coin', titolo, 'Rank']  #cambiare cumulative in str(cumulatives[num])
+df_totale.columns = ['Coin', titolo, 'Rank']  
 df_totale.drop('Rank', inplace = True, axis = 1)
 df_totale.set_index('Coin', inplace = True)
 for num in range(len(cumulatives)):
     if(cumulatives[num] != cumulatives[0]):
         second_df = pd.read_excel('leaderboards.xlsx', sheet_name = str(cumulatives[num]) + 'd')
         titolo = str(cumulatives[num]) + 'd'
-        second_df.columns = ['Coin', titolo, 'Rank']  #cambiare cumulative in str(cumulatives[num])
+        second_df.columns = ['Coin', titolo, 'Rank']  
         second_df.drop('Rank', inplace = True, axis = 1)
         second_df.set_index('Coin', inplace = True)
         df_totale = df_totale.merge(second_df, on = 'Coin')
@@ -115,7 +119,7 @@ for num in range(len(cumulatives)-1):
     second_df.columns = ['Coin', 'Cumulative', 'Rank2']
     first_df.drop('Cumulative', inplace = True, axis = 1)
     df = second_df.merge(first_df, on = 'Coin')
-    df['Change'] = df['Rank1'] - df['Rank2']
+    df['Change'] = df['Rank2'] - df['Rank1']
     df.drop(['Rank1', 'Rank2'], inplace = True, axis = 1)
     df.set_index('Coin', inplace = True)
     leaderboard.append(df)
@@ -161,12 +165,3 @@ if(int(constraints)):
     df = df_totale.loc[df_totale.index.isin(list_test)]
     df.to_excel('constraints.xlsx')
     print(list)
-
-    list_cum = []
-    for cum in cumulatives:
-        df_sheet = pd.read_excel('leaderboards.xlsx', sheet_name= str(cum) + 'd')
-        df_sheet = df_sheet.rename(columns={'Change': 'Change ' + str(cum) + 'd'})
-        list_cum.append(df_sheet)
-    df_cums = pd.concat(list_cum, axis = 1)
-    print(df_cums)
-    df_cums.to_excel('cumulatives_changes.xlsx')

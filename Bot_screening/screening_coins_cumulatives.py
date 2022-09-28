@@ -53,7 +53,9 @@ if(not direction):
         ranking = pd.DataFrame(range(1, 1 + len(df_24h_sum)))
         ranking.columns = ['Rank']
         ranking['Cumulative'] = df_24h_sum['Cumulative']
-        df_24h_sum = df_24h_sum.merge(ranking, on = 'Cumulative')
+        df_24h_sum = pd.concat([df_24h_sum, ranking], axis = 1)
+        df_24h_sum.columns = ['Cumulative', 'Rank', 'Trash']
+        df_24h_sum.drop('Trash', axis = 1, inplace = True)
         df_24h_sum.index = df.index
         leaderboard.append(df_24h_sum)
         progresso += 1
@@ -71,7 +73,9 @@ else:
         ranking = pd.DataFrame(range(1, 1 + len(df_24h_sum)))
         ranking.columns = ['Rank']
         ranking['Cumulative'] = df_24h_sum['Cumulative']
-        df_24h_sum = df_24h_sum.merge(ranking, on = 'Cumulative')
+        df_24h_sum = pd.concat([df_24h_sum, ranking], axis = 1)
+        df_24h_sum.columns = ['Cumulative', 'Rank', 'Trash']
+        df_24h_sum.drop('Trash', axis = 1, inplace = True)
         df_24h_sum.index = df.index
         leaderboard.append(df_24h_sum)
         progresso += 1
@@ -115,7 +119,7 @@ for num in range(len(cumulatives)-1):
     second_df.columns = ['Coin', 'Cumulative', 'Rank2']
     first_df.drop('Cumulative', inplace = True, axis = 1)
     df = second_df.merge(first_df, on = 'Coin')
-    df['Change'] = df['Rank2'] - df['Rank1']
+    df['Change'] = df['Rank1'] - df['Rank2']
     df.drop(['Rank1', 'Rank2'], inplace = True, axis = 1)
     df.set_index('Coin', inplace = True)
     leaderboard.append(df)
@@ -151,7 +155,7 @@ if(int(constraints)):
                 if(df['Cumulative'][coin] < 0):
                     count_rel += 1
                 elif(df['Cumulative'][coin] > 0 and count_rel >= start_cycle):
-                    print(df['Cumulative'][coin])
+                    #print(df['Cumulative'][coin])
                     list_test.append(coin)
                     list.append((coin, count_tot, df['Cumulative'][coin]))
                     flag = 1
@@ -160,4 +164,12 @@ if(int(constraints)):
                 count_tot += 1
     df = df_totale.loc[df_totale.index.isin(list_test)]
     df.to_excel('constraints.xlsx')
-    print(list)
+    #print(list)
+
+    list_cum = []
+    for cum in cumulatives:
+        df_sheet = pd.read_excel('leaderboards.xlsx', sheet_name= str(cum) + 'd')
+        df_sheet = df_sheet.rename(columns={'Change': 'Change ' + str(cum) + 'd'})
+        list_cum.append(df_sheet)
+    df_cums = pd.concat(list_cum, axis = 1)
+    df_cums.to_excel('cumulatives_changes.xlsx')
