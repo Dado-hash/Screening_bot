@@ -14,7 +14,7 @@ pd.set_option("display.precision", 8)
 list_df = []
 for num in range(2):
     if(num!=0):
-        complexPriceRequest = cg.get_coins_markets(vs_currency = 'btc', order = 'market_cap_desc', per_page = 3, page = num, price_change_percentage = '24h')
+        complexPriceRequest = cg.get_coins_markets(vs_currency = 'btc', order = 'market_cap_desc', per_page = 20, page = num, price_change_percentage = '24h')
         list_df.append(pd.DataFrame(complexPriceRequest))
 df = pd.concat(list_df)
 list_columns = ['id', 'name', 'current_price', 'market_cap', 'high_24h', 'low_24h', 'price_change_percentage_24h']
@@ -25,7 +25,7 @@ df.to_csv("idcoins")
 list_df = []
 for num in range(3):
     if(num>1):
-        complexPriceRequest = cg.get_coins_markets(vs_currency = 'btc', order = 'market_cap_desc', per_page = 3, page = num, price_change_percentage = '24h')
+        complexPriceRequest = cg.get_coins_markets(vs_currency = 'btc', order = 'market_cap_desc', per_page = 20, page = num, price_change_percentage = '24h')
         list_df.append(pd.DataFrame(complexPriceRequest))
 df = pd.concat(list_df)
 list_columns = ['id', 'name', 'current_price', 'market_cap', 'high_24h', 'low_24h', 'price_change_percentage_24h']
