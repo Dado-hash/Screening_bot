@@ -16,10 +16,6 @@ end = 24
 
 df_last_days = df.iloc[-max_days:]
 df_last_days['days'] = pd.DataFrame(range(1, 1 + len(df_last_days)))
-'''list_storico = []
-for coin in df.columns:
-    df_temp = df_last_days[coin, 'days']
-    list_storico.append(df_temp)'''
 
 file = open('demo.csv', 'w')
 writer = csv.writer(file)

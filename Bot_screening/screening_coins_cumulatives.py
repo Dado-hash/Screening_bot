@@ -17,6 +17,9 @@ direction = int(direction)
 if(direction):
     start = input("Da che giorno vuoi partire?\n")
     start = int(start)
+else:
+    start = input("Fino a che giorno vuoi arrivare?\n")
+    start = int(start)
 
 all = input("Seleziona che tipo di cumulativi ti servono:\n"
             "0 -> Solo alcuni\n"
@@ -166,10 +169,10 @@ if(int(constraints)):
     df.to_excel('constraints.xlsx')
     #print(list)
 
-    list_cum = []
-    for cum in cumulatives:
-        df_sheet = pd.read_excel('leaderboards.xlsx', sheet_name= str(cum) + 'd')
-        df_sheet = df_sheet.rename(columns={'Change': 'Change ' + str(cum) + 'd'})
-        list_cum.append(df_sheet)
-    df_cums = pd.concat(list_cum, axis = 1)
-    df_cums.to_excel('cumulatives_changes.xlsx')
+list_cum = []
+for cum in cumulatives:
+    df_sheet = pd.read_excel('leaderboards.xlsx', sheet_name= str(cum) + 'd')
+    df_sheet = df_sheet.rename(columns={'Change': 'Change ' + str(cum) + 'd'})
+    list_cum.append(df_sheet)
+df_cums = pd.concat(list_cum, axis = 1)
+df_cums.to_excel('cumulatives_changes.xlsx')
