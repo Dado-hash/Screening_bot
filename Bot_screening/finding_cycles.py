@@ -1,16 +1,12 @@
 import pandas as pd
 import csv
-#caricare storico!
-#aggiungere una colonna con conteggio incrementale!
-#separare le colonne corrispondenti alle varie coin creando una lista e prendendo coin e conteggio!
-#tagliare il df prendendo gli ultimi n giorni (n = lunghezza massima ciclo)!
-#cercare i valori che corrispondono ai massimi imponendo le condizioni di inizio e fine ciclo e swing
+
 #annidare la ricerca con cicli di ordini diversi
 
 df = pd.read_excel('storico.xlsx')
 df.set_index('day', inplace = True)
 
-max_lenght = 336
+max_lenght = 336  #408
 min_lenght = 192
 start = 48
 end = 24
