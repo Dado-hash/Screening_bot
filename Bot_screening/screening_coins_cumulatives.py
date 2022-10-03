@@ -158,7 +158,6 @@ if(int(constraints)):
                 if(df['Cumulative'][coin] < 0):
                     count_rel += 1
                 elif(df['Cumulative'][coin] > 0 and count_rel >= start_cycle):
-                    #print(df['Cumulative'][coin])
                     list_test.append(coin)
                     list.append((coin, count_tot, df['Cumulative'][coin]))
                     flag = 1
@@ -167,7 +166,6 @@ if(int(constraints)):
                 count_tot += 1
     df = df_totale.loc[df_totale.index.isin(list_test)]
     df.to_excel('constraints.xlsx')
-    #print(list)
 
 list_cum = []
 for cum in cumulatives:

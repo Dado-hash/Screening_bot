@@ -95,7 +95,8 @@ for id_coin in coins_id_list:
         df['low'] = df[[3]]
         df_giornaliero['max_high'] = df.groupby(['day'], sort=False)['high'].max()
         df_giornaliero['min_low'] = df.groupby(['day'], sort=False)['low'].min()
-        df_giornaliero['24h_volatility'] = (df_giornaliero['max_high'] - df_giornaliero['min_low']) / df_giornaliero['min_low'] - df_principale_volatility['bitcoin']
+        #dividere max e min per i max e min di Bitcoin
+        df_giornaliero['24h_volatility'] = (df_giornaliero['max_high'] - df_giornaliero['min_low']) / df_giornaliero['min_low']
         df_giornaliero['correlation'] = df_giornaliero['24h_change'] / df_principale_24h['bitcoin']
         df_principale = df_giornaliero.drop(['close', 'open'], axis = 1, inplace = False)
         df_principale = df_principale.drop([0, 1, 2, 3, 4], axis = 1, inplace = False)
