@@ -1,4 +1,4 @@
-import pandas as pd
+import pandas as pd   #trasferito in screening_coins_master
 import datetime as dt
 import time as t
 import plotly.graph_objects as go
@@ -135,8 +135,7 @@ df_principale_correlation.to_excel('correlation.xlsx')
 df_principale_high.to_excel('high.xlsx')
 df_principale_low.to_excel('low.xlsx')
 
-#creo i dataframe con le classifiche incrementali
-leaderboard = []
+'''leaderboard = []
 for num in range(2, df_24h.shape[0] + 1):
     df_24h_sum = df_24h.iloc[(31-num) : 31].sum()
     df_24h_sum = df_24h_sum.sort_values(ascending = False)
@@ -157,15 +156,15 @@ with pd.ExcelWriter('leaderboards.xlsx') as writer:
     counter = 1
     for df in leaderboard:
         df.to_excel(writer, sheet_name = str(counter) + 'd')
-        counter += 1
+        counter += 1'''
 
-first = pd.read_excel('leaderboards.xlsx', sheet_name = '1d')
+'''first = pd.read_excel('leaderboards.xlsx', sheet_name = '1d')
 first.columns = ['Coin', 'Cumulative', 'Rank']
 first.drop('Rank', inplace = True, axis = 1)
 first.set_index('Coin', inplace = True)
-df_principale_24h = pd.read_excel('leaderboards.xlsx', sheet_name = '24h_change')
+df_principale_24h = pd.read_excel('leaderboards.xlsx', sheet_name = '24h_change')'''
 
-leaderboard = []
+'''leaderboard = []
 for num in range(1, 30):
     first_df = pd.read_excel('leaderboards.xlsx', sheet_name = str(num) + 'd')
     second_df = pd.read_excel('leaderboards.xlsx', sheet_name = str(num+1) + 'd')
@@ -187,4 +186,4 @@ with pd.ExcelWriter('leaderboards.xlsx') as writer:
             counter += 1
         else:
             df.to_excel(writer, sheet_name = str(counter) + 'd')
-            counter += 1
+            counter += 1'''
