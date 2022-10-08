@@ -9,6 +9,7 @@ from pycoingecko import CoinGeckoAPI
 cg = CoinGeckoAPI()
 cg.ping()
 
+pd.set_option("display.precision", 8)
 #creo i file con cumulativi e costraints
 def progress_bar(progress, total, color = colorama.Fore.YELLOW):
     percent = 100 * (progress / float(total))
@@ -103,14 +104,14 @@ with pd.ExcelWriter('leaderboards.xlsx') as writer:
 
 df_totale = pd.read_excel('leaderboards.xlsx', sheet_name = str(cumulatives[0]) + 'd')
 titolo = str(cumulatives[0]) + 'd'
-df_totale.columns = ['Coin', titolo, 'Rank']  #cambiare cumulative in str(cumulatives[num])
+df_totale.columns = ['Coin', titolo, 'Rank'] 
 df_totale.drop('Rank', inplace = True, axis = 1)
 df_totale.set_index('Coin', inplace = True)
 for num in range(len(cumulatives)):
     if(cumulatives[num] != cumulatives[0]):
         second_df = pd.read_excel('leaderboards.xlsx', sheet_name = str(cumulatives[num]) + 'd')
         titolo = str(cumulatives[num]) + 'd'
-        second_df.columns = ['Coin', titolo, 'Rank']  #cambiare cumulative in str(cumulatives[num])
+        second_df.columns = ['Coin', titolo, 'Rank']  
         second_df.drop('Rank', inplace = True, axis = 1)
         second_df.set_index('Coin', inplace = True)
         df_totale = df_totale.merge(second_df, on = 'Coin')
@@ -147,7 +148,7 @@ with pd.ExcelWriter('leaderboards.xlsx') as writer:
         progresso += 1
         progress_bar(progresso, totale)
 
-constraints = input("Ti interessa sapere se delle coin si sono vincolate al rialzo?\n"
+'''constraints = input("Ti interessa sapere se delle coin si sono vincolate al rialzo?\n"
                     "0 -> No\n"
                     "1 -> Sì\n")
 coins = df_principale.columns
@@ -173,7 +174,7 @@ if(int(constraints)):
                     count_rel = 0
                 count_tot += 1
     df = df_totale.loc[df_totale.index.isin(list_test)]
-    df.to_excel('constraints.xlsx')
+    df.to_excel('constraints.xlsx')'''
 
 list_cum = []
 for cum in cumulatives:
