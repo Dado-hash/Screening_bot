@@ -38,14 +38,14 @@ else:
 totale = (len(cumulatives) * 5) - 3
 progresso = 0
 
-df_principale = pd.read_excel('storico.xlsx')
-df_principale.set_index('day', inplace = True)
+df_principale = pd.read_excel('closes.xlsx')
+df_principale.set_index('Close time', inplace = True)
 
 #creo i dataframe con le classifiche incrementali
 leaderboard = []
 if(not direction):
     for num in cumulatives:
-        pd.set_option('display.float_format', lambda x: '%.5f' % x)
+        #pd.set_option('display.float_format', lambda x: '%.5f' % x)
         df_24h_sum = df_principale.T
         df_24h_sum = (df_24h_sum.iloc[:, len(df_24h_sum.columns)-1] - df_24h_sum.iloc[:, len(df_24h_sum.columns)-num]) / df_24h_sum.iloc[:, len(df_24h_sum.columns)-num]
         df_24h_sum = df_24h_sum.sort_values(ascending = False)
@@ -65,7 +65,7 @@ if(not direction):
         progress_bar(progresso, totale)
 else:
     for num in cumulatives:
-        pd.set_option('display.float_format', lambda x: '%.5f' % x)
+        #pd.set_option('display.float_format', lambda x: '%.5f' % x)
         df_24h_sum = df_principale.T
         df_24h_sum = (df_24h_sum.iloc[:, (len(df_24h_sum.columns)-1-start + num)] - df_24h_sum.iloc[:, (len(df_24h_sum.columns)-1-start)]) / df_24h_sum.iloc[:, (len(df_24h_sum.columns)-1-start)]
         df_24h_sum = df_24h_sum.sort_values(ascending = False)
@@ -139,7 +139,7 @@ with pd.ExcelWriter('leaderboards.xlsx') as writer:
         progresso += 1
         progress_bar(progresso, totale)
 
-constraints = input("Ti interessa sapere se delle coin si sono vincolate al rialzo?\n"
+'''constraints = input("Ti interessa sapere se delle coin si sono vincolate al rialzo?\n"
                     "0 -> No\n"
                     "1 -> Sì\n")
 coins = df_principale.columns
@@ -165,7 +165,7 @@ if(int(constraints)):
                     count_rel = 0
                 count_tot += 1
     df = df_totale.loc[df_totale.index.isin(list_test)]
-    df.to_excel('constraints.xlsx')
+    df.to_excel('constraints.xlsx')'''
 
 list_cum = []
 for cum in cumulatives:

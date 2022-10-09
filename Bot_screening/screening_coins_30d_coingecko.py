@@ -11,7 +11,6 @@ cg.ping()
 pd.set_option("display.precision", 8)
 pd.set_option('display.float_format', lambda x: '%.5f' % x)
 
-#prendo l'id delle prime 1000 coin per market cap
 list_df = []
 for num in range(2):
     if(num!=0):
@@ -91,7 +90,7 @@ for id_coin in coins_id_list:
         df_with_first_row_per_day = df.groupby('day').first()
         df_with_last_row_per_day = df.groupby('day').last()
         df_giornaliero = df_with_last_row_per_day
-        df_giornaliero['24h_change'] = (df_with_last_row_per_day['close'] - df_with_first_row_per_day['open']) / df_with_first_row_per_day['open'] - df_principale_24h['bitcoin']
+        df_giornaliero['24h_change'] = (df_with_last_row_per_day['close'] - df_with_first_row_per_day['open']) / df_with_first_row_per_day['open'] # - df_principale_24h['bitcoin']
         df['high'] = df[[2]]
         df['low'] = df[[3]]
         df_giornaliero['max_high'] = df.groupby(['day'], sort=False)['high'].max()
