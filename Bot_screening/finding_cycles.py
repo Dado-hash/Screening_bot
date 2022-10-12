@@ -3,7 +3,7 @@ import csv
 
 #annidare la ricerca con cicli di ordini diversi
 
-df = pd.read_excel('high.xlsx')
+df = pd.read_excel('highs.xlsx', index_col = 0)
 df.set_index('Close time', inplace = True)
 
 max_lenght = 336  #408
@@ -15,7 +15,7 @@ max_days = max_lenght + start + end
 df_last_days = df.iloc[-max_days:]
 df_last_days['days'] = pd.DataFrame(range(1, 1 + len(df_last_days)))
 
-file = open('demo.csv', 'w')
+file = open('annual maxes.csv', 'w')
 writer = csv.writer(file)
 for coin in df_last_days:
     list_prices = df_last_days[coin].tolist()

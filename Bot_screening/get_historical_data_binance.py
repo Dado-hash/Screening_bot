@@ -22,7 +22,7 @@ for s in exchange_info['symbols']:
     if(s["quoteAsset"] == 'BTC'):
         list_symbols.append(s['symbol'])
 
-klines = client.get_historical_klines("BTCUSDT", Client.KLINE_INTERVAL_1DAY, "1 Aug, 2022")  #"1 Dec, 2017", "1 Jan, 2018" per un intervallo
+klines = client.get_historical_klines("BTCUSDT", Client.KLINE_INTERVAL_1DAY, "1 May, 2021")  #"1 Dec, 2017", "1 Jan, 2018" per un intervallo
 df_klines = pd.DataFrame(klines)
 df_klines.columns = ['Open time', 'Open price', 'High price', 'Low price', 'Close price', 'Volume', 'Close time', 'trash1', 'trash2', 'trash3', 'trash4', 'trash5']
 
@@ -65,7 +65,7 @@ df_principale_above21.columns = ['Close time', 'BTCUSD']
 count_bar = 0
 for coin in list_symbols:
 
-    klines = client.get_historical_klines(coin, Client.KLINE_INTERVAL_1DAY, "1 May, 2022")  
+    klines = client.get_historical_klines(coin, Client.KLINE_INTERVAL_1DAY, "1 May, 2021")  
     df_klines = pd.DataFrame(klines)
     count_bar += 1
 
