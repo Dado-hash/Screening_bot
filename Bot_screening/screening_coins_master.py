@@ -132,8 +132,26 @@ for num in range(len(cumulatives)):
 
 first = pd.read_excel('leaderboards.xlsx', sheet_name = str(cumulatives[0]) + 'd')
 first.columns = ['Coin', 'Cumulative', 'Rank']
+first_day_SMA6_index = df_SMA6.columns[0]
+df_first_day_SMA6 = df_SMA6[first_day_SMA6_index]
+df_first_day_SMA6 = df_first_day_SMA6.to_frame()
+df_first_day_SMA6.index.name = 'Coin'
+df_first_day_SMA6.columns = ['Above SMA6']
+first_day_SMA11_index = df_SMA11.columns[0]
+df_first_day_SMA11 = df_SMA11[first_day_SMA11_index]
+df_first_day_SMA11 = df_first_day_SMA11.to_frame()
+df_first_day_SMA11.index.name = 'Coin'
+df_first_day_SMA11.columns = ['Above SMA11']
+first_day_SMA21_index = df_SMA21.columns[0]
+df_first_day_SMA21 = df_SMA6[first_day_SMA21_index]
+df_first_day_SMA21 = df_first_day_SMA21.to_frame()
+df_first_day_SMA21.index.name = 'Coin'
+df_first_day_SMA21.columns = ['Above SMA21']
 first.drop('Rank', inplace = True, axis = 1)
 first.set_index('Coin', inplace = True)
+first = first.merge(df_first_day_SMA6, on = 'Coin')
+first = first.merge(df_first_day_SMA11, on = 'Coin')
+first = first.merge(df_first_day_SMA21, on = 'Coin')
 
 leaderboard = []
 for num in range(len(cumulatives)-1):
@@ -145,8 +163,27 @@ for num in range(len(cumulatives)-1):
     df = second_df.merge(first_df, on = 'Coin')
     df['Change'] = df['Rank1'] - df['Rank2']
     df['Type of change'] = np.where(df['Change'].astype(float) > 0, 1, -1)
+    first_day_SMA6_index = df_SMA6.columns[num+1]
+    df_first_day_SMA6 = df_SMA6[first_day_SMA6_index]
+    df_first_day_SMA6 = df_first_day_SMA6.to_frame()
+    df_first_day_SMA6.index.name = 'Coin'
+    df_first_day_SMA6.columns = ['Above SMA6']
+    first_day_SMA11_index = df_SMA11.columns[num+1]
+    df_first_day_SMA11 = df_SMA11[first_day_SMA11_index]
+    df_first_day_SMA11 = df_first_day_SMA11.to_frame()
+    df_first_day_SMA11.index.name = 'Coin'
+    df_first_day_SMA11.columns = ['Above SMA11']
+    first_day_SMA21_index = df_SMA21.columns[num+1]
+    df_first_day_SMA21 = df_SMA6[first_day_SMA21_index]
+    df_first_day_SMA21 = df_first_day_SMA21.to_frame()
+    df_first_day_SMA21.index.name = 'Coin'
+    df_first_day_SMA21.columns = ['Above SMA21']
+    df = df.merge(df_first_day_SMA6, on = 'Coin')
+    df = df.merge(df_first_day_SMA11, on = 'Coin')
+    df = df.merge(df_first_day_SMA21, on = 'Coin')
     df.drop(['Rank1', 'Rank2'], inplace = True, axis = 1)
     df.set_index('Coin', inplace = True)
+    print(df)
     leaderboard.append(df)
     progresso += 1
     progress_bar(progresso, totale)
