@@ -3,8 +3,8 @@ import csv
 
 #annidare la ricerca con cicli di ordini diversi
 
-df = pd.read_excel('storico.xlsx')
-df.set_index('day', inplace = True)
+df = pd.read_excel('high.xlsx')
+df.set_index('Close time', inplace = True)
 
 max_lenght = 336  #408
 min_lenght = 192

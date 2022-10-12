@@ -2,9 +2,9 @@ import pandas as pd
 import colorama
 import datetime as dt
 import time as t
-import plotly.graph_objects as go
 from plotly.offline import plot
 from pycoingecko import CoinGeckoAPI
+import numpy as np
 
 cg = CoinGeckoAPI()
 cg.ping()
@@ -48,8 +48,20 @@ else:
 totale = (len(cumulatives) * 5) - 3
 progresso = 0
 
-df_principale = pd.read_excel('closes.xlsx')
+df_principale = pd.read_excel('closes.xlsx', index_col = 0)
 df_principale.set_index('Close time', inplace = True)
+df_SMA6 = pd.read_excel('above6.xlsx', index_col = 0)
+df_SMA6.set_index('Close time', inplace = True)
+df_SMA11 = pd.read_excel('above11.xlsx', index_col = 0)
+df_SMA11.set_index('Close time', inplace = True)
+df_SMA21 = pd.read_excel('above21.xlsx', index_col = 0)
+df_SMA21.set_index('Close time', inplace = True)
+df_SMA6 = df_SMA6.T
+df_SMA11 = df_SMA11.T
+df_SMA21 = df_SMA21.T
+df_SMA6 = df_SMA6.iloc[:, len(df_SMA6.columns) - start : len(df_SMA6.columns)].copy()
+df_SMA11 = df_SMA11.iloc[:, len(df_SMA11.columns) - start : len(df_SMA11.columns)].copy()
+df_SMA21 = df_SMA21.iloc[:, len(df_SMA21.columns) - start : len(df_SMA21.columns)].copy()
 
 leaderboard = []
 if(not direction):
@@ -132,6 +144,7 @@ for num in range(len(cumulatives)-1):
     first_df.drop('Cumulative', inplace = True, axis = 1)
     df = second_df.merge(first_df, on = 'Coin')
     df['Change'] = df['Rank1'] - df['Rank2']
+    df['Type of change'] = np.where(df['Change'].astype(float) > 0, 1, -1)
     df.drop(['Rank1', 'Rank2'], inplace = True, axis = 1)
     df.set_index('Coin', inplace = True)
     leaderboard.append(df)
@@ -155,4 +168,3 @@ for cum in cumulatives:
     list_cum.append(df_sheet)
 df_cums = pd.concat(list_cum, axis = 1)
 df_cums.to_excel('cumulatives_changes.xlsx')
-
