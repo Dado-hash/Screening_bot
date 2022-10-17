@@ -1,5 +1,4 @@
 from binance import Client
-from urllib.parse import urljoin, urlencode
 import api_keys
 import pandas as pd
 import colorama
