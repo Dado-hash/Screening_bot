@@ -1,0 +1,7 @@
+id,name,current_price,market_cap,high_24h,low_24h,price_change_percentage_24h
+binance-usd,Binance USD,5.127e-05,1091178,5.216e-05,5.096e-05,-0.84418
+cardano,Cardano,1.899e-05,642384,1.924e-05,1.897e-05,-0.95278
+solana,Solana,0.00158358,567018,0.0015859,0.00155714,0.86759
+dogecoin,Dogecoin,3.06e-06,418340,3.08e-06,3.05e-06,0.17281
+polkadot,Polkadot,0.00031874,370340,0.00032198,0.00031806,-0.81887
+matic-network,Polygon,4.3e-05,319762,4.321e-05,4.149e-05,3.32898

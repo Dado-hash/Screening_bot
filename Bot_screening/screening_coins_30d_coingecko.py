@@ -45,6 +45,7 @@ df['day'] = df[[0]]
 df['day'] = pd.to_datetime(df['day']/1000, unit = 's').dt.date
 df['close'] = df[[4]]
 df['open'] = df[[1]]
+print(df)
 df_with_first_row_per_day = df.groupby('day').first()
 df_with_last_row_per_day = df.groupby('day').last()
 df_giornaliero = df_with_last_row_per_day
