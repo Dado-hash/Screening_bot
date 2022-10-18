@@ -1,3 +1,4 @@
+from turtle import right
 from binance import Client
 import api_keys
 import pandas as pd
@@ -39,13 +40,14 @@ df_45m.drop('Trades', axis = 1, inplace = True)
 df_45m['High price'] = klines_grouped_principale.groupby(['group'], sort=False)['High price'].max()
 df_45m['Low price'] = klines_grouped_principale.groupby(['group'], sort=False)['Low price'].min()
 df_45m.set_index('Open time', inplace = True)
+df_45m['Change'] = (df_45m['Close price'].astype(float) - df_45m['Open price'].astype(float)) / df_45m['Open price'].astype(float)
 
 min_date = str(input('Inserisci data e ora di un minimo (yyyy-mm-dd hh:mm:ss): '))
 min_date = datetime.strptime(min_date, "%Y-%m-%d %H:%M:%S")
 min = df_45m.loc[min_date]
 print(min)
 df_ultimate = df_45m.tail(len(df_45m) - df_45m.index.get_loc(min_date))
-print(df_ultimate)
+df_ultimate.to_excel('45m.xlsx')
 
 max_lenght = 44
 min_lenght = 24
@@ -54,34 +56,33 @@ end = 3
 
 file = open('45m min.csv', 'w')
 writer = csv.writer(file)
-list_prices = df_ultimate['Low price'].tolist()
 list_days = ['Candela in cui è avvenuto il minimo']
-list_max = ['Prezzo raggiunto durante il minimo']
+list_min = ['Prezzo raggiunto durante il minimo']
 list_costraints = ['Candela in cui si è vincolato al rialzo']
 list_price_costraints = ['Prezzo con il quale si è vincolato al rialzo']
-for n in range(len(df_ultimate)):
-    flag = 1
-    if(n >= end and n <= len(df_ultimate) - start):
-        for back in range(end):
-            if(list_prices[n] < list_prices[n - back -1]):
-                flag = 0
-        if(flag):
-            for forward in range(start):
-                if(list_prices[n] < list_prices[n + forward]):
+while(min_date <= df_45m.tail(1).index):                                               #manca un controllo sulla fine del ciclo, caso in cui il ciclo dura meno di 27 giorni
+    left = df_45m.index.get_loc(min_date + timedelta(minutes=45*min_lenght))
+    right = df_45m.index.get_loc(min_date + timedelta(minutes=45*max_lenght))
+    next_min = df_45m.index[df_45m['Low price'] == df_45m.iloc[left:right]['Low price'].min()]
+    if(next_min + timedelta(minutes=45*start) > df_45m.tail(1).index):
+        start = len(df_45m.tail(len(df_45m) - df_45m.index.get_loc(next_min)))
+    print(df_45m.index)
+    left = df_45m.index.get_loc(next_min + timedelta(minutes=45))
+    right = df_45m.index.get_loc(next_min + timedelta(minutes=45*start))
+    while(df_45m.iloc[left:right]['Low price'].min() < df_45m.loc[next_min]['Low price']):
+        next_min = df_45m.iloc[left:right]['Low price'].min()
+    list_days.append(next_min)
+    list_min.append(df_45m.loc[next_min]['Low price'])
+    '''for day in range(min_lenght):
+            if(n + day < len(df_ultimate) and flag):
+                if(list_prices[n + day] > list_prices[n]):
                     flag = 0
-        if(flag):
-            list_days.append(n)
-            list_max.append(list_prices[n])
-            flag = 1
-            for day in range(min_lenght):
-                if(n + day < len(df_ultimate) and flag):
-                    if(list_prices[n + day] > list_prices[n]):
-                        flag = 0
-                        list_costraints.append(n + day)
-                        list_price_costraints.append(list_prices[n + day])
-    i = min_date + timedelta(minutes=45)
+                    list_costraints.append(n + day)
+                    list_price_costraints.append(list_prices[n + day])'''
+    min_date = next_min
+    start = 6
 writer.writerow(list_days)
-writer.writerow(list_max)
-writer.writerow(list_costraints)
-writer.writerow(list_price_costraints)
+writer.writerow(list_min)
+'''writer.writerow(list_costraints)
+writer.writerow(list_price_costraints)'''
 file.close()
