@@ -9,8 +9,8 @@ import numpy as np
 cg = CoinGeckoAPI()
 cg.ping()
 
+#modifica per una migliore visualizzazione dei dati e creazione di una progress bar
 pd.set_option("display.precision", 8)
-#creo i file con cumulativi e costraints
 def progress_bar(progress, total, color = colorama.Fore.YELLOW):
     percent = 100 * (progress / float(total))
     bar = '*' * int(percent) + '-' * (100 - int(percent))
@@ -18,6 +18,9 @@ def progress_bar(progress, total, color = colorama.Fore.YELLOW):
     if (progress == total):
         print(colorama.Fore.GREEN + f"\r|{bar}| {percent:.2f}%", end="\r") 
         print(colorama.Fore.RESET)
+
+#serie di parametri richiesti all'utente per poter generare l'elaborazione desiderata
+type_storico = input("Quale storico vuoi usare (binance o coingecko)?\n")
 
 direction = input("In che direzione voui calcolare i cumulativi?\n"
                     "0 -> Da oggi andando indietro\n"
@@ -44,25 +47,32 @@ else:
     cumulatives = cumulatives.split()
     for i in range(len(cumulatives)):
         cumulatives[i] = int(cumulatives[i])
-
 totale = (len(cumulatives) * 5) - 3
 progresso = 0
 
-df_principale = pd.read_excel('closes.xlsx', index_col = 0)
-df_principale.set_index('Close time', inplace = True)
-df_SMA6 = pd.read_excel('above6.xlsx', index_col = 0)
-df_SMA6.set_index('Close time', inplace = True)
-df_SMA11 = pd.read_excel('above11.xlsx', index_col = 0)
-df_SMA11.set_index('Close time', inplace = True)
-df_SMA21 = pd.read_excel('above21.xlsx', index_col = 0)
-df_SMA21.set_index('Close time', inplace = True)
-df_SMA6 = df_SMA6.T
-df_SMA11 = df_SMA11.T
-df_SMA21 = df_SMA21.T
-df_SMA6 = df_SMA6.iloc[:, len(df_SMA6.columns) - start : len(df_SMA6.columns)].copy()
-df_SMA11 = df_SMA11.iloc[:, len(df_SMA11.columns) - start : len(df_SMA11.columns)].copy()
-df_SMA21 = df_SMA21.iloc[:, len(df_SMA21.columns) - start : len(df_SMA21.columns)].copy()
+#viene caricato lo storico a seconda di quale fonte si desidera usare
+if(type_storico == "binance"):
+    df_principale = pd.read_excel('closes.xlsx', index_col = 0)
+    df_principale.set_index('Close time', inplace = True)
+else:
+    df_principale = pd.read_excel('storico.xlsx', index_col = 0)
 
+#vengono caricati i dati dai file riguardanti le medie
+if(type_storico == "binance"):
+    df_SMA6 = pd.read_excel('above6.xlsx', index_col = 0)
+    df_SMA6.set_index('Close time', inplace = True)
+    df_SMA11 = pd.read_excel('above11.xlsx', index_col = 0)
+    df_SMA11.set_index('Close time', inplace = True)
+    df_SMA21 = pd.read_excel('above21.xlsx', index_col = 0)
+    df_SMA21.set_index('Close time', inplace = True)
+    df_SMA6 = df_SMA6.T
+    df_SMA11 = df_SMA11.T
+    df_SMA21 = df_SMA21.T
+    df_SMA6 = df_SMA6.iloc[:, len(df_SMA6.columns) - start : len(df_SMA6.columns)].copy()
+    df_SMA11 = df_SMA11.iloc[:, len(df_SMA11.columns) - start : len(df_SMA11.columns)].copy()
+    df_SMA21 = df_SMA21.iloc[:, len(df_SMA21.columns) - start : len(df_SMA21.columns)].copy()
+
+#dal file con lo storico vengono calcolate le performance giornaliere e creati i cumulativi
 leaderboard = []
 if(not direction):
     for num in cumulatives:
@@ -105,6 +115,7 @@ else:
         progresso += 1
         progress_bar(progresso, totale)
 
+#i cumulativi vengono salvati in un file
 cycles = leaderboard
 with pd.ExcelWriter('leaderboards.xlsx') as writer:  
     counter = 0
@@ -114,6 +125,7 @@ with pd.ExcelWriter('leaderboards.xlsx') as writer:
         progresso += 1
         progress_bar(progresso, totale)
 
+#ai cumulativi viene inizialmente aggiunta una colonna con il rank di ogni coin
 df_totale = pd.read_excel('leaderboards.xlsx', sheet_name = str(cumulatives[0]) + 'd')
 titolo = str(cumulatives[0]) + 'd'
 df_totale.columns = ['Coin', titolo, 'Rank'] 
@@ -130,29 +142,32 @@ for num in range(len(cumulatives)):
         progresso += 1
         progress_bar(progresso, totale)
 
+#creazione primo dati primo giorno su cui poi attaccare gli altri
 first = pd.read_excel('leaderboards.xlsx', sheet_name = str(cumulatives[0]) + 'd')
 first.columns = ['Coin', 'Cumulative', 'Rank']
-first_day_SMA6_index = df_SMA6.columns[0]
-df_first_day_SMA6 = df_SMA6[first_day_SMA6_index]
-df_first_day_SMA6 = df_first_day_SMA6.to_frame()
-df_first_day_SMA6.index.name = 'Coin'
-df_first_day_SMA6.columns = ['Above SMA6']
-first_day_SMA11_index = df_SMA11.columns[0]
-df_first_day_SMA11 = df_SMA11[first_day_SMA11_index]
-df_first_day_SMA11 = df_first_day_SMA11.to_frame()
-df_first_day_SMA11.index.name = 'Coin'
-df_first_day_SMA11.columns = ['Above SMA11']
-first_day_SMA21_index = df_SMA21.columns[0]
-df_first_day_SMA21 = df_SMA6[first_day_SMA21_index]
-df_first_day_SMA21 = df_first_day_SMA21.to_frame()
-df_first_day_SMA21.index.name = 'Coin'
-df_first_day_SMA21.columns = ['Above SMA21']
 first.drop('Rank', inplace = True, axis = 1)
 first.set_index('Coin', inplace = True)
-first = first.merge(df_first_day_SMA6, on = 'Coin')
-first = first.merge(df_first_day_SMA11, on = 'Coin')
-first = first.merge(df_first_day_SMA21, on = 'Coin')
+if(type_storico == 'binance'):
+    first_day_SMA6_index = df_SMA6.columns[0]
+    df_first_day_SMA6 = df_SMA6[first_day_SMA6_index]
+    df_first_day_SMA6 = df_first_day_SMA6.to_frame()
+    df_first_day_SMA6.index.name = 'Coin'
+    df_first_day_SMA6.columns = ['Above SMA6']
+    first_day_SMA11_index = df_SMA11.columns[0]
+    df_first_day_SMA11 = df_SMA11[first_day_SMA11_index]
+    df_first_day_SMA11 = df_first_day_SMA11.to_frame()
+    df_first_day_SMA11.index.name = 'Coin'
+    df_first_day_SMA11.columns = ['Above SMA11']
+    first_day_SMA21_index = df_SMA21.columns[0]
+    df_first_day_SMA21 = df_SMA6[first_day_SMA21_index]
+    df_first_day_SMA21 = df_first_day_SMA21.to_frame()
+    df_first_day_SMA21.index.name = 'Coin'
+    df_first_day_SMA21.columns = ['Above SMA21']
+    first = first.merge(df_first_day_SMA6, on = 'Coin')
+    first = first.merge(df_first_day_SMA11, on = 'Coin')
+    first = first.merge(df_first_day_SMA21, on = 'Coin')
 
+#ogni cumulativo viene aggiunto a quello del primo giorno
 leaderboard = []
 for num in range(len(cumulatives)-1):
     first_df = pd.read_excel('leaderboards.xlsx', sheet_name = str(cumulatives[num]) + 'd')
@@ -163,31 +178,32 @@ for num in range(len(cumulatives)-1):
     df = second_df.merge(first_df, on = 'Coin')
     df['Change'] = df['Rank1'] - df['Rank2']
     df['Type of change'] = np.where(df['Change'].astype(float) > 0, 1, -1)
-    first_day_SMA6_index = df_SMA6.columns[num+1]
-    df_first_day_SMA6 = df_SMA6[first_day_SMA6_index]
-    df_first_day_SMA6 = df_first_day_SMA6.to_frame()
-    df_first_day_SMA6.index.name = 'Coin'
-    df_first_day_SMA6.columns = ['Above SMA6']
-    first_day_SMA11_index = df_SMA11.columns[num+1]
-    df_first_day_SMA11 = df_SMA11[first_day_SMA11_index]
-    df_first_day_SMA11 = df_first_day_SMA11.to_frame()
-    df_first_day_SMA11.index.name = 'Coin'
-    df_first_day_SMA11.columns = ['Above SMA11']
-    first_day_SMA21_index = df_SMA21.columns[num+1]
-    df_first_day_SMA21 = df_SMA6[first_day_SMA21_index]
-    df_first_day_SMA21 = df_first_day_SMA21.to_frame()
-    df_first_day_SMA21.index.name = 'Coin'
-    df_first_day_SMA21.columns = ['Above SMA21']
-    df = df.merge(df_first_day_SMA6, on = 'Coin')
-    df = df.merge(df_first_day_SMA11, on = 'Coin')
-    df = df.merge(df_first_day_SMA21, on = 'Coin')
+    if(type_storico == 'binance'):
+        first_day_SMA6_index = df_SMA6.columns[num+1]
+        df_first_day_SMA6 = df_SMA6[first_day_SMA6_index]
+        df_first_day_SMA6 = df_first_day_SMA6.to_frame()
+        df_first_day_SMA6.index.name = 'Coin'
+        df_first_day_SMA6.columns = ['Above SMA6']
+        first_day_SMA11_index = df_SMA11.columns[num+1]
+        df_first_day_SMA11 = df_SMA11[first_day_SMA11_index]
+        df_first_day_SMA11 = df_first_day_SMA11.to_frame()
+        df_first_day_SMA11.index.name = 'Coin'
+        df_first_day_SMA11.columns = ['Above SMA11']
+        first_day_SMA21_index = df_SMA21.columns[num+1]
+        df_first_day_SMA21 = df_SMA6[first_day_SMA21_index]
+        df_first_day_SMA21 = df_first_day_SMA21.to_frame()
+        df_first_day_SMA21.index.name = 'Coin'
+        df_first_day_SMA21.columns = ['Above SMA21']
+        df = df.merge(df_first_day_SMA6, on = 'Coin')
+        df = df.merge(df_first_day_SMA11, on = 'Coin')
+        df = df.merge(df_first_day_SMA21, on = 'Coin')
     df.drop(['Rank1', 'Rank2'], inplace = True, axis = 1)
     df.set_index('Coin', inplace = True)
-    print(df)
     leaderboard.append(df)
     progresso += 1
     progress_bar(progresso, totale)
 
+#creo il file di base con i cumulativi suddivisi per giorno e un foglio con la performance delle coin giorno per giorno
 with pd.ExcelWriter('leaderboards.xlsx') as writer:
     df_totale.to_excel(writer, sheet_name = 'Aggregate')
     first.to_excel(writer, sheet_name = str(cumulatives[0]) + 'd')
@@ -198,6 +214,7 @@ with pd.ExcelWriter('leaderboards.xlsx') as writer:
         progresso += 1
         progress_bar(progresso, totale)
 
+#creo il file finale aggregando tutti i cumulativi, i punteggi e lo score totale
 list_cum = []
 for cum in cumulatives:
     df_sheet = pd.read_excel('leaderboards.xlsx', sheet_name= str(cum) + 'd')
