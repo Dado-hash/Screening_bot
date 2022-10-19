@@ -5,6 +5,7 @@ import time as t
 from plotly.offline import plot
 from pycoingecko import CoinGeckoAPI
 import numpy as np
+from functools import reduce
 
 cg = CoinGeckoAPI()
 cg.ping()
@@ -169,7 +170,14 @@ if(type_storico == 'binance'):
 
 #ogni cumulativo viene aggiunto a quello del primo giorno
 leaderboard = []
+df_score_cum = first['Cumulative']
+df_score_cum = df_score_cum.to_frame()
+df_score_cum.columns = ['Score']
+df_score_cum['Score'] = 0
+df_score_temp = df_score_cum['Score']
+df_score_temp = df_score_temp.to_frame()
 for num in range(len(cumulatives)-1):
+    df_score_temp['Score'] = 0
     first_df = pd.read_excel('leaderboards.xlsx', sheet_name = str(cumulatives[num]) + 'd')
     second_df = pd.read_excel('leaderboards.xlsx', sheet_name = str(cumulatives[num+1]) + 'd')
     first_df.columns = ['Coin', 'Cumulative', 'Rank1']
@@ -178,6 +186,13 @@ for num in range(len(cumulatives)-1):
     df = second_df.merge(first_df, on = 'Coin')
     df['Change'] = df['Rank1'] - df['Rank2']
     df['Type of change'] = np.where(df['Change'].astype(float) > 0, 1, -1)
+    df.drop(['Rank1', 'Rank2'], inplace = True, axis = 1)
+    df.set_index('Coin', inplace = True)
+    df_score_temp_change = df['Change'].copy()
+    df_score_temp_change.index = df.index
+    df_score_temp_type = df['Type of change'].copy()
+    df_score_temp_type.index = df.index
+    df_score_temp = df_score_temp_change.add(df_score_temp_type)
     if(type_storico == 'binance'):
         first_day_SMA6_index = df_SMA6.columns[num+1]
         df_first_day_SMA6 = df_SMA6[first_day_SMA6_index]
@@ -197,8 +212,14 @@ for num in range(len(cumulatives)-1):
         df = df.merge(df_first_day_SMA6, on = 'Coin')
         df = df.merge(df_first_day_SMA11, on = 'Coin')
         df = df.merge(df_first_day_SMA21, on = 'Coin')
-    df.drop(['Rank1', 'Rank2'], inplace = True, axis = 1)
-    df.set_index('Coin', inplace = True)
+        df_score_temp_SMA6 = df['Above SMA6']
+        df_score_temp_SMA11 = df['Above SMA11']
+        df_score_temp_SMA21 = df['Above SMA21']
+        df_score_temp = reduce(lambda a, b: a.add(b, fill_value=0), [df_score_temp, df_score_temp_SMA6, df_score_temp_SMA11, df_score_temp_SMA21])
+    df_score_temp = df_score_temp.to_frame()
+    df_score_temp.columns = ['Score']
+    df_score_cum = df_score_cum.add(df_score_temp)
+    df = df.merge(df_score_cum, on = 'Coin')
     leaderboard.append(df)
     progresso += 1
     progress_bar(progresso, totale)
