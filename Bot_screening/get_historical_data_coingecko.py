@@ -5,6 +5,7 @@ import plotly.graph_objects as go
 from plotly.offline import plot
 from pycoingecko import CoinGeckoAPI
 import colorama
+import numpy as np
 
 cg = CoinGeckoAPI()
 
@@ -72,7 +73,27 @@ df[id_coin] = df['prices'].str[1]
 df[id_coin] = df[id_coin]
 columns = ['day', id_coin]
 df_principale = df[columns]
+df_principale['SMA6'] = df_principale[id_coin].rolling(6).mean()
+df_principale['SMA11'] = df_principale[id_coin].rolling(11).mean()
+df_principale['SMA21'] = df_principale[id_coin].rolling(21).mean()
+df_principale['Above SMA6'] = np.where(df_principale[id_coin].astype(float) > df_principale['SMA6'], 1, 0)
+df_principale['Above SMA11'] = np.where(df_principale[id_coin].astype(float) > df_principale['SMA11'], 1, 0)
+df_principale['Above SMA21'] = np.where(df_principale[id_coin].astype(float) > df_principale['SMA21'], 1, 0)
+df_principale_SMA6 = df_principale[['day', 'SMA6']]
+df_principale_SMA11 = df_principale[['day', 'SMA11']]
+df_principale_SMA21 = df_principale[['day', 'SMA21']]
+df_principale_above6 = df_principale[['day', 'Above SMA6']]
+df_principale_above11 = df_principale[['day', 'Above SMA11']]
+df_principale_above21 = df_principale[['day', 'Above SMA21']]
+df_principale_SMA6.columns = ['day', id_coin]
+df_principale_SMA11.columns = ['day', id_coin]
+df_principale_SMA21.columns = ['day', id_coin]
+df_principale_above6.columns = ['day', id_coin]
+df_principale_above11.columns = ['day', id_coin]
+df_principale_above21.columns = ['day', id_coin]
 df_principale.set_index('day', inplace = True)
+df_principale.drop(['SMA6', 'SMA11', 'SMA21', 'Above SMA6', 'Above SMA11', 'Above SMA21'], inplace = True, axis = 1)
+print(df_principale)
 
 #aggiungo le alt
 count = 0
@@ -91,12 +112,49 @@ for id_coin in coins_id_list:
         df[id_coin] = df[id_coin]
         columns = ['day', id_coin]
         df = df[columns]
+        df['SMA6'] = df[id_coin].rolling(6).mean()
+        df['SMA11'] = df[id_coin].rolling(11).mean()
+        df['SMA21'] = df[id_coin].rolling(21).mean()
+        df['Above SMA6'] = np.where(df[id_coin].astype(float) > df['SMA6'], 1, 0)
+        df['Above SMA11'] = np.where(df[id_coin].astype(float) > df['SMA11'], 1, 0)
+        df['Above SMA21'] = np.where(df[id_coin].astype(float) > df['SMA21'], 1, 0)
+        df_SMA6 = df[['day', 'SMA6']]
+        df_SMA11 = df[['day', 'SMA11']]
+        df_SMA21 = df[['day', 'SMA21']]
+        df_above6 = df[['day', 'Above SMA6']]
+        df_above11 = df[['day', 'Above SMA11']]
+        df_above21 = df[['day', 'Above SMA21']]
+        df_SMA6.columns = ['day', id_coin]
+        df_SMA11.columns = ['day', id_coin]
+        df_SMA21.columns = ['day', id_coin]
+        df_above6.columns = ['day', id_coin]
+        df_above11.columns = ['day', id_coin]
+        df_above21.columns = ['day', id_coin]
         df.set_index('day', inplace = True)
+        df.drop(['SMA6', 'SMA11', 'SMA21', 'Above SMA6', 'Above SMA11', 'Above SMA21'], inplace = True, axis = 1)
         df_principale = pd.merge(df_principale, df, on="day", how = 'left')
         df_principale = df_principale.copy()
+        df_principale_SMA6 = pd.merge(df_principale_SMA6, df_SMA6, on="day", how = 'left')
+        df_principale_SMA6 = df_principale_SMA6.copy()
+        df_principale_SMA11 = pd.merge(df_principale_SMA11, df_SMA11, on="day", how = 'left')
+        df_principale_SMA11 = df_principale_SMA11.copy()
+        df_principale_SMA21 = pd.merge(df_principale_SMA21, df_SMA21, on="day", how = 'left')
+        df_principale_SMA21 = df_principale_SMA21.copy()
+        df_principale_above6 = pd.merge(df_principale_above6, df_above6, on="day", how = 'left')
+        df_principale_above6 = df_principale_above6.copy()
+        df_principale_above11 = pd.merge(df_principale_above11, df_above11, on="day", how = 'left')
+        df_principale_above11 = df_principale_above11.copy()
+        df_principale_above21 = pd.merge(df_principale_above21, df_above21, on="day", how = 'left')
+        df_principale_above21 = df_principale_above21.copy()
         count += 1
         count_bar += 1
         progress_bar(count_bar, number_coins-1)
         
 #salvo lo storico
 df_principale.to_excel('storico.xlsx')
+df_principale_SMA6.to_excel('SMA6.xlsx')
+df_principale_SMA11.to_excel('SMA11.xlsx')
+df_principale_SMA21.to_excel('SMA21.xlsx')
+df_principale_above6.to_excel('above6.xlsx')
+df_principale_above11.to_excel('above11.xlsx')
+df_principale_above21.to_excel('above21.xlsx')
