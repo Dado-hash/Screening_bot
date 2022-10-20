@@ -59,19 +59,18 @@ else:
     df_principale = pd.read_excel('storico.xlsx', index_col = 0)
 
 #vengono caricati i dati dai file riguardanti le medie
-if(type_storico == "binance"):
-    df_SMA6 = pd.read_excel('above6.xlsx', index_col = 0)
-    df_SMA6.set_index('Close time', inplace = True)
-    df_SMA11 = pd.read_excel('above11.xlsx', index_col = 0)
-    df_SMA11.set_index('Close time', inplace = True)
-    df_SMA21 = pd.read_excel('above21.xlsx', index_col = 0)
-    df_SMA21.set_index('Close time', inplace = True)
-    df_SMA6 = df_SMA6.T
-    df_SMA11 = df_SMA11.T
-    df_SMA21 = df_SMA21.T
-    df_SMA6 = df_SMA6.iloc[:, len(df_SMA6.columns) - start : len(df_SMA6.columns)].copy()
-    df_SMA11 = df_SMA11.iloc[:, len(df_SMA11.columns) - start : len(df_SMA11.columns)].copy()
-    df_SMA21 = df_SMA21.iloc[:, len(df_SMA21.columns) - start : len(df_SMA21.columns)].copy()
+df_SMA6 = pd.read_excel('above6.xlsx', index_col = 0)
+df_SMA6.set_index('Close time', inplace = True)
+df_SMA11 = pd.read_excel('above11.xlsx', index_col = 0)
+df_SMA11.set_index('Close time', inplace = True)
+df_SMA21 = pd.read_excel('above21.xlsx', index_col = 0)
+df_SMA21.set_index('Close time', inplace = True)
+df_SMA6 = df_SMA6.T
+df_SMA11 = df_SMA11.T
+df_SMA21 = df_SMA21.T
+df_SMA6 = df_SMA6.iloc[:, len(df_SMA6.columns) - start : len(df_SMA6.columns)].copy()
+df_SMA11 = df_SMA11.iloc[:, len(df_SMA11.columns) - start : len(df_SMA11.columns)].copy()
+df_SMA21 = df_SMA21.iloc[:, len(df_SMA21.columns) - start : len(df_SMA21.columns)].copy()
 
 #dal file con lo storico vengono calcolate le performance giornaliere e creati i cumulativi
 leaderboard = []
@@ -148,25 +147,24 @@ first = pd.read_excel('leaderboards.xlsx', sheet_name = str(cumulatives[0]) + 'd
 first.columns = ['Coin', 'Cumulative', 'Rank']
 first.drop('Rank', inplace = True, axis = 1)
 first.set_index('Coin', inplace = True)
-if(type_storico == 'binance'):
-    first_day_SMA6_index = df_SMA6.columns[0]
-    df_first_day_SMA6 = df_SMA6[first_day_SMA6_index]
-    df_first_day_SMA6 = df_first_day_SMA6.to_frame()
-    df_first_day_SMA6.index.name = 'Coin'
-    df_first_day_SMA6.columns = ['Above SMA6']
-    first_day_SMA11_index = df_SMA11.columns[0]
-    df_first_day_SMA11 = df_SMA11[first_day_SMA11_index]
-    df_first_day_SMA11 = df_first_day_SMA11.to_frame()
-    df_first_day_SMA11.index.name = 'Coin'
-    df_first_day_SMA11.columns = ['Above SMA11']
-    first_day_SMA21_index = df_SMA21.columns[0]
-    df_first_day_SMA21 = df_SMA6[first_day_SMA21_index]
-    df_first_day_SMA21 = df_first_day_SMA21.to_frame()
-    df_first_day_SMA21.index.name = 'Coin'
-    df_first_day_SMA21.columns = ['Above SMA21']
-    first = first.merge(df_first_day_SMA6, on = 'Coin')
-    first = first.merge(df_first_day_SMA11, on = 'Coin')
-    first = first.merge(df_first_day_SMA21, on = 'Coin')
+first_day_SMA6_index = df_SMA6.columns[0]
+df_first_day_SMA6 = df_SMA6[first_day_SMA6_index]
+df_first_day_SMA6 = df_first_day_SMA6.to_frame()
+df_first_day_SMA6.index.name = 'Coin'
+df_first_day_SMA6.columns = ['Above SMA6']
+first_day_SMA11_index = df_SMA11.columns[0]
+df_first_day_SMA11 = df_SMA11[first_day_SMA11_index]
+df_first_day_SMA11 = df_first_day_SMA11.to_frame()
+df_first_day_SMA11.index.name = 'Coin'
+df_first_day_SMA11.columns = ['Above SMA11']
+first_day_SMA21_index = df_SMA21.columns[0]
+df_first_day_SMA21 = df_SMA6[first_day_SMA21_index]
+df_first_day_SMA21 = df_first_day_SMA21.to_frame()
+df_first_day_SMA21.index.name = 'Coin'
+df_first_day_SMA21.columns = ['Above SMA21']
+first = first.merge(df_first_day_SMA6, on = 'Coin')
+first = first.merge(df_first_day_SMA11, on = 'Coin')
+first = first.merge(df_first_day_SMA21, on = 'Coin')
 
 #ogni cumulativo viene aggiunto a quello del primo giorno
 leaderboard = []
@@ -193,29 +191,28 @@ for num in range(len(cumulatives)-1):
     df_score_temp_type = df['Type of change'].copy()
     df_score_temp_type.index = df.index
     df_score_temp = df_score_temp_change.add(df_score_temp_type)
-    if(type_storico == 'binance'):
-        first_day_SMA6_index = df_SMA6.columns[num+1]
-        df_first_day_SMA6 = df_SMA6[first_day_SMA6_index]
-        df_first_day_SMA6 = df_first_day_SMA6.to_frame()
-        df_first_day_SMA6.index.name = 'Coin'
-        df_first_day_SMA6.columns = ['Above SMA6']
-        first_day_SMA11_index = df_SMA11.columns[num+1]
-        df_first_day_SMA11 = df_SMA11[first_day_SMA11_index]
-        df_first_day_SMA11 = df_first_day_SMA11.to_frame()
-        df_first_day_SMA11.index.name = 'Coin'
-        df_first_day_SMA11.columns = ['Above SMA11']
-        first_day_SMA21_index = df_SMA21.columns[num+1]
-        df_first_day_SMA21 = df_SMA6[first_day_SMA21_index]
-        df_first_day_SMA21 = df_first_day_SMA21.to_frame()
-        df_first_day_SMA21.index.name = 'Coin'
-        df_first_day_SMA21.columns = ['Above SMA21']
-        df = df.merge(df_first_day_SMA6, on = 'Coin')
-        df = df.merge(df_first_day_SMA11, on = 'Coin')
-        df = df.merge(df_first_day_SMA21, on = 'Coin')
-        df_score_temp_SMA6 = df['Above SMA6']
-        df_score_temp_SMA11 = df['Above SMA11']
-        df_score_temp_SMA21 = df['Above SMA21']
-        df_score_temp = reduce(lambda a, b: a.add(b, fill_value=0), [df_score_temp, df_score_temp_SMA6, df_score_temp_SMA11, df_score_temp_SMA21])
+    first_day_SMA6_index = df_SMA6.columns[num+1]
+    df_first_day_SMA6 = df_SMA6[first_day_SMA6_index]
+    df_first_day_SMA6 = df_first_day_SMA6.to_frame()
+    df_first_day_SMA6.index.name = 'Coin'
+    df_first_day_SMA6.columns = ['Above SMA6']
+    first_day_SMA11_index = df_SMA11.columns[num+1]
+    df_first_day_SMA11 = df_SMA11[first_day_SMA11_index]
+    df_first_day_SMA11 = df_first_day_SMA11.to_frame()
+    df_first_day_SMA11.index.name = 'Coin'
+    df_first_day_SMA11.columns = ['Above SMA11']
+    first_day_SMA21_index = df_SMA21.columns[num+1]
+    df_first_day_SMA21 = df_SMA6[first_day_SMA21_index]
+    df_first_day_SMA21 = df_first_day_SMA21.to_frame()
+    df_first_day_SMA21.index.name = 'Coin'
+    df_first_day_SMA21.columns = ['Above SMA21']
+    df = df.merge(df_first_day_SMA6, on = 'Coin')
+    df = df.merge(df_first_day_SMA11, on = 'Coin')
+    df = df.merge(df_first_day_SMA21, on = 'Coin')
+    df_score_temp_SMA6 = df['Above SMA6']
+    df_score_temp_SMA11 = df['Above SMA11']
+    df_score_temp_SMA21 = df['Above SMA21']
+    df_score_temp = reduce(lambda a, b: a.add(b, fill_value=0), [df_score_temp, df_score_temp_SMA6, df_score_temp_SMA11, df_score_temp_SMA21])
     df_score_temp = df_score_temp.to_frame()
     df_score_temp.columns = ['Score']
     df_score_cum = df_score_cum.add(df_score_temp)
