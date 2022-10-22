@@ -66,7 +66,6 @@ while(min_date <= df_45m.tail(1).index):                                        
     next_min = df_45m.index[df_45m['Low price'] == df_45m.iloc[left:right]['Low price'].min()]
     if(next_min + timedelta(minutes=45*start) > df_45m.tail(1).index):
         start = len(df_45m.tail(len(df_45m) - df_45m.index.get_loc(next_min)))
-    print(df_45m.index)
     left = df_45m.index.get_loc(next_min + timedelta(minutes=45))
     right = df_45m.index.get_loc(next_min + timedelta(minutes=45*start))
     while(df_45m.iloc[left:right]['Low price'].min() < df_45m.loc[next_min]['Low price']):

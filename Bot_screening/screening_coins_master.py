@@ -3,7 +3,7 @@ import colorama
 import datetime as dt
 import time as t
 from plotly.offline import plot
-from pycoingecko import CoinGeckoAPI
+from pycoingecko import CoinGeckoAPI    #controllare indici, sballati di 3 posizioni
 import numpy as np
 from functools import reduce
 
@@ -33,7 +33,7 @@ if(direction):
     start = int(start)
 else:
     start = input("Fino a che giorno vuoi arrivare?\n")
-    start = int(start)
+    start = int(start) 
 
 all = input("Seleziona che tipo di cumulativi ti servono:\n"
             "0 -> Solo alcuni\n"
@@ -76,9 +76,9 @@ df_SMA21 = df_SMA21.iloc[:, len(df_SMA21.columns) - start : len(df_SMA21.columns
 leaderboard = []
 if(not direction):
     for num in cumulatives:
-        pd.set_option('display.float_format', lambda x: '%.5f' % x)
+        pd.set_option('display.float_format', lambda x: '%.7f' % x)
         df_24h_sum = df_principale.T
-        df_24h_sum = (df_24h_sum.iloc[:, len(df_24h_sum.columns)-1] - df_24h_sum.iloc[:, len(df_24h_sum.columns)-num]) / df_24h_sum.iloc[:, len(df_24h_sum.columns)-num]
+        df_24h_sum = ((df_24h_sum.iloc[:, len(df_24h_sum.columns)-1] - df_24h_sum.iloc[:, len(df_24h_sum.columns)-num]) / df_24h_sum.iloc[:, len(df_24h_sum.columns)-num])*100
         df_24h_sum = df_24h_sum.sort_values(ascending = False)
         df_24h_sum = df_24h_sum.to_frame()
         df = df_24h_sum.copy()[[]]
@@ -88,17 +88,17 @@ if(not direction):
         ranking.columns = ['Rank']
         ranking['Cumulative'] = df_24h_sum['Cumulative']
         df_24h_sum = pd.concat([df_24h_sum, ranking], axis = 1)
-        df_24h_sum.columns = ['Cumulative', 'Rank', 'Trash']
-        df_24h_sum.drop('Trash', axis = 1, inplace = True)
+        df_24h_sum.columns = ['Cumulative', 'Rank', 'Trash']    #cambiare cumulative con la data
+        df_24h_sum.drop('Trash', axis = 1, inplace = True)      #controllare calcolo cumulativo negativo
         df_24h_sum.index = df.index
         leaderboard.append(df_24h_sum)
         progresso += 1
         progress_bar(progresso, totale)
 else:
     for num in cumulatives:
-        pd.set_option('display.float_format', lambda x: '%.5f' % x)
+        pd.set_option('display.float_format', lambda x: '%.10f' % x)
         df_24h_sum = df_principale.T
-        df_24h_sum = (df_24h_sum.iloc[:, (len(df_24h_sum.columns)-1-start + num)] - df_24h_sum.iloc[:, (len(df_24h_sum.columns)-1-start)]) / df_24h_sum.iloc[:, (len(df_24h_sum.columns)-1-start)]
+        df_24h_sum = ((df_24h_sum.iloc[:, (len(df_24h_sum.columns)-1-start + num)] - df_24h_sum.iloc[:, (len(df_24h_sum.columns)-1-start)]) / df_24h_sum.iloc[:, (len(df_24h_sum.columns)-1-start)]) * 100
         df_24h_sum = df_24h_sum.sort_values(ascending = False)
         df_24h_sum = df_24h_sum.to_frame()
         df = df_24h_sum.copy()[[]]
@@ -170,9 +170,9 @@ first = first.merge(df_first_day_SMA21, on = 'Coin')
 leaderboard = []
 df_score_cum = first['Cumulative']
 df_score_cum = df_score_cum.to_frame()
-df_score_cum.columns = ['Score']
-df_score_cum['Score'] = 0
-df_score_temp = df_score_cum['Score']
+df_score_cum.columns = ['Score']      #moltiplicare per 100 il cumulativo
+df_score_cum['Score'] = 0             #dare un punteggio a quelle che rimangono tra le prime 10
+df_score_temp = df_score_cum['Score'] #dare un peso inferiore al cambio di posizione
 df_score_temp = df_score_temp.to_frame()
 for num in range(len(cumulatives)-1):
     df_score_temp['Score'] = 0
@@ -183,7 +183,7 @@ for num in range(len(cumulatives)-1):
     first_df.drop('Cumulative', inplace = True, axis = 1)
     df = second_df.merge(first_df, on = 'Coin')
     df['Change'] = df['Rank1'] - df['Rank2']
-    df['Type of change'] = np.where(df['Change'].astype(float) > 0, 1, -1)
+    df['Type of change'] = np.where(df['Change'].astype(float) > 0, 1, -1)  #aggiungere caso change = 0
     df.drop(['Rank1', 'Rank2'], inplace = True, axis = 1)
     df.set_index('Coin', inplace = True)
     df_score_temp_change = df['Change'].copy()
