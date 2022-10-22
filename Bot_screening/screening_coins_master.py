@@ -30,7 +30,7 @@ direction = int(direction)
 
 if(direction):
     start = input("Da che giorno vuoi partire?\n")
-    start = int(start) + 1
+    start = int(start)
 else:
     start = input("Fino a che giorno vuoi arrivare?\n")
     start = int(start) 
@@ -51,6 +51,11 @@ else:
 totale = (len(cumulatives) * 5) - 3
 progresso = 0
 
+order = input('Li vuoi ordinati per Score o per performance\n'
+              '0 -> Performance\n'
+              '1 -> Score\n')
+order = int(order)
+
 #viene caricato lo storico a seconda di quale fonte si desidera usare
 if(type_storico == "binance"):
     df_principale = pd.read_excel('closes.xlsx', index_col = 0)
@@ -58,7 +63,6 @@ if(type_storico == "binance"):
 else:
     df_principale = pd.read_excel('storico.xlsx', index_col = 0)
 df_for_index = df_principale.tail(start)
-print(df_for_index)
 
 #vengono caricati i dati dai file riguardanti le medie
 df_SMA6 = pd.read_excel('above6.xlsx', index_col = 0)
@@ -100,7 +104,6 @@ else:
     for num in cumulatives:
         pd.set_option('display.float_format', lambda x: '%.10f' % x)
         df_24h_sum = df_principale.T
-        print(df_24h_sum.iloc[:, (len(df_24h_sum.columns)-1-start + num)])
         df_24h_sum = ((df_24h_sum.iloc[:, (len(df_24h_sum.columns)-1-start + num)] - df_24h_sum.iloc[:, (len(df_24h_sum.columns)-1-start)]) / df_24h_sum.iloc[:, (len(df_24h_sum.columns)-1-start)]) * 100
         df_24h_sum = df_24h_sum.sort_values(ascending = False)
         df_24h_sum = df_24h_sum.to_frame()
@@ -235,6 +238,8 @@ for num in range(len(cumulatives)-1):
     df_score_temp.columns = ['Score']
     df_score_cum = df_score_cum.add(df_score_temp)
     df = df.merge(df_score_cum, on = 'Coin')
+    if(order):
+        df = df.sort_values(by = 'Score', ascending = False)
     leaderboard.append(df)
     progresso += 1
     progress_bar(progresso, totale)
