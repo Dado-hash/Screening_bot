@@ -3,7 +3,7 @@ import colorama
 import datetime as dt
 import time as t
 from plotly.offline import plot
-from pycoingecko import CoinGeckoAPI    #controllare indici, sballati di 3 posizioni
+from pycoingecko import CoinGeckoAPI    
 import numpy as np
 from functools import reduce
 
@@ -30,7 +30,7 @@ direction = int(direction)
 
 if(direction):
     start = input("Da che giorno vuoi partire?\n")
-    start = int(start)
+    start = int(start) + 1
 else:
     start = input("Fino a che giorno vuoi arrivare?\n")
     start = int(start) 
@@ -57,6 +57,8 @@ if(type_storico == "binance"):
     df_principale.set_index('Close time', inplace = True)
 else:
     df_principale = pd.read_excel('storico.xlsx', index_col = 0)
+df_for_index = df_principale.tail(start)
+print(df_for_index)
 
 #vengono caricati i dati dai file riguardanti le medie
 df_SMA6 = pd.read_excel('above6.xlsx', index_col = 0)
@@ -89,7 +91,7 @@ if(not direction):
         ranking['Cumulative'] = df_24h_sum['Cumulative']
         df_24h_sum = pd.concat([df_24h_sum, ranking], axis = 1)
         df_24h_sum.columns = ['Cumulative', 'Rank', 'Trash']    #cambiare cumulative con la data
-        df_24h_sum.drop('Trash', axis = 1, inplace = True)      #controllare calcolo cumulativo negativo
+        df_24h_sum.drop('Trash', axis = 1, inplace = True)     
         df_24h_sum.index = df.index
         leaderboard.append(df_24h_sum)
         progresso += 1
@@ -98,6 +100,7 @@ else:
     for num in cumulatives:
         pd.set_option('display.float_format', lambda x: '%.10f' % x)
         df_24h_sum = df_principale.T
+        print(df_24h_sum.iloc[:, (len(df_24h_sum.columns)-1-start + num)])
         df_24h_sum = ((df_24h_sum.iloc[:, (len(df_24h_sum.columns)-1-start + num)] - df_24h_sum.iloc[:, (len(df_24h_sum.columns)-1-start)]) / df_24h_sum.iloc[:, (len(df_24h_sum.columns)-1-start)]) * 100
         df_24h_sum = df_24h_sum.sort_values(ascending = False)
         df_24h_sum = df_24h_sum.to_frame()
@@ -139,6 +142,7 @@ for num in range(len(cumulatives)):
         second_df.drop('Rank', inplace = True, axis = 1)
         second_df.set_index('Coin', inplace = True)
         df_totale = df_totale.merge(second_df, on = 'Coin')
+        df_totale = df_totale.copy()
         progresso += 1
         progress_bar(progresso, totale)
 
@@ -170,8 +174,8 @@ first = first.merge(df_first_day_SMA21, on = 'Coin')
 leaderboard = []
 df_score_cum = first['Cumulative']
 df_score_cum = df_score_cum.to_frame()
-df_score_cum.columns = ['Score']      #moltiplicare per 100 il cumulativo
-df_score_cum['Score'] = 0             #dare un punteggio a quelle che rimangono tra le prime 10
+df_score_cum.columns = ['Score']      
+df_score_cum['Score'] = 0             
 df_score_temp = df_score_cum['Score'] #dare un peso inferiore al cambio di posizione
 df_score_temp = df_score_temp.to_frame()
 for num in range(len(cumulatives)-1):
@@ -183,7 +187,20 @@ for num in range(len(cumulatives)-1):
     first_df.drop('Cumulative', inplace = True, axis = 1)
     df = second_df.merge(first_df, on = 'Coin')
     df['Change'] = df['Rank1'] - df['Rank2']
-    df['Type of change'] = np.where(df['Change'].astype(float) > 0, 1, -1)  #aggiungere caso change = 0
+    conditions = [
+        (df['Change'].astype(float) > 0),
+        (df['Change'].astype(float) < 0),
+        (df['Change'].astype(float) == 0)
+    ]
+    values = [1, -1, 0]
+    df['Type of change'] = np.select(conditions, values) 
+    conditions = [
+        (df.index < 10),
+        (df.index >= 10) & (df.index < 15),
+        (df.index >= 15) & (df.index < 20)
+    ]
+    values = [3, 2, 1]
+    df['Top 10'] = np.select(conditions, values) 
     df.drop(['Rank1', 'Rank2'], inplace = True, axis = 1)
     df.set_index('Coin', inplace = True)
     df_score_temp_change = df['Change'].copy()
@@ -212,7 +229,8 @@ for num in range(len(cumulatives)-1):
     df_score_temp_SMA6 = df['Above SMA6']
     df_score_temp_SMA11 = df['Above SMA11']
     df_score_temp_SMA21 = df['Above SMA21']
-    df_score_temp = reduce(lambda a, b: a.add(b, fill_value=0), [df_score_temp, df_score_temp_SMA6, df_score_temp_SMA11, df_score_temp_SMA21])
+    df_score_temp_top10 = df['Top 10']
+    df_score_temp = reduce(lambda a, b: a.add(b, fill_value=0), [df_score_temp, df_score_temp_SMA6, df_score_temp_SMA11, df_score_temp_SMA21, df_score_temp_top10])
     df_score_temp = df_score_temp.to_frame()
     df_score_temp.columns = ['Score']
     df_score_cum = df_score_cum.add(df_score_temp)
