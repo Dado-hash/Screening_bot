@@ -51,7 +51,7 @@ else:
 totale = (len(cumulatives) * 5) - 3
 progresso = 0
 
-order = input('Li vuoi ordinati per Score o per performance\n'
+order = input('Li vuoi ordinati per Score o per performance?\n'
               '0 -> Performance\n'
               '1 -> Score\n')
 order = int(order)
@@ -154,6 +154,19 @@ first = pd.read_excel('leaderboards.xlsx', sheet_name = str(cumulatives[0]) + 'd
 first.columns = ['Coin', 'Cumulative', 'Rank']
 first.drop('Rank', inplace = True, axis = 1)
 first.set_index('Coin', inplace = True)
+first_temp = first['Cumulative']
+first_temp = first_temp.to_frame()
+first_temp.columns = ['24h_change']
+first_temp = first_temp.reset_index()
+first_temp = first_temp.sort_values(by = '24h_change', ascending = False)
+conditions = [
+        (first_temp.index < 10),
+        (first_temp.index >= 10) & (first_temp.index < 15),
+        (first_temp.index >= 15) & (first_temp.index < 20)
+    ]
+values = [3, 2, 1]
+first_temp['Day_rank'] = np.select(conditions, values) 
+first_temp.drop('24h_change', inplace = True, axis = 1)
 first_day_SMA6_index = df_SMA6.columns[0]
 df_first_day_SMA6 = df_SMA6[first_day_SMA6_index]
 df_first_day_SMA6 = df_first_day_SMA6.to_frame()
@@ -177,9 +190,9 @@ first = first.merge(df_first_day_SMA21, on = 'Coin')
 leaderboard = []
 df_score_cum = first['Cumulative']
 df_score_cum = df_score_cum.to_frame()
-df_score_cum.columns = ['Score']      
-df_score_cum['Score'] = 0             
-df_score_temp = df_score_cum['Score'] #dare un peso inferiore al cambio di posizione
+df_score_cum.columns = ['Score']  
+df_score_cum['Score'] = 0  
+df_score_temp = df_score_cum['Score'] 
 df_score_temp = df_score_temp.to_frame()
 for num in range(len(cumulatives)-1):
     df_score_temp['Score'] = 0
@@ -187,6 +200,28 @@ for num in range(len(cumulatives)-1):
     second_df = pd.read_excel('leaderboards.xlsx', sheet_name = str(cumulatives[num+1]) + 'd')
     first_df.columns = ['Coin', 'Cumulative', 'Rank1']
     second_df.columns = ['Coin', 'Cumulative', 'Rank2']
+    first_temp = first_df.copy()
+    second_temp = second_df.copy()
+    first_temp.drop('Rank1', inplace = True, axis = 1)
+    second_temp.drop('Rank2', inplace = True, axis = 1)
+    first_temp.set_index('Coin', inplace = True)
+    second_temp.set_index('Coin', inplace = True)
+    first_temp.columns = ['Cumulative1']
+    second_temp.columns = ['Cumulative2']
+    first_temp = first_temp.merge(second_temp, on = 'Coin')
+    first_temp['24h_change'] = (first_temp['Cumulative2'] - first_temp['Cumulative1'])
+    first_temp.drop(['Cumulative1', 'Cumulative2'], inplace = True, axis = 1)
+    first_temp = first_temp.sort_values(by = '24h_change', ascending = False)
+    first_temp = first_temp.reset_index()
+    conditions = [
+        (first_temp.index < 10),
+        (first_temp.index >= 10) & (first_temp.index < 15),
+        (first_temp.index >= 15) & (first_temp.index < 20)
+    ]
+    values = [3, 2, 1]
+    first_temp['Day_rank'] = np.select(conditions, values) 
+    first_temp.drop('24h_change', inplace = True, axis = 1)
+    first_temp.set_index('Coin', inplace = True)
     first_df.drop('Cumulative', inplace = True, axis = 1)
     df = second_df.merge(first_df, on = 'Coin')
     df['Change'] = df['Rank1'] - df['Rank2']
@@ -226,14 +261,17 @@ for num in range(len(cumulatives)-1):
     df_first_day_SMA21 = df_first_day_SMA21.to_frame()
     df_first_day_SMA21.index.name = 'Coin'
     df_first_day_SMA21.columns = ['Above SMA21']
+    df_day_rank = first_temp['Day_rank'].copy()
     df = df.merge(df_first_day_SMA6, on = 'Coin')
     df = df.merge(df_first_day_SMA11, on = 'Coin')
     df = df.merge(df_first_day_SMA21, on = 'Coin')
+    df = df.merge(first_temp, on = 'Coin')
     df_score_temp_SMA6 = df['Above SMA6']
     df_score_temp_SMA11 = df['Above SMA11']
     df_score_temp_SMA21 = df['Above SMA21']
     df_score_temp_top10 = df['Top 10']
-    df_score_temp = reduce(lambda a, b: a.add(b, fill_value=0), [df_score_temp, df_score_temp_SMA6, df_score_temp_SMA11, df_score_temp_SMA21, df_score_temp_top10])
+    df_score_temp_day_rank = df['Day_rank']
+    df_score_temp = reduce(lambda a, b: a.add(b, fill_value=0), [df_score_temp, df_score_temp_SMA6, df_score_temp_SMA11, df_score_temp_SMA21, df_score_temp_top10, df_score_temp_day_rank])
     df_score_temp = df_score_temp.to_frame()
     df_score_temp.columns = ['Score']
     df_score_cum = df_score_cum.add(df_score_temp)
