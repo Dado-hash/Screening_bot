@@ -188,11 +188,11 @@ first = first.merge(df_first_day_SMA21, on = 'Coin')
 
 #ogni cumulativo viene aggiunto a quello del primo giorno
 leaderboard = []
-df_score_cum = first['Cumulative']
-df_score_cum = df_score_cum.to_frame()
-df_score_cum.columns = ['Score']  
-df_score_cum['Score'] = 0  
-df_score_temp = df_score_cum['Score'] 
+df_score_cum = first_temp.copy()
+df_score_cum.set_index('Coin', inplace = True)
+df_score_cum.columns = ['Score']
+df_score_cum['Score'] = df_score_cum['Score'].astype(float)
+df_score_temp = df_score_cum['Score'].copy()
 df_score_temp = df_score_temp.to_frame()
 for num in range(len(cumulatives)-1):
     df_score_temp['Score'] = 0
@@ -224,7 +224,7 @@ for num in range(len(cumulatives)-1):
     first_temp.set_index('Coin', inplace = True)
     first_df.drop('Cumulative', inplace = True, axis = 1)
     df = second_df.merge(first_df, on = 'Coin')
-    df['Change'] = df['Rank1'] - df['Rank2']
+    df['Change'] = (df['Rank1'] - df['Rank2']) / 10
     conditions = [
         (df['Change'].astype(float) > 0),
         (df['Change'].astype(float) < 0),
@@ -283,6 +283,8 @@ for num in range(len(cumulatives)-1):
     progress_bar(progresso, totale)
 
 #creo il file di base con i cumulativi suddivisi per giorno e un foglio con la performance delle coin giorno per giorno
+if(start < 10):
+    t.sleep(1)
 with pd.ExcelWriter('leaderboards.xlsx') as writer:
     df_totale.to_excel(writer, sheet_name = 'Aggregate')
     first.to_excel(writer, sheet_name = str(cumulatives[0]) + 'd')
