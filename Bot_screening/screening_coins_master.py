@@ -285,7 +285,11 @@ for num in range(len(cumulatives)-1):
 #creo il file di base con i cumulativi suddivisi per giorno e un foglio con la performance delle coin giorno per giorno
 if(start < 10):
     t.sleep(1)
-with pd.ExcelWriter('leaderboards.xlsx') as writer:
+if(direction):
+    filename = 'leaderboard_forward.xlsx'
+else:
+    filename = 'leaderboard_backward.xlsx'
+with pd.ExcelWriter(filename) as writer:
     df_totale.to_excel(writer, sheet_name = 'Aggregate')
     first.to_excel(writer, sheet_name = str(cumulatives[0]) + 'd')
     counter = 1
@@ -298,8 +302,39 @@ with pd.ExcelWriter('leaderboards.xlsx') as writer:
 #creo il file finale aggregando tutti i cumulativi, i punteggi e lo score totale
 list_cum = []
 for cum in cumulatives:
-    df_sheet = pd.read_excel('leaderboards.xlsx', sheet_name= str(cum) + 'd')
+    df_sheet = pd.read_excel(filename, sheet_name= str(cum) + 'd')
     df_sheet = df_sheet.rename(columns={'Change': 'Change ' + str(cum) + 'd'})
     list_cum.append(df_sheet)
 df_cums = pd.concat(list_cum, axis = 1)
-df_cums.to_excel('cumulatives_changes.xlsx')
+if(direction):
+    filename = 'cumulative_changes_forward.xlsx'
+else:
+    filename = 'cumulative_changes_backward.xlsx'
+df_cums.to_excel(filename)
+
+#unisco i due score
+union = input('Vuoi combinare gli score? (occorre aver creato entrambi i file prima)\n'
+              '0 -> No\n'
+              '1 -> Sì\n')
+union = int(union)
+if(union):
+    list_score = []
+    for cum in cumulatives: 
+        if(cum != 1):
+            df_sheet_backward = pd.read_excel('leaderboard_backward.xlsx', sheet_name = str(cum) + 'd')
+            df_sheet_forward = pd.read_excel('leaderboard_forward.xlsx', sheet_name = str(cum) + 'd')
+            df_sheet_forward.set_index('Coin', inplace = True)
+            df_sheet_backward.set_index('Coin', inplace = True)
+            print(df_sheet_backward)
+            df_sheet_forward = df_sheet_forward.rename(columns={'Score': 'Score_f'})
+            df_sheet_backward.drop(['Cumulative', 'Change', 'Type of change', 'Top 10', 'Above SMA6', 'Above SMA11', 'Above SMA21', 'Day_rank'], inplace = True, axis = 1)
+            df_sheet_forward.drop(['Cumulative', 'Change', 'Type of change', 'Top 10', 'Above SMA6', 'Above SMA11', 'Above SMA21', 'Day_rank'], inplace = True, axis = 1)
+            df_sheet_tot = df_sheet_backward.merge(df_sheet_forward, on = 'Coin')
+            df_sheet_tot['Score_tot_' + str(cum) + 'd'] = df_sheet_tot['Score'] + df_sheet_tot['Score_f']
+            df_sheet_tot.drop(['Score', 'Score_f'], inplace = True, axis = 1)
+            print(df_sheet_tot)
+            df_sheet_tot = df_sheet_tot.sort_values(by = ('Score_tot_' + str(cum) + 'd'), ascending = False)
+            list_score.append(df_sheet_tot)
+    df_score_tot = pd.concat(list_score, axis = 1)
+    print(df_score_tot)
+    df_score_tot.to_excel('score.xlsx')
