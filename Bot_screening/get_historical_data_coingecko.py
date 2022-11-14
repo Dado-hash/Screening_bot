@@ -100,7 +100,7 @@ count_bar = 0
 for id_coin in coins_id_list:
     if(id_coin != 'bitcoin'):
         if(count == 16):
-            t.sleep(80)
+            t.sleep(90)
             count = 0
         hist_data = cg.get_coin_market_chart_by_id(id = id_coin, vs_currency = 'btc', days = 'max', interval = 'daily')
         df = pd.DataFrame(hist_data)
