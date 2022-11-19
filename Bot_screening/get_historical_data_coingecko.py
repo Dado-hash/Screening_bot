@@ -28,6 +28,7 @@ if(number_coins > 100):
     list_df = []
     for num in range(range1):
         if(num!=0):
+            print(num)
             complexPriceRequest = cg.get_coins_markets(vs_currency = 'btc', order = 'market_cap_desc', per_page = 100, page = num, price_change_percentage = '24h')
             list_df.append(pd.DataFrame(complexPriceRequest))
     df = pd.concat(list_df)
@@ -39,6 +40,7 @@ if(number_coins > 100):
     list_df = []
     for num in range(range2):
         if(num>range2//2):
+            print(num)
             complexPriceRequest = cg.get_coins_markets(vs_currency = 'btc', order = 'market_cap_desc', per_page = 100, page = num, price_change_percentage = '24h')
             list_df.append(pd.DataFrame(complexPriceRequest))
     df = pd.concat(list_df)
@@ -77,8 +79,8 @@ df_principale['SMA6'] = df_principale[id_coin].rolling(6).mean()
 df_principale['SMA11'] = df_principale[id_coin].rolling(11).mean()
 df_principale['SMA21'] = df_principale[id_coin].rolling(21).mean()
 df_principale['Above SMA6'] = np.where(df_principale[id_coin].astype(float) > df_principale['SMA6'], 1, 0)
-df_principale['Above SMA11'] = np.where(df_principale[id_coin].astype(float) > df_principale['SMA11'], 1, 0)
-df_principale['Above SMA21'] = np.where(df_principale[id_coin].astype(float) > df_principale['SMA21'], 1, 0)
+df_principale['Above SMA11'] = np.where(df_principale[id_coin].astype(float) > df_principale['SMA11'], 2, 0)
+df_principale['Above SMA21'] = np.where(df_principale[id_coin].astype(float) > df_principale['SMA21'], 3, 0)
 df_principale_SMA6 = df_principale[['Close time', 'SMA6']]
 df_principale_SMA11 = df_principale[['Close time', 'SMA11']]
 df_principale_SMA21 = df_principale[['Close time', 'SMA21']]
@@ -100,7 +102,7 @@ count_bar = 0
 for id_coin in coins_id_list:
     if(id_coin != 'bitcoin'):
         if(count == 16):
-            t.sleep(90)
+            t.sleep(100)
             count = 0
         hist_data = cg.get_coin_market_chart_by_id(id = id_coin, vs_currency = 'btc', days = 'max', interval = 'daily')
         df = pd.DataFrame(hist_data)
@@ -114,9 +116,9 @@ for id_coin in coins_id_list:
         df['SMA6'] = df[id_coin].rolling(6).mean()
         df['SMA11'] = df[id_coin].rolling(11).mean()
         df['SMA21'] = df[id_coin].rolling(21).mean()
-        df['Above SMA6'] = np.where(df[id_coin].astype(float) > df['SMA6'], 1, 0)
-        df['Above SMA11'] = np.where(df[id_coin].astype(float) > df['SMA11'], 1, 0)
-        df['Above SMA21'] = np.where(df[id_coin].astype(float) > df['SMA21'], 1, 0)
+        df['Above SMA6'] = np.where(df[id_coin].astype(float) > df['SMA6'], 1, -1)
+        df['Above SMA11'] = np.where(df[id_coin].astype(float) > df['SMA11'], 2, -2)
+        df['Above SMA21'] = np.where(df[id_coin].astype(float) > df['SMA21'], 3, -3)
         df_SMA6 = df[['Close time', 'SMA6']]
         df_SMA11 = df[['Close time', 'SMA11']]
         df_SMA21 = df[['Close time', 'SMA21']]

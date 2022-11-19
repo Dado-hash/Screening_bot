@@ -245,7 +245,7 @@ for num in range(len(cumulatives)-1):
     df_score_temp_change.index = df.index
     df_score_temp_type = df['Type of change'].copy()
     df_score_temp_type.index = df.index
-    df_score_temp = df_score_temp_change.add(df_score_temp_type)
+    df_score_temp = df_score_temp_change#.add(df_score_temp_type)
     first_day_SMA6_index = df_SMA6.columns[num+1]
     df_first_day_SMA6 = df_SMA6[first_day_SMA6_index]
     df_first_day_SMA6 = df_first_day_SMA6.to_frame()
