@@ -55,7 +55,6 @@ if(number_coins > 100):
 else:
     list_df = []
     complexPriceRequest = cg.get_coins_markets(vs_currency = 'btc', order = 'market_cap_desc', per_page = number_coins, page = 1, price_change_percentage = '24h')
-    list_df.append(pd.DataFrame(complexPriceRequest))
     df = pd.concat(list_df)
     list_columns = ['id', 'name', 'current_price', 'market_cap', 'high_24h', 'low_24h', 'price_change_percentage_24h']
     df = df[list_columns]   
