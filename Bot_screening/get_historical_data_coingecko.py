@@ -28,7 +28,6 @@ if(number_coins > 100):
     list_df = []
     for num in range(range1):
         if(num!=0):
-            print(num)
             complexPriceRequest = cg.get_coins_markets(vs_currency = 'btc', order = 'market_cap_desc', per_page = 100, page = num, price_change_percentage = '24h')
             list_df.append(pd.DataFrame(complexPriceRequest))
     df = pd.concat(list_df)
@@ -100,7 +99,7 @@ count = 0
 count_bar = 0
 for id_coin in coins_id_list:
     if(id_coin != 'bitcoin'):
-        if(count == 16):
+        if(count == 14):
             t.sleep(100)
             count = 0
         hist_data = cg.get_coin_market_chart_by_id(id = id_coin, vs_currency = 'btc', days = 'max', interval = 'daily')
