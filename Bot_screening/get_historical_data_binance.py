@@ -4,6 +4,7 @@ import pandas as pd
 import colorama
 import numpy as np
 from datetime import timedelta
+
 pd.options.mode.chained_assignment = None
 
 
@@ -115,10 +116,15 @@ df_principal_above6.columns = ['Close time', 'BTCUSD']
 df_principal_above11.columns = ['Close time', 'BTCUSD']
 df_principal_above21.columns = ['Close time', 'BTCUSD']
 df_principal_tenkan.columns = ['Close time', 'BTCUSD']
+df_principal_tenkan = df_principal_tenkan.dropna()
 df_principal_kijun.columns = ['Close time', 'BTCUSD']
+df_principal_kijun = df_principal_kijun.dropna()
 df_principal_senkou_a.columns = ['Close time', 'BTCUSD']
+df_principal_senkou_a = df_principal_senkou_a.dropna()
 df_principal_senkou_b.columns = ['Close time', 'BTCUSD']
+df_principal_senkou_b = df_principal_senkou_b.dropna()
 df_principal_chikou.columns = ['Close time', 'BTCUSD']
+df_principal_chikou = df_principal_chikou.dropna()
 
 # repeating for all the remaining coins
 count_bar = 0
@@ -209,44 +215,49 @@ for coin in list_symbols:
         df_above11.columns = ['Close time', coin]
         df_above21.columns = ['Close time', coin]
         df_tenkan.columns = ['Close time', coin]
+        df_tenkan = df_tenkan.dropna()
         df_kijun.columns = ['Close time', coin]
+        df_kijun = df_kijun.dropna()
         df_senkou_a.columns = ['Close time', coin]
+        df_senkou_a = df_senkou_a.dropna()
         df_senkou_b.columns = ['Close time', coin]
+        df_senkou_b = df_senkou_b.dropna()
         df_chikou.columns = ['Close time', coin]
+        df_chikou = df_chikou.dropna()
 
         # merging the data of the coin with those of all the others
         df_principal_highs = pd.merge(df_principal_highs, df_highs, on="Close time", how='left')
-        df_principal_highs = df_principal_highs.copy()
+        # df_principal_highs = df_principal_highs.copy()
         df_principal_lows = pd.merge(df_principal_lows, df_lows, on="Close time", how='left')
-        df_principal_lows = df_principal_lows.copy()
+        # df_principal_lows = df_principal_lows.copy()
         df_principal_closes = pd.merge(df_principal_closes, df_closes, on="Close time", how='left')
-        df_principal_closes = df_principal_closes.copy()
+        # df_principal_closes = df_principal_closes.copy()
         df_principal_volatility = pd.merge(df_principal_volatility, df_volatility, on="Close time", how='left')
-        df_principal_volatility = df_principal_volatility.copy()
+        # df_principal_volatility = df_principal_volatility.copy()
         df_principal_correlation = pd.merge(df_principal_correlation, df_correlation, on="Close time", how='left')
-        df_principal_correlation = df_principal_correlation.copy()
+        # df_principal_correlation = df_principal_correlation.copy()
         df_principal_SMA6 = pd.merge(df_principal_SMA6, df_SMA6, on="Close time", how='left')
-        df_principal_SMA6 = df_principal_SMA6.copy()
+        # df_principal_SMA6 = df_principal_SMA6.copy()
         df_principal_SMA11 = pd.merge(df_principal_SMA11, df_SMA11, on="Close time", how='left')
-        df_principal_SMA11 = df_principal_SMA11.copy()
+        # df_principal_SMA11 = df_principal_SMA11.copy()
         df_principal_SMA21 = pd.merge(df_principal_SMA21, df_SMA21, on="Close time", how='left')
-        df_principal_SMA21 = df_principal_SMA21.copy()
+        # df_principal_SMA21 = df_principal_SMA21.copy()
         df_principal_above6 = pd.merge(df_principal_above6, df_above6, on="Close time", how='left')
-        df_principal_above6 = df_principal_above6.copy()
+        # df_principal_above6 = df_principal_above6.copy()
         df_principal_above11 = pd.merge(df_principal_above11, df_above11, on="Close time", how='left')
-        df_principal_above11 = df_principal_above11.copy()
+        # df_principal_above11 = df_principal_above11.copy()
         df_principal_above21 = pd.merge(df_principal_above21, df_above21, on="Close time", how='left')
-        df_principal_above21 = df_principal_above21.copy()
+        # df_principal_above21 = df_principal_above21.copy()
         df_principal_tenkan = pd.merge(df_principal_tenkan, df_tenkan, on="Close time", how='left')
-        df_principal_tenkan = df_principal_tenkan.copy()
+        # df_principal_tenkan = df_principal_tenkan.copy()
         df_principal_kijun = pd.merge(df_principal_kijun, df_kijun, on="Close time", how='left')
-        df_principal_kijun = df_principal_kijun.copy()
+        # df_principal_kijun = df_principal_kijun.copy()
         df_principal_senkou_a = pd.merge(df_principal_senkou_a, df_senkou_a, on="Close time", how='left')
-        df_principal_senkou_a = df_principal_senkou_a.copy()
+        # df_principal_senkou_a = df_principal_senkou_a.copy()
         df_principal_senkou_b = pd.merge(df_principal_senkou_b, df_senkou_b, on="Close time", how='left')
-        df_principal_senkou_b = df_principal_senkou_b.copy()
+        # df_principal_senkou_b = df_principal_senkou_b.copy()
         df_principal_chikou = pd.merge(df_principal_chikou, df_chikou, on="Close time", how='left')
-        df_principal_chikou = df_principal_chikou.copy()
+        # df_principal_chikou = df_principal_chikou.copy()
 
         progress_bar(count_bar, len(list_symbols))
 
