@@ -316,6 +316,8 @@ list_cum = []
 for cum in cumulatives:
     df_sheet = pd.read_excel(filename, sheet_name=str(cum) + 'd')
     df_sheet = df_sheet.rename(columns={'Change': 'Change ' + str(cum) + 'd'})
+    df_sheet.drop(['Type of change', 'Top 10', 'Above SMA6', 'Above SMA11', 'Above SMA21', 'Day_rank'], inplace=True,
+                  axis=1)
     list_cum.append(df_sheet)
 df_cums = pd.concat(list_cum, axis=1)
 if (direction):
