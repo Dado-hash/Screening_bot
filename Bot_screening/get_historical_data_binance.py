@@ -16,6 +16,7 @@ def progress_bar(progress, total, color=colorama.Fore.YELLOW):
         print(colorama.Fore.GREEN + f"\r|{bar}| {percent:.2f}%", end="\r")
         print(colorama.Fore.RESET)
 
+pd.set_option('display.float_format', lambda x: '%.10f' % x)
 
 # getting coins from binance
 list_symbols = []
@@ -29,15 +30,13 @@ for s in exchange_info['symbols']:
 klines = client.get_historical_klines("BTCUSDT", Client.KLINE_INTERVAL_1DAY,
                                       "1 Set, 2022")  # "1 Dec, 2017", "1 Jan, 2018" per un intervallo
 
-# reformatting some columns and calculating Volatility and 24h change
+# reformatting some columns and 24h change
 df_klines = pd.DataFrame(klines)
 df_klines.columns = ['Open time', 'Open price', 'High price', 'Low price', 'Close price', 'Volume', 'Close time',
                      'trash1', 'trash2', 'trash3', 'trash4', 'trash5']
 
 df_klines['Open time'] = pd.to_datetime(df_klines['Open time'].astype(float), unit='ms').dt.date
 df_klines['Close time'] = pd.to_datetime(df_klines['Close time'].astype(float), unit='ms').dt.date
-df_klines['Volatility'] = (df_klines['High price'].astype(float) - df_klines['Low price'].astype(float)) / df_klines[
-    'Low price'].astype(float)
 df_klines['24h change'] = (df_klines['Close price'].astype(float) - df_klines['Open price'].astype(float)) / df_klines[
     'Open price'].astype(float)
 
@@ -55,7 +54,6 @@ df_klines.drop(['trash1', 'trash2', 'trash3', 'trash4', 'trash5'], axis=1, inpla
 df_principal_highs = df_klines[['Close time', 'High price']]
 df_principal_lows = df_klines[['Close time', 'Low price']]
 df_principal_closes = df_klines[['Close time', 'Close price']]
-df_principal_volatility = df_klines[['Close time', 'Volatility']]
 df_principal_correlation = df_klines[['Close time', '24h change']]
 df_principal_SMA6 = df_klines[['Close time', 'SMA6']]
 df_principal_SMA11 = df_klines[['Close time', 'SMA11']]
@@ -67,7 +65,6 @@ df_principal_above21 = df_klines[['Close time', 'Above SMA21']]
 df_principal_highs.columns = ['Close time', 'BTCUSD']
 df_principal_lows.columns = ['Close time', 'BTCUSD']
 df_principal_closes.columns = ['Close time', 'BTCUSD']
-df_principal_volatility.columns = ['Close time', 'BTCUSD']
 df_principal_correlation.columns = ['Close time', 'BTCUSD']
 df_principal_SMA6.columns = ['Close time', 'BTCUSD']
 df_principal_SMA11.columns = ['Close time', 'BTCUSD']
@@ -88,8 +85,6 @@ for coin in list_symbols:
                              'Close time', 'trash1', 'trash2', 'trash3', 'trash4', 'trash5']
         df_klines['Open time'] = pd.to_datetime(df_klines['Open time'].astype(float), unit='ms').dt.date
         df_klines['Close time'] = pd.to_datetime(df_klines['Close time'].astype(float), unit='ms').dt.date
-        df_klines['Volatility'] = (df_klines['High price'].astype(float) - df_klines['Low price'].astype(float)) / \
-                                  df_klines['Low price'].astype(float)
         df_klines['24h change'] = (df_klines['Close price'].astype(float) - df_klines['Open price'].astype(float)) / \
                                   df_klines['Open price'].astype(float)
         df_klines['Correlation'] = df_klines['24h change'].astype(float) / df_principal_correlation['BTCUSD'].astype(
@@ -108,7 +103,6 @@ for coin in list_symbols:
         df_highs = df_klines[['Close time', 'High price']]
         df_lows = df_klines[['Close time', 'Low price']]
         df_closes = df_klines[['Close time', 'Close price']]
-        df_volatility = df_klines[['Close time', 'Volatility']]
         df_correlation = df_klines[['Close time', 'Correlation']]
         df_SMA6 = df_klines[['Close time', 'SMA6']]
         df_SMA11 = df_klines[['Close time', 'SMA11']]
@@ -121,7 +115,6 @@ for coin in list_symbols:
         df_highs.columns = ['Close time', coin]
         df_lows.columns = ['Close time', coin]
         df_closes.columns = ['Close time', coin]
-        df_volatility.columns = ['Close time', coin]
         df_correlation.columns = ['Close time', coin]
         df_SMA6.columns = ['Close time', coin]
         df_SMA11.columns = ['Close time', coin]
@@ -137,8 +130,6 @@ for coin in list_symbols:
         df_principal_lows = df_principal_lows.copy()
         df_principal_closes = pd.merge(df_principal_closes, df_closes, on="Close time", how='left')
         df_principal_closes = df_principal_closes.copy()
-        df_principal_volatility = pd.merge(df_principal_volatility, df_volatility, on="Close time", how='left')
-        df_principal_volatility = df_principal_volatility.copy()
         df_principal_correlation = pd.merge(df_principal_correlation, df_correlation, on="Close time", how='left')
         df_principal_correlation = df_principal_correlation.copy()
         df_principal_SMA6 = pd.merge(df_principal_SMA6, df_SMA6, on="Close time", how='left')
@@ -160,7 +151,6 @@ for coin in list_symbols:
 df_principal_highs.to_excel('highs.xlsx')
 df_principal_lows.to_excel('lows.xlsx')
 df_principal_closes.to_excel('closes.xlsx')
-df_principal_volatility.to_excel('volatility.xlsx')
 df_principal_correlation.to_excel('correlation.xlsx')
 df_principal_SMA6.to_excel('SMA6.xlsx')
 df_principal_SMA11.to_excel('SMA11.xlsx')

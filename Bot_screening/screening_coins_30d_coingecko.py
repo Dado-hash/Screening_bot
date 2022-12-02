@@ -125,12 +125,11 @@ for id_coin in coins_id_list:
         i += 1
         print(i)
 
-#salvo i tre file con 24h_change, volatility e correlation
+#salvo i tre file con 24h_change e correlation
 df_24h = df_principale_24h
 df_principale_24h = df_principale_24h.T
 df_principale_24h['sum'] = df_principale_24h.sum(axis = 1)
 df_principale_24h = df_principale_24h.sort_values('sum', ascending = False)
-df_principale_volatility.to_excel('volatility.xlsx')
 df_principale_correlation.to_excel('correlation.xlsx')
 df_principale_high.to_excel('high.xlsx')
 df_principale_low.to_excel('low.xlsx')
