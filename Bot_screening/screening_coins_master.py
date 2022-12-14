@@ -316,8 +316,13 @@ list_cum = []
 for cum in cumulatives:
     df_sheet = pd.read_excel(filename, sheet_name=str(cum) + 'd')
     df_sheet = df_sheet.rename(columns={'Change': 'Change ' + str(cum) + 'd'})
-    df_sheet.drop(['Type of change', 'Top 10', 'Above SMA6', 'Above SMA11', 'Above SMA21', 'Day_rank'], inplace=True,
+    df_sheet = df_sheet.rename(columns={'Score': 'Score ' + str(cum) + 'd'})
+    if (cum != 1):
+        name_col = 'Change ' + str(cum) +'d'
+        df_sheet.drop([name_col, 'Type of change', 'Top 10', 'Above SMA6', 'Above SMA11', 'Above SMA21', 'Day_rank'], inplace=True,
                   axis=1)
+    else:
+        df_sheet.drop(['Above SMA6', 'Above SMA11', 'Above SMA21'], inplace=True, axis=1)
     list_cum.append(df_sheet)
 df_cums = pd.concat(list_cum, axis=1)
 if (direction):
@@ -327,7 +332,7 @@ else:
 df_cums.to_excel(filename)
 
 # unisco i due score
-union = input('Vuoi combinare gli score? (occorre aver creato entrambi i file prima)\n'
+'''union = input('Vuoi combinare gli score? (occorre aver creato entrambi i file prima)\n'
               '0 -> No\n'
               '1 -> Sì\n')
 union = int(union)
@@ -352,4 +357,4 @@ if (union):
             df_sheet_tot = df_sheet_tot.sort_values(by=('Score_tot_' + str(cum) + 'd'), ascending=False)
             list_score.append(df_sheet_tot)
     df_score_tot = pd.concat(list_score, axis=1)
-    df_score_tot.to_excel('score.xlsx')
+    df_score_tot.to_excel('score.xlsx')'''
