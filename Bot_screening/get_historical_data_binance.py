@@ -159,7 +159,7 @@ df_principal_above6.to_excel('above6.xlsx')
 df_principal_above11.to_excel('above11.xlsx')
 df_principal_above21.to_excel('above21.xlsx')
 
-df_highs = df_principal_highs[['Close time', 'BTCUSD']]
+'''df_highs = df_principal_highs[['Close time', 'BTCUSD']]
 df_lows = df_principal_lows[['Close time', 'BTCUSD']]
 df_highs.columns = [['Close time', 'High price']]
 df_lows.columns = [['Close time', 'Low price']]
@@ -294,4 +294,4 @@ df_principal_tenkan.to_excel('tenkan.xlsx')
 df_principal_kijun.to_excel('kijun.xlsx')
 df_principal_senkou_a.to_excel('senkou_a.xlsx')
 df_principal_senkou_b.to_excel('senkou_b.xlsx')
-df_principal_chikou.to_excel('chikou.xlsx')
+df_principal_chikou.to_excel('chikou.xlsx')'''

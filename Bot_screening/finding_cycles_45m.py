@@ -39,15 +39,16 @@ df_45m['Close price'] = df_with_last_row['Close price']
 df_45m.drop('Trades', axis = 1, inplace = True)
 df_45m['High price'] = klines_grouped_principale.groupby(['group'], sort=False)['High price'].max()
 df_45m['Low price'] = klines_grouped_principale.groupby(['group'], sort=False)['Low price'].min()
-df_45m.set_index('Open time', inplace = True)
 df_45m['Change'] = (df_45m['Close price'].astype(float) - df_45m['Open price'].astype(float)) / df_45m['Open price'].astype(float)
+
+df_ultimate_dict = dict(zip(df_45m['Open time'], df_45m['Low price']))
 
 min_date = str(input('Inserisci data e ora di un minimo (yyyy-mm-dd hh:mm:ss): '))
 min_date = datetime.strptime(min_date, "%Y-%m-%d %H:%M:%S")
-min = df_45m.loc[min_date]
-print(min)
-df_ultimate = df_45m.tail(len(df_45m) - df_45m.index.get_loc(min_date))
-df_ultimate.to_excel('45m.xlsx')
+
+for k in list(df_ultimate_dict.keys()):
+     if k < min_date:
+        del df_ultimate_dict[k]
 
 max_lenght = 44
 min_lenght = 24
@@ -60,18 +61,29 @@ list_days = ['Candela in cui è avvenuto il minimo']
 list_min = ['Prezzo raggiunto durante il minimo']
 list_costraints = ['Candela in cui si è vincolato al rialzo']
 list_price_costraints = ['Prezzo con il quale si è vincolato al rialzo']
-while(min_date <= df_45m.tail(1).index):                                               #manca un controllo sulla fine del ciclo, caso in cui il ciclo dura meno di 27 giorni
-    left = df_45m.index.get_loc(min_date + timedelta(minutes=45*min_lenght))
-    right = df_45m.index.get_loc(min_date + timedelta(minutes=45*max_lenght))
-    next_min = df_45m.index[df_45m['Low price'] == df_45m.iloc[left:right]['Low price'].min()]
-    if(next_min + timedelta(minutes=45*start) > df_45m.tail(1).index):
-        start = len(df_45m.tail(len(df_45m) - df_45m.index.get_loc(next_min)))
-    left = df_45m.index.get_loc(next_min + timedelta(minutes=45))
-    right = df_45m.index.get_loc(next_min + timedelta(minutes=45*start))
-    while(df_45m.iloc[left:right]['Low price'].min() < df_45m.loc[next_min]['Low price']):
-        next_min = df_45m.iloc[left:right]['Low price'].min()
+
+
+
+
+
+while(min_date <= df_ultimate.tail(1).index):                                               
+    left = df_ultimate.index.get_loc(min_date + timedelta(minutes=45*min_lenght))
+    right = df_ultimate.index.get_loc(min_date + timedelta(minutes=45*max_lenght))
+
+    next_min = df_ultimate.index[df_ultimate['Low price'] == df_ultimate.iloc[left:right]['Low price'].min()]
+    if(len(next_min)>1):
+        next_min = next_min[-1]
+
+    if(next_min + timedelta(minutes=45*start) > df_ultimate.tail(1).index):
+        start = len(df_ultimate.tail(len(df_ultimate) - df_ultimate.index.get_loc(next_min)))
+
+    left = df_ultimate.index.get_loc(next_min + timedelta(minutes=45))
+    right = df_ultimate.index.get_loc(next_min + timedelta(minutes=45*start))
+    
+    while(df_ultimate.iloc[left:right]['Low price'].min() < df_ultimate.loc[next_min]['Low price']):
+        next_min = df_ultimate.iloc[left:right]['Low price'].min()
     list_days.append(next_min)
-    list_min.append(df_45m.loc[next_min]['Low price'])
+    list_min.append(df_ultimate.loc[next_min]['Low price'])
     '''for day in range(min_lenght):
             if(n + day < len(df_ultimate) and flag):
                 if(list_prices[n + day] > list_prices[n]):
