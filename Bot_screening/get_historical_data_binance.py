@@ -27,8 +27,9 @@ for s in exchange_info['symbols']:
         list_symbols.append(s['symbol'])
 
 # getting BTC data
+date = input("Inserisci la data di partenza per lo storico (i.e. 1 Jan, 2023)\n")
 klines = client.get_historical_klines("BTCUSDT", Client.KLINE_INTERVAL_1DAY,
-                                      "1 Set, 2022")  # "1 Dec, 2017", "1 Jan, 2018" per un intervallo
+                                      date)  # "1 Dec, 2017", "1 Jan, 2018" per un intervallo
 
 # reformatting some columns and 24h change
 df_klines = pd.DataFrame(klines)
@@ -146,7 +147,7 @@ for coin in list_symbols:
         df_principal_above21 = df_principal_above21.copy()
 
         count_bar += 1
-        progress_bar(count_bar, len(list_symbols) * 2)
+        progress_bar(count_bar, len(list_symbols))
 
 df_principal_highs.to_excel('highs.xlsx')
 df_principal_lows.to_excel('lows.xlsx')
