@@ -338,26 +338,32 @@ for day in days:
         filename = 'cumulative_changes_backward' + str(day) + '.xlsx'
     df_cums.to_excel(filename)
 
+    def generate_random_palette(n_colors):
+        return ["#"+"".join(map(lambda x: format(int(x), '02x'), np.random.randint(0, 256, size=3))) for i in range(n_colors)]
+
+    # Read data from Excel file
     df = pd.read_excel(filename)
-    color_palette = sns.color_palette(n_colors=342).as_hex()
 
-# Create a dictionary to map names to colors
+    # Generate a random color palette
+    color_palette = generate_random_palette(n_colors=len(df.iloc[:, 1].unique()))
+
+    # Create a dictionary mapping each unique name to a color in the palette
     name_colors = {}
-
-    # Iterate over unique names and assign a color from the palette
     for i, name in enumerate(df.iloc[:, 1].unique()):
         color_index = i % len(color_palette)
         name_colors[name] = color_palette[color_index]
 
-    # Define the function to apply to the DataFrame
+    # Define a function to highlight cells with a given name
     def highlight_name(val):
         return 'background-color: {}'.format(name_colors[val])
 
-    # Select the columns to highlight
+    # Get columns containing coin data
     coin_columns = [column for column in df.columns if column.startswith('Coin.') or column.startswith('Coin')]
 
-    # Apply the style to the DataFrame and save to Excel
+    # Apply the highlighting function to the relevant cells
     styled_df = df.style.applymap(highlight_name, subset=coin_columns)
+
+    # Save the styled dataframe to Excel
     styled_df.to_excel('styled_leaderboard.xlsx', index=False)
 
 
