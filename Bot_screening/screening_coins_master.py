@@ -6,6 +6,7 @@ from plotly.offline import plot
 from pycoingecko import CoinGeckoAPI
 import numpy as np
 from functools import reduce
+import seaborn as sns
 
 cg = CoinGeckoAPI()
 cg.ping()
@@ -336,6 +337,29 @@ for day in days:
     else:
         filename = 'cumulative_changes_backward' + str(day) + '.xlsx'
     df_cums.to_excel(filename)
+
+    df = pd.read_excel(filename)
+    color_palette = sns.color_palette(n_colors=342).as_hex()
+
+# Create a dictionary to map names to colors
+    name_colors = {}
+
+    # Iterate over unique names and assign a color from the palette
+    for i, name in enumerate(df.iloc[:, 1].unique()):
+        color_index = i % len(color_palette)
+        name_colors[name] = color_palette[color_index]
+
+    # Define the function to apply to the DataFrame
+    def highlight_name(val):
+        return 'background-color: {}'.format(name_colors[val])
+
+    # Select the columns to highlight
+    coin_columns = [column for column in df.columns if column.startswith('Coin.') or column.startswith('Coin')]
+
+    # Apply the style to the DataFrame and save to Excel
+    styled_df = df.style.applymap(highlight_name, subset=coin_columns)
+    styled_df.to_excel('styled_leaderboard.xlsx', index=False)
+
 
 # unisco i due score
 '''union = input('Vuoi combinare gli score? (occorre aver creato entrambi i file prima)\n'
