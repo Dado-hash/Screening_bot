@@ -7,6 +7,7 @@ from pycoingecko import CoinGeckoAPI
 import numpy as np
 from functools import reduce
 import seaborn as sns
+from xlrd import open_workbook
 
 cg = CoinGeckoAPI()
 cg.ping()
@@ -333,9 +334,9 @@ for day in days:
         list_cum.append(df_sheet)
     df_cums = pd.concat(list_cum, axis=1)
     if (direction):
-        filename = 'cumulative_changes_forward_' + str(day) + '.xlsx'
+        filename = 'cumulative_changes_forward_' + str(day) + '.xls'
     else:
-        filename = 'cumulative_changes_backward' + str(day) + '.xlsx'
+        filename = 'cumulative_changes_backward' + str(day) + '.xls'
     df_cums.to_excel(filename)
 
     def generate_random_palette(n_colors):
@@ -364,7 +365,12 @@ for day in days:
     styled_df = df.style.applymap(highlight_name, subset=coin_columns)
 
     # Save the styled dataframe to Excel
-    styled_df.to_excel('styled_leaderboard.xlsx', index=False)
+    styled_df.to_excel(filename, index=False)
+
+df = open_workbook(filename, formatting_info=True)
+filename = filename + 'x'
+print(filename)
+df.to_excel(filename, index=False)
 
 
 # unisco i due score
