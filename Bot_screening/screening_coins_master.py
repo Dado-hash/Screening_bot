@@ -7,7 +7,6 @@ from pycoingecko import CoinGeckoAPI
 import numpy as np
 from functools import reduce
 import seaborn as sns
-from xlrd import open_workbook
 
 cg = CoinGeckoAPI()
 cg.ping()
@@ -61,6 +60,7 @@ if (type_storico == "binance"):
 else:
     df_principale = pd.read_excel('storico.xlsx', index_col=0)
 
+# ciclo per ogni giorno che si desidera analizzare
 for day in days:
     start = day
     if (all):
@@ -334,69 +334,23 @@ for day in days:
         list_cum.append(df_sheet)
     df_cums = pd.concat(list_cum, axis=1)
     if (direction):
-        filename = 'cumulative_changes_forward_' + str(day) + '.xls'
+        filename = 'cumulative_changes_forward_' + str(day) + '.xlsx'
     else:
-        filename = 'cumulative_changes_backward' + str(day) + '.xls'
+        filename = 'cumulative_changes_backward' + str(day) + '.xlsx'
     df_cums.to_excel(filename)
 
     def generate_random_palette(n_colors):
         return ["#"+"".join(map(lambda x: format(int(x), '02x'), np.random.randint(0, 256, size=3))) for i in range(n_colors)]
 
-    # Read data from Excel file
+    # coloro le celle in base al nome della coin
     df = pd.read_excel(filename)
-
-    # Generate a random color palette
     color_palette = generate_random_palette(n_colors=len(df.iloc[:, 1].unique()))
-
-    # Create a dictionary mapping each unique name to a color in the palette
     name_colors = {}
     for i, name in enumerate(df.iloc[:, 1].unique()):
         color_index = i % len(color_palette)
         name_colors[name] = color_palette[color_index]
-
-    # Define a function to highlight cells with a given name
     def highlight_name(val):
         return 'background-color: {}'.format(name_colors[val])
-
-    # Get columns containing coin data
     coin_columns = [column for column in df.columns if column.startswith('Coin.') or column.startswith('Coin')]
-
-    # Apply the highlighting function to the relevant cells
     styled_df = df.style.applymap(highlight_name, subset=coin_columns)
-
-    # Save the styled dataframe to Excel
     styled_df.to_excel(filename, index=False)
-
-df = open_workbook(filename, formatting_info=True)
-filename = filename + 'x'
-print(filename)
-df.to_excel(filename, index=False)
-
-
-# unisco i due score
-'''union = input('Vuoi combinare gli score? (occorre aver creato entrambi i file prima)\n'
-              '0 -> No\n'
-              '1 -> Sì\n')
-union = int(union)
-if (union):
-    list_score = []
-    for cum in cumulatives:
-        if (cum != 1):
-            df_sheet_backward = pd.read_excel('leaderboard_backward.xlsx', sheet_name=str(cum) + 'd')
-            df_sheet_forward = pd.read_excel('leaderboard_forward.xlsx', sheet_name=str(cum) + 'd')
-            df_sheet_forward.set_index('Coin', inplace=True)
-            df_sheet_backward.set_index('Coin', inplace=True)
-            df_sheet_forward = df_sheet_forward.rename(columns={'Score': 'Score_f'})
-            df_sheet_backward.drop(
-                ['Cumulative', 'Change', 'Type of change', 'Top 10', 'Above SMA6', 'Above SMA11', 'Above SMA21',
-                 'Day_rank'], inplace=True, axis=1)
-            df_sheet_forward.drop(
-                ['Cumulative', 'Change', 'Type of change', 'Top 10', 'Above SMA6', 'Above SMA11', 'Above SMA21',
-                 'Day_rank'], inplace=True, axis=1)
-            df_sheet_tot = df_sheet_backward.merge(df_sheet_forward, on='Coin')
-            df_sheet_tot['Score_tot_' + str(cum) + 'd'] = df_sheet_tot['Score'] + df_sheet_tot['Score_f']
-            df_sheet_tot.drop(['Score', 'Score_f'], inplace=True, axis=1)
-            df_sheet_tot = df_sheet_tot.sort_values(by=('Score_tot_' + str(cum) + 'd'), ascending=False)
-            list_score.append(df_sheet_tot)
-    df_score_tot = pd.concat(list_score, axis=1)
-    df_score_tot.to_excel('score.xlsx')'''
