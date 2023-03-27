@@ -8,8 +8,6 @@ import numpy as np
 from functools import reduce
 import seaborn as sns
 
-cg = CoinGeckoAPI()
-cg.ping()
 
 # modifica per una migliore visualizzazione dei dati e creazione di una progress bar
 pd.set_option("display.precision", 8)
