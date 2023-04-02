@@ -45,9 +45,9 @@ df_klines['24h change'] = (df_klines['Close price'].astype(float) - df_klines['O
 df_klines['SMA_fast'] = df_klines['Close price'].rolling(5).mean()
 df_klines['SMA_medium'] = df_klines['Close price'].rolling(10).mean()
 df_klines['SMA_slow'] = df_klines['Close price'].rolling(60).mean()
-df_klines['Above SMA_fast'] = np.where(df_klines['Close price'].astype(float) > df_klines['SMA_fast'], 1, 0)
-df_klines['Above SMA_medium'] = np.where(df_klines['Close price'].astype(float) > df_klines['SMA_medium'], 1, 0)
-df_klines['Above SMA_slow'] = np.where(df_klines['Close price'].astype(float) > df_klines['SMA_slow'], 1, 0)
+df_klines['Above SMA_fast'] = np.where(df_klines['Close price'].astype(float) > df_klines['SMA_fast'], 3, -3)
+df_klines['Above SMA_medium'] = np.where(df_klines['Close price'].astype(float) > df_klines['SMA_medium'], 2, -2)
+df_klines['Above SMA_slow'] = np.where(df_klines['Close price'].astype(float) > df_klines['SMA_slow'], 1, -1)
 
 df_klines.drop(['trash1', 'trash2', 'trash3', 'trash4', 'trash5'], axis=1, inplace=True)
 
@@ -94,9 +94,9 @@ for coin in list_symbols:
         df_klines['SMA_fast'] = df_klines['Close price'].rolling(6).mean()
         df_klines['SMA_medium'] = df_klines['Close price'].rolling(11).mean()
         df_klines['SMA_slow'] = df_klines['Close price'].rolling(21).mean()
-        df_klines['Above SMA_fast'] = np.where(df_klines['Close price'].astype(float) > df_klines['SMA_fast'], 1, -1)
+        df_klines['Above SMA_fast'] = np.where(df_klines['Close price'].astype(float) > df_klines['SMA_fast'], 3, -3)
         df_klines['Above SMA_medium'] = np.where(df_klines['Close price'].astype(float) > df_klines['SMA_medium'], 2, -2)
-        df_klines['Above SMA_slow'] = np.where(df_klines['Close price'].astype(float) > df_klines['SMA_slow'], 3, -3)
+        df_klines['Above SMA_slow'] = np.where(df_klines['Close price'].astype(float) > df_klines['SMA_slow'], 1, -1)
 
         df_klines.drop(['trash1', 'trash2', 'trash3', 'trash4', 'trash5'], axis=1, inplace=True)
 
