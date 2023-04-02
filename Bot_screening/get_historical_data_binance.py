@@ -42,12 +42,12 @@ df_klines['24h change'] = (df_klines['Close price'].astype(float) - df_klines['O
     'Open price'].astype(float)
 
 # calculating SMAs and if price is over these
-df_klines['SMA6'] = df_klines['Close price'].rolling(6).mean()
-df_klines['SMA11'] = df_klines['Close price'].rolling(11).mean()
-df_klines['SMA21'] = df_klines['Close price'].rolling(21).mean()
-df_klines['Above SMA6'] = np.where(df_klines['Close price'].astype(float) > df_klines['SMA6'], 1, 0)
-df_klines['Above SMA11'] = np.where(df_klines['Close price'].astype(float) > df_klines['SMA11'], 1, 0)
-df_klines['Above SMA21'] = np.where(df_klines['Close price'].astype(float) > df_klines['SMA21'], 1, 0)
+df_klines['SMA_fast'] = df_klines['Close price'].rolling(5).mean()
+df_klines['SMA_medium'] = df_klines['Close price'].rolling(10).mean()
+df_klines['SMA_slow'] = df_klines['Close price'].rolling(60).mean()
+df_klines['Above SMA_fast'] = np.where(df_klines['Close price'].astype(float) > df_klines['SMA_fast'], 1, 0)
+df_klines['Above SMA_medium'] = np.where(df_klines['Close price'].astype(float) > df_klines['SMA_medium'], 1, 0)
+df_klines['Above SMA_slow'] = np.where(df_klines['Close price'].astype(float) > df_klines['SMA_slow'], 1, 0)
 
 df_klines.drop(['trash1', 'trash2', 'trash3', 'trash4', 'trash5'], axis=1, inplace=True)
 
@@ -56,23 +56,23 @@ df_principal_highs = df_klines[['Close time', 'High price']]
 df_principal_lows = df_klines[['Close time', 'Low price']]
 df_principal_closes = df_klines[['Close time', 'Close price']]
 df_principal_correlation = df_klines[['Close time', '24h change']]
-df_principal_SMA6 = df_klines[['Close time', 'SMA6']]
-df_principal_SMA11 = df_klines[['Close time', 'SMA11']]
-df_principal_SMA21 = df_klines[['Close time', 'SMA21']]
-df_principal_above6 = df_klines[['Close time', 'Above SMA6']]
-df_principal_above11 = df_klines[['Close time', 'Above SMA11']]
-df_principal_above21 = df_klines[['Close time', 'Above SMA21']]
+df_principal_SMA_fast = df_klines[['Close time', 'SMA_fast']]
+df_principal_SMA_medium = df_klines[['Close time', 'SMA_medium']]
+df_principal_SMA_slow = df_klines[['Close time', 'SMA_slow']]
+df_principal_above_fast = df_klines[['Close time', 'Above SMA_fast']]
+df_principal_above_medium = df_klines[['Close time', 'Above SMA_medium']]
+df_principal_above_slow = df_klines[['Close time', 'Above SMA_slow']]
 
 df_principal_highs.columns = ['Close time', 'BTCUSD']
 df_principal_lows.columns = ['Close time', 'BTCUSD']
 df_principal_closes.columns = ['Close time', 'BTCUSD']
 df_principal_correlation.columns = ['Close time', 'BTCUSD']
-df_principal_SMA6.columns = ['Close time', 'BTCUSD']
-df_principal_SMA11.columns = ['Close time', 'BTCUSD']
-df_principal_SMA21.columns = ['Close time', 'BTCUSD']
-df_principal_above6.columns = ['Close time', 'BTCUSD']
-df_principal_above11.columns = ['Close time', 'BTCUSD']
-df_principal_above21.columns = ['Close time', 'BTCUSD']
+df_principal_SMA_fast.columns = ['Close time', 'BTCUSD']
+df_principal_SMA_medium.columns = ['Close time', 'BTCUSD']
+df_principal_SMA_slow.columns = ['Close time', 'BTCUSD']
+df_principal_above_fast.columns = ['Close time', 'BTCUSD']
+df_principal_above_medium.columns = ['Close time', 'BTCUSD']
+df_principal_above_slow.columns = ['Close time', 'BTCUSD']
 
 # repeating for all the remaining coins
 count_bar = 0
@@ -91,12 +91,12 @@ for coin in list_symbols:
         df_klines['Correlation'] = df_klines['24h change'].astype(float) / df_principal_correlation['BTCUSD'].astype(
             float)
 
-        df_klines['SMA6'] = df_klines['Close price'].rolling(6).mean()
-        df_klines['SMA11'] = df_klines['Close price'].rolling(11).mean()
-        df_klines['SMA21'] = df_klines['Close price'].rolling(21).mean()
-        df_klines['Above SMA6'] = np.where(df_klines['Close price'].astype(float) > df_klines['SMA6'], 1, -1)
-        df_klines['Above SMA11'] = np.where(df_klines['Close price'].astype(float) > df_klines['SMA11'], 2, -2)
-        df_klines['Above SMA21'] = np.where(df_klines['Close price'].astype(float) > df_klines['SMA21'], 3, -3)
+        df_klines['SMA_fast'] = df_klines['Close price'].rolling(6).mean()
+        df_klines['SMA_medium'] = df_klines['Close price'].rolling(11).mean()
+        df_klines['SMA_slow'] = df_klines['Close price'].rolling(21).mean()
+        df_klines['Above SMA_fast'] = np.where(df_klines['Close price'].astype(float) > df_klines['SMA_fast'], 1, -1)
+        df_klines['Above SMA_medium'] = np.where(df_klines['Close price'].astype(float) > df_klines['SMA_medium'], 2, -2)
+        df_klines['Above SMA_slow'] = np.where(df_klines['Close price'].astype(float) > df_klines['SMA_slow'], 3, -3)
 
         df_klines.drop(['trash1', 'trash2', 'trash3', 'trash4', 'trash5'], axis=1, inplace=True)
 
@@ -105,24 +105,24 @@ for coin in list_symbols:
         df_lows = df_klines[['Close time', 'Low price']]
         df_closes = df_klines[['Close time', 'Close price']]
         df_correlation = df_klines[['Close time', 'Correlation']]
-        df_SMA6 = df_klines[['Close time', 'SMA6']]
-        df_SMA11 = df_klines[['Close time', 'SMA11']]
-        df_SMA21 = df_klines[['Close time', 'SMA21']]
-        df_above6 = df_klines[['Close time', 'Above SMA6']]
-        df_above11 = df_klines[['Close time', 'Above SMA11']]
-        df_above21 = df_klines[['Close time', 'Above SMA21']]
+        df_SMA_fast = df_klines[['Close time', 'SMA_fast']]
+        df_SMA_medium = df_klines[['Close time', 'SMA_medium']]
+        df_SMA_slow = df_klines[['Close time', 'SMA_slow']]
+        df_above_fast = df_klines[['Close time', 'Above SMA_fast']]
+        df_above_medium = df_klines[['Close time', 'Above SMA_medium']]
+        df_above_slow = df_klines[['Close time', 'Above SMA_slow']]
 
         # changing the name of the columns
         df_highs.columns = ['Close time', coin]
         df_lows.columns = ['Close time', coin]
         df_closes.columns = ['Close time', coin]
         df_correlation.columns = ['Close time', coin]
-        df_SMA6.columns = ['Close time', coin]
-        df_SMA11.columns = ['Close time', coin]
-        df_SMA21.columns = ['Close time', coin]
-        df_above6.columns = ['Close time', coin]
-        df_above11.columns = ['Close time', coin]
-        df_above21.columns = ['Close time', coin]
+        df_SMA_fast.columns = ['Close time', coin]
+        df_SMA_medium.columns = ['Close time', coin]
+        df_SMA_slow.columns = ['Close time', coin]
+        df_above_fast.columns = ['Close time', coin]
+        df_above_medium.columns = ['Close time', coin]
+        df_above_slow.columns = ['Close time', coin]
 
         # merging the data of the coin with those of all the others
         df_principal_highs = pd.merge(df_principal_highs, df_highs, on="Close time", how='left')
@@ -133,18 +133,18 @@ for coin in list_symbols:
         df_principal_closes = df_principal_closes.copy()
         df_principal_correlation = pd.merge(df_principal_correlation, df_correlation, on="Close time", how='left')
         df_principal_correlation = df_principal_correlation.copy()
-        df_principal_SMA6 = pd.merge(df_principal_SMA6, df_SMA6, on="Close time", how='left')
-        df_principal_SMA6 = df_principal_SMA6.copy()
-        df_principal_SMA11 = pd.merge(df_principal_SMA11, df_SMA11, on="Close time", how='left')
-        df_principal_SMA11 = df_principal_SMA11.copy()
-        df_principal_SMA21 = pd.merge(df_principal_SMA21, df_SMA21, on="Close time", how='left')
-        df_principal_SMA21 = df_principal_SMA21.copy()
-        df_principal_above6 = pd.merge(df_principal_above6, df_above6, on="Close time", how='left')
-        df_principal_above6 = df_principal_above6.copy()
-        df_principal_above11 = pd.merge(df_principal_above11, df_above11, on="Close time", how='left')
-        df_principal_above11 = df_principal_above11.copy()
-        df_principal_above21 = pd.merge(df_principal_above21, df_above21, on="Close time", how='left')
-        df_principal_above21 = df_principal_above21.copy()
+        df_principal_SMA_fast = pd.merge(df_principal_SMA_fast, df_SMA_fast, on="Close time", how='left')
+        df_principal_SMA_fast = df_principal_SMA_fast.copy()
+        df_principal_SMA_medium = pd.merge(df_principal_SMA_medium, df_SMA_medium, on="Close time", how='left')
+        df_principal_SMA_medium = df_principal_SMA_medium.copy()
+        df_principal_SMA_slow = pd.merge(df_principal_SMA_slow, df_SMA_slow, on="Close time", how='left')
+        df_principal_SMA_slow = df_principal_SMA_slow.copy()
+        df_principal_above_fast = pd.merge(df_principal_above_fast, df_above_fast, on="Close time", how='left')
+        df_principal_above_fast = df_principal_above_fast.copy()
+        df_principal_above_medium = pd.merge(df_principal_above_medium, df_above_medium, on="Close time", how='left')
+        df_principal_above_medium = df_principal_above_medium.copy()
+        df_principal_above_slow = pd.merge(df_principal_above_slow, df_above_slow, on="Close time", how='left')
+        df_principal_above_slow = df_principal_above_slow.copy()
 
         count_bar += 1
         progress_bar(count_bar, len(list_symbols))
@@ -153,12 +153,12 @@ df_principal_highs.to_excel('highs.xlsx')
 df_principal_lows.to_excel('lows.xlsx')
 df_principal_closes.to_excel('closes.xlsx')
 df_principal_correlation.to_excel('correlation.xlsx')
-df_principal_SMA6.to_excel('SMA6.xlsx')
-df_principal_SMA11.to_excel('SMA11.xlsx')
-df_principal_SMA21.to_excel('SMA21.xlsx')
-df_principal_above6.to_excel('above6.xlsx')
-df_principal_above11.to_excel('above11.xlsx')
-df_principal_above21.to_excel('above21.xlsx')
+df_principal_SMA_fast.to_excel('SMA_fast.xlsx')
+df_principal_SMA_medium.to_excel('SMA_medium.xlsx')
+df_principal_SMA_slow.to_excel('SMA_slow.xlsx')
+df_principal_above_fast.to_excel('above_fast.xlsx')
+df_principal_above_medium.to_excel('above_medium.xlsx')
+df_principal_above_slow.to_excel('above_slow.xlsx')
 
 '''df_highs = df_principal_highs[['Close time', 'BTCUSD']]
 df_lows = df_principal_lows[['Close time', 'BTCUSD']]

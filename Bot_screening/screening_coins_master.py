@@ -2,11 +2,11 @@ import pandas as pd
 import colorama
 import datetime as dt
 import time as t
-from plotly.offline import plot
-from pycoingecko import CoinGeckoAPI
 import numpy as np
 from functools import reduce
 import seaborn as sns
+from typing import List
+import questionary
 
 
 # modifica per una migliore visualizzazione dei dati e creazione di una progress bar
@@ -21,38 +21,59 @@ def progress_bar(progress, total, color=colorama.Fore.YELLOW):
         print(colorama.Fore.GREEN + f"\r|{bar}| {percent:.2f}%", end="\r")
         print(colorama.Fore.RESET)
 
+def get_user_inputs() -> dict:
+    inputs = {}
+    
+    type_storico = questionary.select(
+        "Quale storico vuoi usare?",
+        choices=["Binance", "Coingecko"]
+    ).ask()
+    inputs["type_storico"] = 0 if type_storico == "Binance" else 1
+    
+    direction = questionary.select(
+        "In che direzione voui calcolare i cumulativi?",
+        choices=["Da oggi andando indietro", "Da un giorno specifico in avanti"]
+    ).ask()
+    inputs["direction"] = 0 if direction == "Da oggi andando indietro" else 1
+    
+    if inputs["direction"]:
+        days = questionary.text("Da che giorni vuoi partire (separati da uno spazio)").ask()
+        inputs["days"] = [int(day) for day in days.split()]
+    else:
+        days = questionary.text("Fino a quali giorni vuoi arrivare? (separati da uno spazio)").ask()
+        inputs["days"] = [int(day) for day in days.split()]
+        
+    all_cumulatives = questionary.confirm("Seleziona che tipo di cumulativi ti servono: Tutti?").ask()
+    inputs["all_cumulatives"] = all_cumulatives
+    
+    if not all_cumulatives:
+        cumulatives = questionary.text("Inserisci il numero di giorni dei cumulativi che ti servono (separati da uno spazio)").ask()
+        inputs["cumulatives"] = [int(cumulative) for cumulative in cumulatives.split()]
+    
+    order = questionary.select(
+        'Li vuoi ordinati per Score o per performance?',
+        choices=["Performance", "Score"]
+    ).ask()
+    inputs["order"] = 0 if order == "Performance" else 1
+    
+    return inputs
+
+inputs = get_user_inputs()
+
 
 # serie di parametri richiesti all'utente per poter generare l'elaborazione desiderata
-type_storico = input("Quale storico vuoi usare (binance o coingecko)?\n")
+type_storico = inputs["type_storico"]
 
-direction = input("In che direzione voui calcolare i cumulativi?\n"
-                  "0 -> Da oggi andando indietro\n"
-                  "1 -> Da un giorno specifico in avanti\n")
-direction = int(direction)
+direction = inputs["direction"]
 
-if direction:
-    days = input("Da che giorni vuoi partire\n")
-    days = days.split()
-    for i in range(len(days)):
-        days[i] = int(days[i])
-else:
-    days = input("Fino a quali giorni vuoi arrivare?\n")
-    days = days.split()
-    for i in range(len(days)):
-        days[i] = int(days[i])
+days = inputs["days"]
 
-all = input("Seleziona che tipo di cumulativi ti servono:\n"
-            "0 -> Solo alcuni\n"
-            "1 -> Tutti\n")
-all = int(all)
+all = inputs["all_cumulatives"]
 
-order = input('Li vuoi ordinati per Score o per performance?\n'
-              '0 -> Performance\n'
-              '1 -> Score\n')
-order = int(order)
+order = inputs["order"]
 
 # viene caricato lo storico a seconda di quale fonte si desidera usare
-if (type_storico == "binance"):
+if (not type_storico):
     df_principale = pd.read_excel('closes.xlsx', index_col=0)
     df_principale.set_index('Close time', inplace=True)
 else:
@@ -65,27 +86,25 @@ for day in days:
         cumulatives = list(range(start + 1))
         cumulatives.remove(0)
     else:
-        cumulatives = input("Inserisci il numero di giorni dei cumulativi che ti servono\n")
+        cumulatives = inputs["cumulatives"]
         cumulatives = cumulatives.split()
-        for i in range(len(cumulatives)):
-            cumulatives[i] = int(cumulatives[i])
     totale = (len(cumulatives) * 5) - 3
     progresso = 0
     df_for_index = df_principale.tail(start)
 
     # vengono caricati i dati dai file riguardanti le medie
-    df_SMA6 = pd.read_excel('above6.xlsx', index_col=0)
-    df_SMA6.set_index('Close time', inplace=True)
-    df_SMA11 = pd.read_excel('above11.xlsx', index_col=0)
-    df_SMA11.set_index('Close time', inplace=True)
-    df_SMA21 = pd.read_excel('above21.xlsx', index_col=0)
-    df_SMA21.set_index('Close time', inplace=True)
-    df_SMA6 = df_SMA6.T
-    df_SMA11 = df_SMA11.T
-    df_SMA21 = df_SMA21.T
-    df_SMA6 = df_SMA6.iloc[:, len(df_SMA6.columns) - start: len(df_SMA6.columns)].copy()
-    df_SMA11 = df_SMA11.iloc[:, len(df_SMA11.columns) - start: len(df_SMA11.columns)].copy()
-    df_SMA21 = df_SMA21.iloc[:, len(df_SMA21.columns) - start: len(df_SMA21.columns)].copy()
+    df_SMA_fast = pd.read_excel('above_fast.xlsx', index_col=0)
+    df_SMA_fast.set_index('Close time', inplace=True)
+    df_SMA_medium = pd.read_excel('above_medium.xlsx', index_col=0)
+    df_SMA_medium.set_index('Close time', inplace=True)
+    df_SMA_slow = pd.read_excel('above_slow.xlsx', index_col=0)
+    df_SMA_slow.set_index('Close time', inplace=True)
+    df_SMA_fast = df_SMA_fast.T
+    df_SMA_medium = df_SMA_medium.T
+    df_SMA_slow = df_SMA_slow.T
+    df_SMA_fast = df_SMA_fast.iloc[:, len(df_SMA_fast.columns) - start: len(df_SMA_fast.columns)].copy()
+    df_SMA_medium = df_SMA_medium.iloc[:, len(df_SMA_medium.columns) - start: len(df_SMA_medium.columns)].copy()
+    df_SMA_slow = df_SMA_slow.iloc[:, len(df_SMA_slow.columns) - start: len(df_SMA_slow.columns)].copy()
 
     # dal file con lo storico vengono calcolate le performance giornaliere e creati i cumulativi
     leaderboard = []
@@ -183,24 +202,24 @@ for day in days:
     values = [3, 2, 1]
     first_temp['Day_rank'] = np.select(conditions, values)
     first_temp.drop('24h_change', inplace=True, axis=1)
-    first_day_SMA6_index = df_SMA6.columns[0]
-    df_first_day_SMA6 = df_SMA6[first_day_SMA6_index]
-    df_first_day_SMA6 = df_first_day_SMA6.to_frame()
-    df_first_day_SMA6.index.name = 'Coin'
-    df_first_day_SMA6.columns = ['Above SMA6']
-    first_day_SMA11_index = df_SMA11.columns[0]
-    df_first_day_SMA11 = df_SMA11[first_day_SMA11_index]
-    df_first_day_SMA11 = df_first_day_SMA11.to_frame()
-    df_first_day_SMA11.index.name = 'Coin'
-    df_first_day_SMA11.columns = ['Above SMA11']
-    first_day_SMA21_index = df_SMA21.columns[0]
-    df_first_day_SMA21 = df_SMA21[first_day_SMA21_index]
-    df_first_day_SMA21 = df_first_day_SMA21.to_frame()
-    df_first_day_SMA21.index.name = 'Coin'
-    df_first_day_SMA21.columns = ['Above SMA21']
-    first = first.merge(df_first_day_SMA6, on='Coin')
-    first = first.merge(df_first_day_SMA11, on='Coin')
-    first = first.merge(df_first_day_SMA21, on='Coin')
+    first_day_SMA_fast_index = df_SMA_fast.columns[0]
+    df_first_day_SMA_fast = df_SMA_fast[first_day_SMA_fast_index]
+    df_first_day_SMA_fast = df_first_day_SMA_fast.to_frame()
+    df_first_day_SMA_fast.index.name = 'Coin'
+    df_first_day_SMA_fast.columns = ['Above SMA_fast']
+    first_day_SMA_medium_index = df_SMA_medium.columns[0]
+    df_first_day_SMA_medium = df_SMA_medium[first_day_SMA_medium_index]
+    df_first_day_SMA_medium = df_first_day_SMA_medium.to_frame()
+    df_first_day_SMA_medium.index.name = 'Coin'
+    df_first_day_SMA_medium.columns = ['Above SMA_medium']
+    first_day_SMA_slow_index = df_SMA_slow.columns[0]
+    df_first_day_SMA_slow = df_SMA_slow[first_day_SMA_slow_index]
+    df_first_day_SMA_slow = df_first_day_SMA_slow.to_frame()
+    df_first_day_SMA_slow.index.name = 'Coin'
+    df_first_day_SMA_slow.columns = ['Above SMA_slow']
+    first = first.merge(df_first_day_SMA_fast, on='Coin')
+    first = first.merge(df_first_day_SMA_medium, on='Coin')
+    first = first.merge(df_first_day_SMA_slow, on='Coin')
 
     # ogni cumulativo viene aggiunto a quello del primo giorno
     leaderboard = []
@@ -262,33 +281,33 @@ for day in days:
         df_score_temp_type = df['Type of change'].copy()
         df_score_temp_type.index = df.index
         df_score_temp = df_score_temp_change  # .add(df_score_temp_type)
-        first_day_SMA6_index = df_SMA6.columns[num + 1]
-        df_first_day_SMA6 = df_SMA6[first_day_SMA6_index]
-        df_first_day_SMA6 = df_first_day_SMA6.to_frame()
-        df_first_day_SMA6.index.name = 'Coin'
-        df_first_day_SMA6.columns = ['Above SMA6']
-        first_day_SMA11_index = df_SMA11.columns[num + 1]
-        df_first_day_SMA11 = df_SMA11[first_day_SMA11_index]
-        df_first_day_SMA11 = df_first_day_SMA11.to_frame()
-        df_first_day_SMA11.index.name = 'Coin'
-        df_first_day_SMA11.columns = ['Above SMA11']
-        first_day_SMA21_index = df_SMA21.columns[num + 1]
-        df_first_day_SMA21 = df_SMA6[first_day_SMA21_index]
-        df_first_day_SMA21 = df_first_day_SMA21.to_frame()
-        df_first_day_SMA21.index.name = 'Coin'
-        df_first_day_SMA21.columns = ['Above SMA21']
+        first_day_SMA_fast_index = df_SMA_fast.columns[num + 1]
+        df_first_day_SMA_fast = df_SMA_fast[first_day_SMA_fast_index]
+        df_first_day_SMA_fast = df_first_day_SMA_fast.to_frame()
+        df_first_day_SMA_fast.index.name = 'Coin'
+        df_first_day_SMA_fast.columns = ['Above SMA_fast']
+        first_day_SMA_medium_index = df_SMA_medium.columns[num + 1]
+        df_first_day_SMA_medium = df_SMA_medium[first_day_SMA_medium_index]
+        df_first_day_SMA_medium = df_first_day_SMA_medium.to_frame()
+        df_first_day_SMA_medium.index.name = 'Coin'
+        df_first_day_SMA_medium.columns = ['Above SMA_medium']
+        first_day_SMA_slow_index = df_SMA_slow.columns[num + 1]
+        df_first_day_SMA_slow = df_SMA_fast[first_day_SMA_slow_index]
+        df_first_day_SMA_slow = df_first_day_SMA_slow.to_frame()
+        df_first_day_SMA_slow.index.name = 'Coin'
+        df_first_day_SMA_slow.columns = ['Above SMA_slow']
         df_day_rank = first_temp['Day_rank'].copy()
-        df = df.merge(df_first_day_SMA6, on='Coin')
-        df = df.merge(df_first_day_SMA11, on='Coin')
-        df = df.merge(df_first_day_SMA21, on='Coin')
+        df = df.merge(df_first_day_SMA_fast, on='Coin')
+        df = df.merge(df_first_day_SMA_medium, on='Coin')
+        df = df.merge(df_first_day_SMA_slow, on='Coin')
         df = df.merge(first_temp, on='Coin')
-        df_score_temp_SMA6 = df['Above SMA6']
-        df_score_temp_SMA11 = df['Above SMA11']
-        df_score_temp_SMA21 = df['Above SMA21']
+        df_score_temp_SMA_fast = df['Above SMA_fast']
+        df_score_temp_SMA_medium = df['Above SMA_medium']
+        df_score_temp_SMA_slow = df['Above SMA_slow']
         df_score_temp_top10 = df['Top 10']
         df_score_temp_day_rank = df['Day_rank']
         df_score_temp = reduce(lambda a, b: a.add(b, fill_value=0),
-                            [df_score_temp, df_score_temp_SMA6, df_score_temp_SMA11, df_score_temp_SMA21,
+                            [df_score_temp, df_score_temp_SMA_fast, df_score_temp_SMA_medium, df_score_temp_SMA_slow,
                                 df_score_temp_top10, df_score_temp_day_rank])
         df_score_temp = df_score_temp.to_frame()
         df_score_temp.columns = ['Score']
@@ -325,10 +344,10 @@ for day in days:
         df_sheet = df_sheet.rename(columns={'Score': 'Score ' + str(cum) + 'd'})
         if (cum != 1):
             name_col = 'Change ' + str(cum) +'d'
-            df_sheet.drop([name_col, 'Type of change', 'Top 10', 'Above SMA6', 'Above SMA11', 'Above SMA21', 'Day_rank'], inplace=True,
+            df_sheet.drop([name_col, 'Type of change', 'Top 10', 'Above SMA_fast', 'Above SMA_medium', 'Above SMA_slow', 'Day_rank'], inplace=True,
                     axis=1)
         else:
-            df_sheet.drop(['Above SMA6', 'Above SMA11', 'Above SMA21'], inplace=True, axis=1)
+            df_sheet.drop(['Above SMA_fast', 'Above SMA_medium', 'Above SMA_slow'], inplace=True, axis=1)
         list_cum.append(df_sheet)
     df_cums = pd.concat(list_cum, axis=1)
     if (direction):
